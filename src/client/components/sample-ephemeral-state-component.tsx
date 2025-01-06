@@ -1,10 +1,11 @@
-import {useTodoState} from "@/client/state/todos";
+import {useTodoService} from "@/client/state/todos";
+import {AddTodo} from "@/client/components/todo/add-todo";
 
 // basic TODO app
 export const SampleEphemeralStateComponent = () => {
   // note: any state management should not be done inside components if at all possible.
   // custom hooks can do what we need and make testing _much_ simpler
-  const todos = useTodoState();
+  const todos = useTodoService();
   return (
     <div>
       <h2>Todo app with ephemeral state</h2>
@@ -14,6 +15,7 @@ export const SampleEphemeralStateComponent = () => {
         <p>{todo.notes}</p>
         <button onClick={() => todos.removeTodo(todo)}>Remove</button>
       </div>)}
+      <AddTodo addTodo={todos.addTodo}/>
       <button onClick={todos.reset}>Reset</button>
     </div>
   );

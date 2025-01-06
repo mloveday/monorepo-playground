@@ -42,6 +42,7 @@ const initialState = {
 // doing so gives us a nicer interface to work with in our component,
 // rather than a hodge-podge of smaller bits of state to track what is happening.
 const todoReducer: Reducer<TodoState, TodoAction> = (state, action) => {
+  console.log(action);
   switch (action.action) {
     case TodoActionKey.RESET:
       return initialState;
@@ -74,18 +75,26 @@ const removeTodo = (todo: Pick<Todo, 'id'>): TodoAction => ({
 
 const resetTodos = (): TodoAction => ({action: TodoActionKey.RESET});
 
+export type TodoService = {
+  state: TodoState,
+  addTodo: (todo: Todo) => void,
+  removeTodo: (todo: Pick<Todo, 'id'>) => void,
+  reset: () => void,
+};
+
 // main entry point - this is our reactive service for our state
 // note that this is a new instance per usage, not a global service
 // providing this specific service to components would require context, prop-drilling or using redux (o.e.)
-export const useTodoState = () => {
+export const useTodoService = (): TodoService => {
   const [state, dispatch] = useReducer(todoReducer, initialState);
+  console.log(state);
 
   // memoise the state to prevent re-renders based on this state. Note this shouldn't be needed,
   // and may even be a performance hit, depending on usage
-  return useMemo(() => ({
+  return {
     state,
     addTodo: (todo: Todo) => dispatch(addTodo(todo)),
     removeTodo: (todo: Pick<Todo, 'id'>) => dispatch(removeTodo(todo)),
     reset: () => dispatch(resetTodos()),
-  }), [state]);
+  };
 };
