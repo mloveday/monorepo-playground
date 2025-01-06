@@ -13,7 +13,8 @@ const eslintConfig = [
     ...compat.config({
         extends: ["next/core-web-vitals", "next/typescript", 'prettier'],
         rules: {
-            "no-console": ["error", { allow: ["warn", "error"] }],
+            "no-console": ["error", {allow: ["warn", "error"]}],
+            "eslint-plugin-simple-import-sort": "error",
         }
     }),
 ];

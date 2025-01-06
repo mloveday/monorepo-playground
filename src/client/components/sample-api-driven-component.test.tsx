@@ -1,12 +1,12 @@
+import {HttpResponse, http} from "msw";
 import {describe, expect, it} from "vitest";
 import {SampleApiDrivenComponent} from "@/client/components/sample-api-driven-component";
-import {withStore} from "@/test/with-store";
-import {waitFor} from "@testing-library/react";
+import {server} from "@/test/api/setup-server";
 import {testRender} from "@/test/test-render";
 import userEvent from "@testing-library/user-event";
-import {http, HttpResponse} from "msw";
+import {waitFor} from "@testing-library/react";
 import {withLatency} from "@/test/api/mock-handlers";
-import {server} from "@/test/api/setup-server";
+import {withStore} from "@/test/with-store";
 
 describe('SampleApiDrivenComponent', () => {
   it('should fetch data and display a good result', async () => {
