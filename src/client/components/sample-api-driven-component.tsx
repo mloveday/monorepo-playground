@@ -17,6 +17,7 @@ const GridItemCentred = ({children}: PropsWithChildren) => (
 );
 
 export const SampleApiDrivenComponent = () => {
+  // NB: do not directly call API from component
   const healthcheck = useHealthcheckQuery();
 
   if (healthcheck.isError) return <Content><GridItemCentred>error</GridItemCentred></Content>;

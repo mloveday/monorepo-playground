@@ -17,6 +17,7 @@ enum TodoActionKey {
   REMOVE = 'remove',
 }
 
+// discriminated union on the action property allows for different payloads for different actions
 type TodoAction = {
   action: TodoActionKey.RESET,
 } | {
@@ -36,6 +37,10 @@ const initialState = {
   isEmpty: true,
 } satisfies TodoState;
 
+// reducer pattern allows us to treat the state like a state machine.
+// this forces us to explicitly think about initial state and state changes.
+// doing so gives us a nicer interface to work with in our component,
+// rather than a hodge-podge of smaller bits of state to track what is happening.
 const todoReducer: Reducer<TodoState, TodoAction> = (state, action) => {
   switch (action.action) {
     case TodoActionKey.RESET:
@@ -56,6 +61,7 @@ const todoReducer: Reducer<TodoState, TodoAction> = (state, action) => {
   }
 };
 
+// these functions could be inlined below for this, but is a reasonable thing for more complex services
 const addTodo = (todo: Todo): TodoAction => ({
   action: TodoActionKey.ADD,
   payload: todo,
@@ -68,6 +74,9 @@ const removeTodo = (todo: Pick<Todo, 'id'>): TodoAction => ({
 
 const resetTodos = (): TodoAction => ({action: TodoActionKey.RESET});
 
+// main entry point - this is our reactive service for our state
+// note that this is a new instance per usage, not a global service
+// providing this specific service to components would require context, prop-drilling or using redux (o.e.)
 export const useTodoState = () => {
   const [state, dispatch] = useReducer(todoReducer, initialState);
 
