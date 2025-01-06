@@ -2,15 +2,22 @@ import {TodoService} from "@/client/state/todos";
 import {useFormik} from "formik";
 import {v4} from 'uuid';
 import {buttonStyles} from "@/client/components/common/button";
+import {z} from "zod";
+import {toFormikValidationSchema} from 'zod-formik-adapter';
+import {formHasErrors} from "@/client/lib/form-has-errors";
 
 type AddTodoProps = {
   addTodo: TodoService['addTodo'],
 };
 
-type AddTodoForm = {
-  title: string,
-  notes: string,
-};
+const formSchema = z.object({
+  title: z.string().min(5),
+  notes: z.string().optional(),
+});
+
+const validationSchema = toFormikValidationSchema(formSchema);
+
+type AddTodoForm = z.infer<typeof formSchema>;
 
 const initialValues = {
   title: '',
@@ -20,6 +27,7 @@ const initialValues = {
 export const AddTodo = (props: AddTodoProps) => {
   const form = useFormik({
     initialValues,
+    validationSchema,
     onSubmit: (values) =>
       props.addTodo({
         id: v4(),
@@ -31,15 +39,35 @@ export const AddTodo = (props: AddTodoProps) => {
   return (
     <form onSubmit={form.handleSubmit} className="border rounded-md p-4 flex flex-col gap-4">
       <h2 className="font-bold text-xl">Add todo</h2>
-      <label className="grid grid-cols-2 gap-4">
+      <label className="grid grid-cols-2 gap-2">
         <span className="self-center">Title</span>
-        <input id="title" name="title" type="text" onChange={form.handleChange} value={form.values.title} className="border p-2"/>
+        <input
+          id="title"
+          name="title"
+          type="text"
+          onChange={form.handleChange}
+          value={form.values.title}
+          className="border p-2"
+        />
       </label>
-      <label className="grid grid-cols-2 gap-4">
+      <span className="text-red-600 text-right">
+        {form.errors.title && form.touched.title ? form.errors.title : '✅'}
+      </span>
+      <label className="grid grid-cols-2 gap-2">
         <span className="self-center">Notes (optional)</span>
-        <input id="notes" name="notes" type="text" onChange={form.handleChange} value={form.values.notes} className="border p-2"/>
+        <input
+          id="notes"
+          name="notes"
+          type="text"
+          onChange={form.handleChange}
+          value={form.values.notes}
+          className="border p-2"
+        />
       </label>
-      <button className={buttonStyles} type="submit">Add todo</button>
-  </form>
+      <span className="text-red-600 text-right">
+        {form.errors.notes && form.touched.notes ? form.errors.notes : '✅'}
+      </span>
+      <button className={buttonStyles} disabled={formHasErrors(form.errors)} type="submit">Add todo</button>
+    </form>
   );
 };
