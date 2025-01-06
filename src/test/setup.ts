@@ -1,7 +1,8 @@
-import {server} from '@/test/api/setup-server';
-import {afterAll, afterEach, beforeAll, beforeEach} from "vitest";
-import {api} from "@/client/api/api";
 import {cleanup} from "@testing-library/react";
+import {afterAll, afterEach, beforeAll, beforeEach} from "vitest";
+
+import {api} from "@/client/api/api";
+import {server} from '@/test/api/setup-server';
 
 server.listen();
 

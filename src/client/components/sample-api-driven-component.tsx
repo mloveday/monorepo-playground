@@ -1,6 +1,7 @@
 import {PropsWithChildren} from "react";
-import {buttonStyles} from "@/client/components/common/button";
+
 import {useHealthcheckQuery} from "@/client/api/endpoints/healthcheck/use-healthcheck-query";
+import {buttonStyles} from "@/client/components/common/button";
 
 const Content = ({children}: PropsWithChildren) => (
   <div className="flex flex-col gap-4">

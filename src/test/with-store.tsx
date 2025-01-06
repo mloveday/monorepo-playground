@@ -1,4 +1,5 @@
 import React, {PropsWithChildren} from "react";
+
 import {ClientBoundary} from "@/client/client-boundary";
 
 export const withStore = <Props extends PropsWithChildren = object>(Component: React.FC<Props>): React.FC<Props> => {

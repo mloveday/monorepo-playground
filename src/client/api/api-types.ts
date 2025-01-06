@@ -1,4 +1,5 @@
 import {QueryDefinition} from "@reduxjs/toolkit/query";
+
 import {apiBaseQuery} from "@/client/api/api-base-query";
 import {apiReducerPath} from "@/client/api/api-reducer-path";
 
