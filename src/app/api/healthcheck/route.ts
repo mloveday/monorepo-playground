@@ -1,13 +1,13 @@
-'use server';
-import {HealthCheckResponse} from "@/shared/api/healthcheck/health-check-response";
+"use server";
+import { HealthCheckResponse } from "@/shared/api/healthcheck/health-check-response";
 
 const OK = {
   success: true,
-  message: 'All good'
+  message: "All good",
 } satisfies HealthCheckResponse;
 const NOPE = {
   success: false,
-  message: 'Nope'
+  message: "Nope",
 } satisfies HealthCheckResponse;
 
 export const GET = async (): Promise<Response> => {

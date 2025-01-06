@@ -1,39 +1,45 @@
-import {Reducer, useReducer} from "react";
+import { Reducer, useReducer } from "react";
 
 export type Todo = {
-  id: string,
-  title: string,
-  notes?: string,
+  id: string;
+  title: string;
+  notes?: string;
 };
 
 export type TodoState = {
-  todos: Todo[],
-  isEmpty: boolean,
+  todos: Todo[];
+  isEmpty: boolean;
 };
 
 enum TodoActionKey {
-  RESET = 'reset',
-  ADD = 'add',
-  REMOVE = 'remove',
+  RESET = "reset",
+  ADD = "add",
+  REMOVE = "remove",
 }
 
 // discriminated union on the action property allows for different payloads for different actions
-type TodoAction = {
-  action: TodoActionKey.RESET,
-} | {
-  action: TodoActionKey.ADD,
-  payload: Todo,
-} | {
-  action: TodoActionKey.REMOVE,
-  payload: Pick<Todo, 'id'>,
-};
+type TodoAction =
+  | {
+      action: TodoActionKey.RESET;
+    }
+  | {
+      action: TodoActionKey.ADD;
+      payload: Todo;
+    }
+  | {
+      action: TodoActionKey.REMOVE;
+      payload: Pick<Todo, "id">;
+    };
 
 const initialState = {
-  todos: [{
-    id: '1',
-    title: 'Add TODO functionality',
-    notes: 'This is a bit useless without being able to add things to the list',
-  }],
+  todos: [
+    {
+      id: "1",
+      title: "Add TODO functionality",
+      notes:
+        "This is a bit useless without being able to add things to the list",
+    },
+  ],
   isEmpty: true,
 } satisfies TodoState;
 
@@ -52,7 +58,7 @@ const todoReducer: Reducer<TodoState, TodoAction> = (state, action) => {
         isEmpty: false,
       };
     case TodoActionKey.REMOVE:
-      const todos = state.todos.filter(t => t.id !== action.payload.id);
+      const todos = state.todos.filter((t) => t.id !== action.payload.id);
       return {
         ...state,
         todos,
@@ -67,18 +73,18 @@ const addTodo = (todo: Todo): TodoAction => ({
   payload: todo,
 });
 
-const removeTodo = (todo: Pick<Todo, 'id'>): TodoAction => ({
+const removeTodo = (todo: Pick<Todo, "id">): TodoAction => ({
   action: TodoActionKey.REMOVE,
   payload: todo,
 });
 
-const resetTodos = (): TodoAction => ({action: TodoActionKey.RESET});
+const resetTodos = (): TodoAction => ({ action: TodoActionKey.RESET });
 
 export type TodoService = {
-  state: TodoState,
-  addTodo: (todo: Todo) => void,
-  removeTodo: (todo: Pick<Todo, 'id'>) => void,
-  reset: () => void,
+  state: TodoState;
+  addTodo: (todo: Todo) => void;
+  removeTodo: (todo: Pick<Todo, "id">) => void;
+  reset: () => void;
 };
 
 // main entry point - this is our reactive service for our state
@@ -92,7 +98,7 @@ export const useTodoService = (): TodoService => {
   return {
     state,
     addTodo: (todo: Todo) => dispatch(addTodo(todo)),
-    removeTodo: (todo: Pick<Todo, 'id'>) => dispatch(removeTodo(todo)),
+    removeTodo: (todo: Pick<Todo, "id">) => dispatch(removeTodo(todo)),
     reset: () => dispatch(resetTodos()),
   };
 };

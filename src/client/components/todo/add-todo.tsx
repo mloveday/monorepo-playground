@@ -1,15 +1,15 @@
-import {useFormik} from "formik";
-import {v4} from 'uuid';
-import {z} from "zod";
-import {toFormikValidationSchema} from 'zod-formik-adapter';
+import { useFormik } from "formik";
+import { v4 } from "uuid";
+import { z } from "zod";
+import { toFormikValidationSchema } from "zod-formik-adapter";
 
-import {buttonStyles} from "@/client/components/common/button";
-import {FormError} from "@/client/components/common/form-error";
-import {formHasErrors} from "@/client/lib/form-has-errors";
-import {TodoService} from "@/client/state/todos";
+import { buttonStyles } from "@/client/components/common/button";
+import { FormError } from "@/client/components/common/form-error";
+import { formHasErrors } from "@/client/lib/form-has-errors";
+import { TodoService } from "@/client/state/todos";
 
 type AddTodoProps = {
-  addTodo: TodoService['addTodo'],
+  addTodo: TodoService["addTodo"];
 };
 
 const formSchema = z.object({
@@ -22,8 +22,8 @@ const validationSchema = toFormikValidationSchema(formSchema);
 type AddTodoForm = z.infer<typeof formSchema>;
 
 const initialValues = {
-  title: '',
-  notes: '',
+  title: "",
+  notes: "",
 } satisfies AddTodoForm;
 
 export const AddTodo = (props: AddTodoProps) => {
@@ -42,7 +42,10 @@ export const AddTodo = (props: AddTodoProps) => {
   });
 
   return (
-    <form onSubmit={form.handleSubmit} className="border rounded-md p-4 flex flex-col gap-4">
+    <form
+      onSubmit={form.handleSubmit}
+      className="border rounded-md p-4 flex flex-col gap-4"
+    >
       <h2 className="font-bold text-xl">Add todo</h2>
       <label className="grid grid-cols-2 gap-2">
         <span className="self-center">Title</span>
@@ -55,7 +58,7 @@ export const AddTodo = (props: AddTodoProps) => {
           className="border p-2"
         />
       </label>
-      <FormError error={form.errors.title}/>
+      <FormError error={form.errors.title} />
       <label className="grid grid-cols-2 gap-2">
         <span className="self-center">Notes (optional)</span>
         <input
@@ -67,8 +70,14 @@ export const AddTodo = (props: AddTodoProps) => {
           className="border p-2"
         />
       </label>
-      <FormError error={form.errors.notes}/>
-      <button className={buttonStyles} disabled={formHasErrors(form.errors)} type="submit">Add todo</button>
+      <FormError error={form.errors.notes} />
+      <button
+        className={buttonStyles}
+        disabled={formHasErrors(form.errors)}
+        type="submit"
+      >
+        Add todo
+      </button>
     </form>
   );
 };

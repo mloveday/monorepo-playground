@@ -1,10 +1,10 @@
-'use client';
-import React, {PropsWithChildren, useRef} from "react";
-import {Provider} from "react-redux";
+"use client";
+import React, { PropsWithChildren, useRef } from "react";
+import { Provider } from "react-redux";
 
-import {AppStore, makeStore} from "@/client/store/store";
+import { AppStore, makeStore } from "@/client/store/store";
 
-export const StoreProvider = ({children}: PropsWithChildren) => {
+export const StoreProvider = ({ children }: PropsWithChildren) => {
   const storeRef = useRef<AppStore>(undefined);
 
   if (!storeRef.current) {
@@ -12,5 +12,5 @@ export const StoreProvider = ({children}: PropsWithChildren) => {
     storeRef.current = makeStore();
   }
 
-  return <Provider store={storeRef.current}> {children} </Provider>
-}
+  return <Provider store={storeRef.current}> {children} </Provider>;
+};

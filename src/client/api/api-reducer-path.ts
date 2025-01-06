@@ -1,1 +1,1 @@
-export const apiReducerPath = 'api' as const;
+export const apiReducerPath = "api" as const;
