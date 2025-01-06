@@ -1,3 +1,3 @@
 import {FormikErrors} from "formik";
 
-export const formHasErrors = (errors: FormikErrors<any>) => Object.values(errors).filter(Boolean).length > 0;
+export const formHasErrors = <T>(errors: FormikErrors<T>) => Object.values(errors).filter(Boolean).length > 0;

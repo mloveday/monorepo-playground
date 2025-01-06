@@ -1,7 +1,7 @@
 import {describe, expect, it} from "vitest";
 import {SampleApiDrivenComponent} from "@/client/components/sample-api-driven-component";
 import {withStore} from "@/test/with-store";
-import {render, waitFor} from "@testing-library/react";
+import {waitFor} from "@testing-library/react";
 import {testRender} from "@/test/test-render";
 import userEvent from "@testing-library/user-event";
 import {http, HttpResponse} from "msw";
@@ -19,7 +19,7 @@ describe('SampleApiDrivenComponent', () => {
 
     const Component = withStore(SampleApiDrivenComponent);
 
-    const result = testRender(<Component />);
+    const result = testRender(<Component/>);
 
     expect(result.getByText('loading')).not.toBeNull();
     await waitFor(() => expect(result.getByText('good healthcheck response')).not.toBeNull());
@@ -43,7 +43,7 @@ describe('SampleApiDrivenComponent', () => {
 
     const Component = withStore(SampleApiDrivenComponent);
 
-    const result = testRender(<Component />);
+    const result = testRender(<Component/>);
 
     expect(result.getByText('loading')).not.toBeNull();
     await waitFor(() => expect(result.getByText('bad healthcheck response')).not.toBeNull());
@@ -62,7 +62,7 @@ describe('SampleApiDrivenComponent', () => {
 
     const Component = withStore(SampleApiDrivenComponent);
 
-    const result = testRender(<Component />);
+    const result = testRender(<Component/>);
 
     expect(result.getByText('loading')).not.toBeNull();
     await waitFor(() => expect(result.getByText('error')).not.toBeNull());

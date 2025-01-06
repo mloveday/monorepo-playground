@@ -1,4 +1,4 @@
-import {Reducer, useMemo, useReducer} from "react";
+import {Reducer, useReducer} from "react";
 
 export type Todo = {
   id: string,
@@ -42,7 +42,6 @@ const initialState = {
 // doing so gives us a nicer interface to work with in our component,
 // rather than a hodge-podge of smaller bits of state to track what is happening.
 const todoReducer: Reducer<TodoState, TodoAction> = (state, action) => {
-  console.log(action);
   switch (action.action) {
     case TodoActionKey.RESET:
       return initialState;
@@ -53,7 +52,7 @@ const todoReducer: Reducer<TodoState, TodoAction> = (state, action) => {
         isEmpty: false,
       };
     case TodoActionKey.REMOVE:
-      let todos = state.todos.filter(t => t.id !== action.payload.id);
+      const todos = state.todos.filter(t => t.id !== action.payload.id);
       return {
         ...state,
         todos,
@@ -87,7 +86,6 @@ export type TodoService = {
 // providing this specific service to components would require context, prop-drilling or using redux (o.e.)
 export const useTodoService = (): TodoService => {
   const [state, dispatch] = useReducer(todoReducer, initialState);
-  console.log(state);
 
   // memoise the state to prevent re-renders based on this state. Note this shouldn't be needed,
   // and may even be a performance hit, depending on usage

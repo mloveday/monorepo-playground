@@ -12,9 +12,9 @@ const Content = ({children}: PropsWithChildren) => (
 );
 
 const GridItemCentred = ({children}: PropsWithChildren) => (
-    <div className="self-center justify-self-center">
-      {children}
-    </div>
+  <div className="self-center justify-self-center">
+    {children}
+  </div>
 );
 
 export const SampleApiDrivenComponent = () => {
