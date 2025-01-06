@@ -6,6 +6,7 @@ import {z} from "zod";
 import {toFormikValidationSchema} from 'zod-formik-adapter';
 import {formHasErrors} from "@/client/lib/form-has-errors";
 import {FormError} from "@/client/components/common/form-error";
+import {useEffect} from "react";
 
 type AddTodoProps = {
   addTodo: TodoService['addTodo'],
@@ -29,12 +30,15 @@ export const AddTodo = (props: AddTodoProps) => {
   const form = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: (values) =>
+    validateOnMount: true,
+    onSubmit: (values, formikHelpers) => {
       props.addTodo({
         id: v4(),
         title: values.title,
         notes: values.notes === "" ? undefined : values.notes,
-      }),
+      });
+      formikHelpers.resetForm();
+    },
   });
 
   return (
@@ -47,11 +51,12 @@ export const AddTodo = (props: AddTodoProps) => {
           name="title"
           type="text"
           onChange={form.handleChange}
+          onBlur={form.handleBlur}
           value={form.values.title}
           className="border p-2"
         />
       </label>
-      <FormError error={form.errors.title} touched={form.touched.title} />
+      <FormError error={form.errors.title} />
       <label className="grid grid-cols-2 gap-2">
         <span className="self-center">Notes (optional)</span>
         <input
@@ -59,11 +64,12 @@ export const AddTodo = (props: AddTodoProps) => {
           name="notes"
           type="text"
           onChange={form.handleChange}
+          onBlur={form.handleBlur}
           value={form.values.notes}
           className="border p-2"
         />
       </label>
-      <FormError error={form.errors.notes} touched={form.touched.notes} />
+      <FormError error={form.errors.notes} />
       <button className={buttonStyles} disabled={formHasErrors(form.errors)} type="submit">Add todo</button>
     </form>
   );
