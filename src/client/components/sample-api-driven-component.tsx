@@ -1,9 +1,10 @@
 import {useHealthcheckQuery} from "@/client/api/endpoints/healthcheck/use-healthcheck-query";
 import {PropsWithChildren} from "react";
+import {buttonStyles} from "@/client/components/common/button";
 
 const Content = ({children}: PropsWithChildren) => (
   <div className="flex flex-col gap-4">
-    <div>Load sample API endpoint data</div>
+    <h2 className="font-bold text-2xl">Load sample API endpoint data</h2>
     <div className="grid grid-cols-3 gap-4 align-middle h-20 border p-4 w-full rounded-md">
       {children}
     </div>
@@ -29,7 +30,7 @@ export const SampleApiDrivenComponent = () => {
     </GridItemCentred>
     <GridItemCentred>
       <button
-        className="border rounded py-2 px-4 bg-white disabled:text-gray-200 hover:disabled:bg-white hover:bg-amber-50 focus:outline-none focus:ring-amber-400 focus:ring"
+        className={buttonStyles}
         disabled={healthcheck.isFetching}
         onClick={healthcheck.refetch}
       >

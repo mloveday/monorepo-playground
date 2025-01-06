@@ -1,5 +1,6 @@
 import {useTodoService} from "@/client/state/todos";
 import {AddTodo} from "@/client/components/todo/add-todo";
+import {buttonStyles} from "@/client/components/common/button";
 
 // basic TODO app
 export const SampleEphemeralStateComponent = () => {
@@ -7,16 +8,16 @@ export const SampleEphemeralStateComponent = () => {
   // custom hooks can do what we need and make testing _much_ simpler
   const todos = useTodoService();
   return (
-    <div>
-      <h2>Todo app with ephemeral state</h2>
+    <div className="flex flex-col gap-4">
+      <h2 className="font-bold text-2xl">Todo app with ephemeral state</h2>
       {todos.state.todos.length === 0}
-      {todos.state.todos.map(todo => <div key={todo.id}>
-        <h3>{todo.title}</h3>
+      {todos.state.todos.map(todo => <div className="border rounded-md p-2 flex flex-col gap-2" key={todo.id}>
+        <h3 className="font-bold">{todo.title}</h3>
         <p>{todo.notes}</p>
-        <button onClick={() => todos.removeTodo(todo)}>Remove</button>
+        <button className={buttonStyles} onClick={() => todos.removeTodo(todo)}>Remove</button>
       </div>)}
       <AddTodo addTodo={todos.addTodo}/>
-      <button onClick={todos.reset}>Reset</button>
+      <button className={buttonStyles} onClick={todos.reset}>Reset</button>
     </div>
   );
 };
