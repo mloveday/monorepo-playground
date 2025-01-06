@@ -1,12 +1,19 @@
 type FormErrorProps = {
   error?: string,
-  touched?: boolean,
+};
+
+const getText = (
+  error: string | undefined,
+) => {
+  if (error) return error;
+  return '✅';
 };
 
 // NB: this only handles simple, non-array cases
-export const FormError = (props: FormErrorProps) =>
-  (
+export const FormError = (props: FormErrorProps) => {
+  return (
     <span className="text-red-600 text-right">
-      {props.error && props.touched ? props.error : '✅'}
+      {getText(props.error)}
     </span>
   );
+};
