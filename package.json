@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint && npx prettier . --check",
     "lint:fix": "next lint --fix && npx prettier . --write",
-    "test": "vitest"
+    "test": "vitest run",
+    "test:watch": "vitest watch"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
