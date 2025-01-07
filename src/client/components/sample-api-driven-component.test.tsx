@@ -1,9 +1,10 @@
 import { waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { http, HttpResponse } from "msw";
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 
 import { SampleApiDrivenComponent } from "@/client/components/sample-api-driven-component";
+import { noop } from "@/lib/no-op";
 import { withLatency } from "@/test/api/mock-handlers";
 import { server } from "@/test/api/setup-server";
 import { testRender } from "@/test/test-render";
@@ -12,20 +13,28 @@ import { withStore } from "@/test/with-store";
 describe("SampleApiDrivenComponent", () => {
   const Component = withStore(SampleApiDrivenComponent);
 
-  it("should fetch data and display a good result", async () => {
+  beforeEach(() => {
     server.use(
       http.get(
         "/api/healthcheck",
-        withLatency(() =>
-          HttpResponse.json({
-            success: true,
-            message: "good healthcheck response",
-          }),
-        ),
+        withLatency(({ request }) => {
+          const forceSucceed =
+            new URL(request.url).searchParams.get("forceSucceed") === "true";
+          return HttpResponse.json({
+            success: forceSucceed,
+            message: forceSucceed
+              ? "good healthcheck response"
+              : "bad healthcheck response",
+          });
+        }),
       ),
     );
+  });
 
-    const result = testRender(<Component />);
+  it("should fetch data and display a good result", async () => {
+    const result = testRender(
+      <Component forceSucceed setForceSucceed={noop} />,
+    );
 
     await waitFor(() =>
       expect(result.getByText("good healthcheck response")).not.toBeNull(),
@@ -43,19 +52,7 @@ describe("SampleApiDrivenComponent", () => {
   });
 
   it("should fetch data and display a bad result", async () => {
-    server.use(
-      http.get(
-        "/api/healthcheck",
-        withLatency(() =>
-          HttpResponse.json({
-            success: false,
-            message: "bad healthcheck response",
-          }),
-        ),
-      ),
-    );
-
-    const result = testRender(<Component />);
+    const result = testRender(<Component setForceSucceed={noop} />);
 
     await waitFor(() =>
       expect(result.getByText("bad healthcheck response")).not.toBeNull(),

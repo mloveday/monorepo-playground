@@ -14,7 +14,7 @@ import { ApiLoading } from "@/client/components/common/api/api-loading"; // when
 
 // when we pass data to the component, it will only receive the case where isSuccess is true
 // this is cribbed from the RTK TypedUseQueryHookResult definition - update this if that is updated
-type PassedApiResult<
+export type PassedApiResult<
   ResultType,
   QueryArg,
   BaseQuery extends BaseQueryFn,
@@ -46,9 +46,9 @@ type PassedApiResult<
 // this will not be useful if the child component wants to update the query
 export const withApiData = <
   ResultType,
-  QueryArg extends Record<keyof Props, unknown>,
+  QueryArg extends Partial<Record<keyof Props, unknown>>,
   BaseQuery extends BaseQueryFn,
-  Props extends PropsWithChildren = object,
+  Props extends PropsWithChildren,
 >(
   Component: React.FC<
     Props & {

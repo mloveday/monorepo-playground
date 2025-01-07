@@ -2,6 +2,7 @@
 import { ClientBoundary } from "@/client/client-boundary";
 import { SampleApiDrivenComponent } from "@/client/components/sample-api-driven-component";
 import { SampleEphemeralStateComponent } from "@/client/components/sample-ephemeral-state-component";
+import { UserDefinedApiRequestComponent } from "@/client/components/user-defined-api-request-component";
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
           <li>RTK query for client API calls</li>
         </ol>
         <ClientBoundary>
-          <SampleApiDrivenComponent />
+          <UserDefinedApiRequestComponent />
           <SampleEphemeralStateComponent />
         </ClientBoundary>
       </main>
