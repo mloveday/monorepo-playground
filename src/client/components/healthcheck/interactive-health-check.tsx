@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-import { SampleApiDrivenComponent } from "@/client/components/sample-api-driven-component";
+import { HealthCheckContent } from "@/client/components/healthcheck/health-check-content";
 
-export const UserDefinedApiRequestComponent = () => {
+export const InteractiveHealthCheck = () => {
   const [forceSucceed, setForceSucceed] = useState(true);
   return (
-    <SampleApiDrivenComponent
+    <HealthCheckContent
       forceSucceed={forceSucceed}
       setForceSucceed={setForceSucceed}
     />

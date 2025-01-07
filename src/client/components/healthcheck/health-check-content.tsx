@@ -31,7 +31,7 @@ type Props = PropsWithChildren & {
   setForceSucceed: (v: boolean) => void;
 };
 
-export const SampleApiDrivenComponent = withApiData<
+export const HealthCheckContent = withApiData<
   HealthCheckResponse,
   HealthCheckRequest,
   ApiBaseQuery,
@@ -65,5 +65,5 @@ export const SampleApiDrivenComponent = withApiData<
   Wrapper,
   useHealthcheckQuery,
   ({ forceSucceed }) => ({ forceSucceed: forceSucceed ?? false }),
-  "SampleApiDrivenComponent",
+  "HealthCheckContent",
 );

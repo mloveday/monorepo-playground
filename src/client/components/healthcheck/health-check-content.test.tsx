@@ -3,15 +3,15 @@ import userEvent from "@testing-library/user-event";
 import { http, HttpResponse } from "msw";
 import { beforeEach, describe, expect, it } from "vitest";
 
-import { SampleApiDrivenComponent } from "@/client/components/sample-api-driven-component";
+import { HealthCheckContent } from "@/client/components/healthcheck/health-check-content";
 import { noop } from "@/lib/no-op";
 import { withLatency } from "@/test/api/mock-handlers";
 import { server } from "@/test/api/setup-server";
 import { testRender } from "@/test/test-render";
 import { withStore } from "@/test/with-store";
 
-describe("SampleApiDrivenComponent", () => {
-  const Component = withStore(SampleApiDrivenComponent);
+describe("HealthCheckContent", () => {
+  const Component = withStore(HealthCheckContent);
 
   beforeEach(() => {
     server.use(

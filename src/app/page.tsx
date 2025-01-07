@@ -1,8 +1,8 @@
 "use client";
 import { ClientBoundary } from "@/client/client-boundary";
-import { SampleApiDrivenComponent } from "@/client/components/sample-api-driven-component";
-import { SampleEphemeralStateComponent } from "@/client/components/sample-ephemeral-state-component";
-import { UserDefinedApiRequestComponent } from "@/client/components/user-defined-api-request-component";
+import { HealthCheckContent } from "@/client/components/healthcheck/health-check-content";
+import { InteractiveHealthCheck } from "@/client/components/healthcheck/interactive-health-check";
+import { Todos } from "@/client/components/todo/todos";
 
 export default function Home() {
   return (
@@ -14,8 +14,8 @@ export default function Home() {
           <li>RTK query for client API calls</li>
         </ol>
         <ClientBoundary>
-          <UserDefinedApiRequestComponent />
-          <SampleEphemeralStateComponent />
+          <InteractiveHealthCheck />
+          <Todos />
         </ClientBoundary>
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
