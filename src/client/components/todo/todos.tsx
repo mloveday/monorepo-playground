@@ -9,7 +9,11 @@ export const Todos = () => {
   return (
     <div className="flex flex-col gap-4">
       <h2>Todo app with ephemeral state</h2>
-      {todos.state.todos.length === 0}
+      {todos.state.todos.length === 0 && (
+        <p className="box text-gray-400">
+          You have nothing to do! You can add tasks in the form below.
+        </p>
+      )}
       {todos.state.todos.map((todo) => (
         <div className="box flex flex-col gap-2" key={todo.id}>
           <h3>{todo.title}</h3>
