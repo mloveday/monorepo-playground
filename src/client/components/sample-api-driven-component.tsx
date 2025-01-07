@@ -1,6 +1,7 @@
-import { PropsWithChildren } from "react";
+import React, { PropsWithChildren } from "react";
 
 import { useHealthcheckQuery } from "@/client/api/endpoints/healthcheck/use-healthcheck-query";
+import { withApiData } from "@/client/components/common/api/with-api-data";
 import { buttonStyles } from "@/client/components/common/button";
 
 const Content = ({ children }: PropsWithChildren) => (
@@ -16,41 +17,30 @@ const GridItemCentred = ({ children }: PropsWithChildren) => (
   <div className="self-center justify-self-center">{children}</div>
 );
 
-export const SampleApiDrivenComponent = () => {
-  // NB: do not directly call API from component
-  const healthcheck = useHealthcheckQuery();
+const Wrapper: React.FC<PropsWithChildren> = ({ children }) => (
+  <Content>
+    <GridItemCentred>{children}</GridItemCentred>
+  </Content>
+);
 
-  if (healthcheck.isError)
-    return (
-      <Content>
-        <GridItemCentred>error</GridItemCentred>
-      </Content>
-    );
-  if (healthcheck.isLoading)
-    return (
-      <Content>
-        <GridItemCentred>loading</GridItemCentred>
-      </Content>
-    );
-  if (healthcheck.isUninitialized)
-    return (
-      <Content>
-        <GridItemCentred>...</GridItemCentred>
-      </Content>
-    );
-  return (
+export const SampleApiDrivenComponent = withApiData(
+  ({ apiResult }) => (
     <Content>
-      <GridItemCentred>{healthcheck.data.message}</GridItemCentred>
+      <GridItemCentred>{apiResult.data.message}</GridItemCentred>
       <GridItemCentred>
         <button
           className={buttonStyles}
-          disabled={healthcheck.isFetching}
-          onClick={healthcheck.refetch}
+          disabled={apiResult.isFetching}
+          onClick={apiResult.refetch}
         >
           Reload
         </button>
       </GridItemCentred>
-      {healthcheck.isFetching && <GridItemCentred>fetching</GridItemCentred>}
+      {apiResult.isFetching && <GridItemCentred>fetching</GridItemCentred>}
     </Content>
-  );
-};
+  ),
+  Wrapper,
+  useHealthcheckQuery,
+  () => {},
+  "SampleApiDrivenComponent",
+);

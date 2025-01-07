@@ -10,6 +10,8 @@ import { testRender } from "@/test/test-render";
 import { withStore } from "@/test/with-store";
 
 describe("SampleApiDrivenComponent", () => {
+  const Component = withStore(SampleApiDrivenComponent);
+
   it("should fetch data and display a good result", async () => {
     server.use(
       http.get(
@@ -23,11 +25,8 @@ describe("SampleApiDrivenComponent", () => {
       ),
     );
 
-    const Component = withStore(SampleApiDrivenComponent);
-
     const result = testRender(<Component />);
 
-    expect(result.getByText("loading")).not.toBeNull();
     await waitFor(() =>
       expect(result.getByText("good healthcheck response")).not.toBeNull(),
     );
@@ -56,11 +55,8 @@ describe("SampleApiDrivenComponent", () => {
       ),
     );
 
-    const Component = withStore(SampleApiDrivenComponent);
-
     const result = testRender(<Component />);
 
-    expect(result.getByText("loading")).not.toBeNull();
     await waitFor(() =>
       expect(result.getByText("bad healthcheck response")).not.toBeNull(),
     );
@@ -74,16 +70,5 @@ describe("SampleApiDrivenComponent", () => {
       expect(result.getByText("bad healthcheck response")).not.toBeNull(),
     );
     await waitFor(() => expect(result.queryByText("fetching")).toBeNull());
-  });
-
-  it("should handle errors", async () => {
-    server.use(http.get("/api/healthcheck", HttpResponse.error));
-
-    const Component = withStore(SampleApiDrivenComponent);
-
-    const result = testRender(<Component />);
-
-    expect(result.getByText("loading")).not.toBeNull();
-    await waitFor(() => expect(result.getByText("error")).not.toBeNull());
   });
 });

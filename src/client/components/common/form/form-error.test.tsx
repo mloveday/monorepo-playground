@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import { FormError } from "@/client/components/common/form-error";
+import { FormError } from "@/client/components/common/form/form-error";
 
 describe("FormError", () => {
   it("should return a tick when error is undefined", () => {
