@@ -1,3 +1,4 @@
+// istanbul ignore file -- @preserve
 import "./globals.css";
 
 import type { Metadata } from "next";

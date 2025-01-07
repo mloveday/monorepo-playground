@@ -1,6 +1,5 @@
 "use client";
 import { ClientBoundary } from "@/client/client-boundary";
-import { HealthCheckContent } from "@/client/components/healthcheck/health-check-content";
 import { InteractiveHealthCheck } from "@/client/components/healthcheck/interactive-health-check";
 import { Todos } from "@/client/components/todo/todos";
 

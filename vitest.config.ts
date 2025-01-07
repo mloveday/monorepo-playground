@@ -11,6 +11,9 @@ export default defineConfig({
     setupFiles: ["src/test/setup.ts"],
     coverage: {
       provider: "istanbul",
+      thresholds: {
+        100: true,
+      },
     },
     alias: {
       "@": path.resolve(__dirname, "./src"),
