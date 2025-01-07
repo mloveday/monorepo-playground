@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { useDispatch, useSelector } from "react-redux";
 
 import { api } from "@/client/api/api";
 
@@ -13,5 +14,9 @@ export const makeStore = () => {
 };
 
 export type AppStore = ReturnType<typeof makeStore>;
-export type RootState = ReturnType<AppStore["getState"]>;
 export type AppDispatch = AppStore["dispatch"];
+export type RootState = ReturnType<AppStore["getState"]>;
+
+// NB: do not call these hooks directly in components, there should be some kind of service between the state and the component
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
+export const useAppSelector = useSelector.withTypes<RootState>();
