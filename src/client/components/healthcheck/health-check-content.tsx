@@ -3,14 +3,13 @@ import React, { PropsWithChildren } from "react";
 import { ApiBaseQuery } from "@/client/api/api-types";
 import { useHealthcheckQuery } from "@/client/api/endpoints/healthcheck/use-healthcheck-query";
 import { withApiData } from "@/client/components/common/api/with-api-data";
-import { buttonStyles } from "@/client/components/common/button";
 import { HealthCheckRequest } from "@/shared/api/healthcheck/health-check-request";
 import { HealthCheckResponse } from "@/shared/api/healthcheck/health-check-response";
 
 const Content = ({ children }: PropsWithChildren) => (
   <div className="flex flex-col gap-4">
-    <h2 className="font-bold text-2xl">Load sample API endpoint data</h2>
-    <div className="grid grid-cols-3 gap-4 align-middle h-40 border p-4 w-full rounded-md">
+    <h2>Load sample API endpoint data</h2>
+    <div className="box grid grid-cols-3 gap-4 align-middle h-40 w-full">
       {children}
     </div>
   </div>
@@ -50,7 +49,6 @@ export const HealthCheckContent = withApiData<
       <GridItemCentred>{props.apiResult.data.message}</GridItemCentred>
       <GridItemCentred>
         <button
-          className={buttonStyles}
           disabled={props.apiResult.isFetching}
           onClick={props.apiResult.refetch}
         >

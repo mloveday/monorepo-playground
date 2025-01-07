@@ -19,3 +19,39 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+button {
+  @apply bg-white;
+  @apply disabled:text-gray-200 hover:disabled:bg-white;
+  @apply hover:bg-blue-50 focus:outline-none;
+  @apply focus:ring-blue-400 focus:ring;
+  @apply border rounded py-2 px-4;
+}
+
+input {
+  @apply border rounded p-2;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold;
+}
+
+h1 {
+  @apply text-4xl;
+}
+
+h2 {
+  @apply text-2xl;
+}
+
+h3 {
+  @apply text-xl;
+}
+
+h4 {
+  @apply text-lg;
+}
+
+.box {
+  @apply border rounded-md p-4;
+}

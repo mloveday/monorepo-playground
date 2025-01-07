@@ -1,2 +1,0 @@
-export const buttonStyles =
-  "border rounded py-2 px-4 bg-white disabled:text-gray-200 hover:disabled:bg-white hover:bg-amber-50 focus:outline-none focus:ring-amber-400 focus:ring";

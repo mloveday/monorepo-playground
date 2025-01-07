@@ -3,7 +3,6 @@ import { v4 } from "uuid";
 import { z } from "zod";
 import { toFormikValidationSchema } from "zod-formik-adapter";
 
-import { buttonStyles } from "@/client/components/common/button";
 import { FormError } from "@/client/components/common/form/form-error";
 import { formHasErrors } from "@/client/lib/form-has-errors";
 import { TodoService } from "@/client/state/todos";
@@ -42,11 +41,8 @@ export const AddTodo = (props: AddTodoProps) => {
   });
 
   return (
-    <form
-      onSubmit={form.handleSubmit}
-      className="border rounded-md p-4 flex flex-col gap-4"
-    >
-      <h2 className="font-bold text-xl">Add todo</h2>
+    <form onSubmit={form.handleSubmit} className="box flex flex-col gap-4">
+      <h2>Add todo</h2>
       <label className="grid grid-cols-2 gap-2">
         <span className="self-center">Title</span>
         <input
@@ -55,7 +51,6 @@ export const AddTodo = (props: AddTodoProps) => {
           onChange={form.handleChange}
           onBlur={form.handleBlur}
           value={form.values.title}
-          className="border p-2"
         />
       </label>
       <FormError error={form.errors.title} />
@@ -67,15 +62,10 @@ export const AddTodo = (props: AddTodoProps) => {
           onChange={form.handleChange}
           onBlur={form.handleBlur}
           value={form.values.notes}
-          className="border p-2"
         />
       </label>
       <FormError error={form.errors.notes} />
-      <button
-        className={buttonStyles}
-        disabled={formHasErrors(form.errors)}
-        type="submit"
-      >
+      <button disabled={formHasErrors(form.errors)} type="submit">
         Add todo
       </button>
     </form>
