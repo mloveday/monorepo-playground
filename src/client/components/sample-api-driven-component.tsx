@@ -41,6 +41,6 @@ export const SampleApiDrivenComponent = withApiData(
   ),
   Wrapper,
   useHealthcheckQuery,
-  () => {},
+  () => ({ forceSucceed: true }),
   "SampleApiDrivenComponent",
 );

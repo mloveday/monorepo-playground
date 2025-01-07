@@ -42,6 +42,8 @@ type PassedApiResult<
       >)
   );
 
+// note that this is only useful for uni-directional data flow.
+// this will not be useful if the child component wants to update the query
 export const withApiData = <
   ResultType,
   QueryArg extends Record<keyof Props, unknown>,
