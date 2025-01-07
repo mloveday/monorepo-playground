@@ -40,7 +40,7 @@ const initialState = {
         "This is a bit useless without being able to add things to the list",
     },
   ],
-  isEmpty: true,
+  isEmpty: false,
 } satisfies TodoState;
 
 // reducer pattern allows us to treat the state like a state machine.
@@ -93,8 +93,6 @@ export type TodoService = {
 export const useTodoService = (): TodoService => {
   const [state, dispatch] = useReducer(todoReducer, initialState);
 
-  // memoise the state to prevent re-renders based on this state. Note this shouldn't be needed,
-  // and may even be a performance hit, depending on usage
   return {
     state,
     addTodo: (todo: Todo) => dispatch(addTodo(todo)),

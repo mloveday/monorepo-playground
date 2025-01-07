@@ -1,5 +1,5 @@
 import { AddTodo } from "@/client/components/todo/add-todo";
-import { useTodoService } from "@/client/state/todos";
+import { useTodoService } from "@/client/state/use-todo-service";
 
 // basic TODO app
 export const Todos = () => {

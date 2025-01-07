@@ -5,7 +5,7 @@ import { toFormikValidationSchema } from "zod-formik-adapter";
 
 import { FormError } from "@/client/components/common/form/form-error";
 import { formHasErrors } from "@/client/lib/form-has-errors";
-import { TodoService } from "@/client/state/todos";
+import { TodoService } from "@/client/state/use-todo-service";
 
 type AddTodoProps = {
   addTodo: TodoService["addTodo"];

@@ -1,21 +1,13 @@
 import { faker } from "@faker-js/faker/locale/en";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { v4 } from "uuid";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { Todos } from "@/client/components/todo/todos";
-import { Todo, TodoService, useTodoService } from "@/client/state/todos";
+import { TodoService, useTodoService } from "@/client/state/use-todo-service";
+import { buildTodo } from "@/test/builders/todo/build-todo";
 
-vi.mock("@/client/state/todos");
-
-const buildTodo = <Overrides extends Partial<Todo>>(
-  overrides: Overrides,
-): Omit<Todo, keyof Overrides> & Overrides => ({
-  id: v4(),
-  title: faker.lorem.sentence(),
-  ...overrides,
-});
+vi.mock("@/client/state/use-todo-service");
 
 describe("Todos", () => {
   const buildTodoService = (overrides?: Partial<TodoService>): TodoService => ({
