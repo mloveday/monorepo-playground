@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "echo \"Error: no lint specified\" && exit 1"
+    "lint": "echo \"Error: no lint specified\" && exit 1",
+    "lint:fix": "echo \"Error: no lint:fix specified\" && exit 1",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.10.5"
   }
 }

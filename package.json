@@ -6,8 +6,10 @@
   ],
   "scripts": {
     "dev": "npm run dev -w next",
-    "test:next": "npm run test -w next",
+    "test:app": "npm run test -w next",
+    "test:app:coverage": "npm run test:coverage -w next",
     "test:e2e": "npm run test -w e2e",
-    "lint":  "npm run lint -ws"
+    "lint":  "npm run lint -ws",
+    "lint:fix":  "npm run lint:fix -ws"
   }
 }
