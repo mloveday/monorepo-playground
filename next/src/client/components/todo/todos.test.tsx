@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker/locale/en";
-import { render } from "@testing-library/react";
+import { render, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -68,43 +68,53 @@ describe("Todos", () => {
     expect(todoService.reset).toHaveBeenCalledOnce();
   });
 
-  it("should trigger adding a todo without notes to the TodoService", async () => {
-    const todoService = buildTodoService();
-    vi.mocked(useTodoService).mockReturnValue(todoService);
-    const title = "some title";
+  const formTestIdCases = [["add-todo-formik"], ["add-todo-react-hook-forms"]];
 
-    const result = render(<Todos />);
+  it.each(formTestIdCases)(
+    "should trigger adding a todo without notes to the TodoService (%s)",
+    async (formId) => {
+      const todoService = buildTodoService();
+      vi.mocked(useTodoService).mockReturnValue(todoService);
+      const title = "some title";
 
-    await userEvent.type(result.getByRole("textbox", { name: "Title" }), title);
-    await userEvent.click(result.getByRole("button", { name: "Add todo" }));
+      const result = render(<Todos />);
 
-    expect(todoService.addTodo).toHaveBeenCalledWith({
-      id: expect.stringContaining(""),
-      title,
-    });
-  });
+      const form = within(result.getByTestId(formId));
+      await userEvent.type(form.getByRole("textbox", { name: "Title" }), title);
+      await userEvent.click(form.getByRole("button", { name: "Add todo" }));
 
-  it("should trigger adding a todo with notes to the TodoService", async () => {
-    const todoService = buildTodoService();
-    vi.mocked(useTodoService).mockReturnValue(todoService);
-    const title = "some title";
-    const notes = "some notes";
+      expect(todoService.addTodo).toHaveBeenCalledWith({
+        id: expect.stringContaining(""),
+        title,
+      });
+    },
+  );
 
-    const result = render(<Todos />);
+  it.each(formTestIdCases)(
+    "should trigger adding a todo with notes to the TodoService (%s)",
+    async (formId) => {
+      const todoService = buildTodoService();
+      vi.mocked(useTodoService).mockReturnValue(todoService);
+      const title = "some title";
+      const notes = "some notes";
 
-    await userEvent.type(result.getByRole("textbox", { name: "Title" }), title);
-    await userEvent.type(
-      result.getByRole("textbox", { name: "Notes (optional)" }),
-      notes,
-    );
-    await userEvent.click(result.getByRole("button", { name: "Add todo" }));
+      const result = render(<Todos />);
 
-    expect(todoService.addTodo).toHaveBeenCalledWith({
-      id: expect.stringContaining(""),
-      title,
-      notes,
-    });
-  });
+      const form = within(result.getByTestId(formId));
+      await userEvent.type(form.getByRole("textbox", { name: "Title" }), title);
+      await userEvent.type(
+        form.getByRole("textbox", { name: "Notes (optional)" }),
+        notes,
+      );
+      await userEvent.click(form.getByRole("button", { name: "Add todo" }));
+
+      expect(todoService.addTodo).toHaveBeenCalledWith({
+        id: expect.stringContaining(""),
+        title,
+        notes,
+      });
+    },
+  );
 
   it("should trigger removing a todo from the TodoService", async () => {
     const todo = buildTodo({});

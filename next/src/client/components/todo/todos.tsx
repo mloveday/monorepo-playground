@@ -1,4 +1,5 @@
-import { AddTodo } from "@/client/components/todo/add-todo";
+import { AddTodoFormik } from "@/client/components/todo/add-todo-formik";
+import { AddTodoReactHookForms } from "@/client/components/todo/add-todo-react-hook-forms";
 import { useTodoService } from "@/client/state/use-todo-service";
 
 // basic TODO app
@@ -21,7 +22,8 @@ export const Todos = () => {
           <button onClick={() => todos.removeTodo(todo)}>Remove</button>
         </div>
       ))}
-      <AddTodo addTodo={todos.addTodo} />
+      <AddTodoFormik addTodo={todos.addTodo} />
+      <AddTodoReactHookForms addTodo={todos.addTodo} />
       <button onClick={todos.reset}>Reset</button>
     </div>
   );

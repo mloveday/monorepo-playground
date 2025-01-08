@@ -25,7 +25,7 @@ const initialValues = {
   notes: "",
 } satisfies AddTodoForm;
 
-export const AddTodo = (props: AddTodoProps) => {
+export const AddTodoFormik = (props: AddTodoProps) => {
   const form = useFormik({
     initialValues,
     validationSchema,
@@ -41,7 +41,11 @@ export const AddTodo = (props: AddTodoProps) => {
   });
 
   return (
-    <form onSubmit={form.handleSubmit} className="box flex flex-col gap-4">
+    <form
+      onSubmit={form.handleSubmit}
+      data-testid="add-todo-formik"
+      className="box flex flex-col gap-4"
+    >
       <h2>Add todo</h2>
       <label className="grid grid-cols-2 gap-2">
         <span className="self-center">Title</span>
