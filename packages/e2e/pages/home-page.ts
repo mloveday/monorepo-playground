@@ -1,6 +1,6 @@
-import { AppPage } from "@/pages/app-page";
-import { TodoFeature } from "@/features/todo-feature";
 import { HealthcheckFeature } from "@/features/healthcheck-feature";
+import { TodoFeature } from "@/features/todo-feature";
+import { AppPage } from "@/pages/app-page";
 
 export class HomePage extends AppPage {
   public goto = async () => this.page.goto("/");

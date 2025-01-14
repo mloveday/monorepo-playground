@@ -1,6 +1,6 @@
-import { GetLocator } from "@/types/get-locator";
-import { Locator } from "@playwright/test";
 import { getParent } from "@/lib/get-parent";
+import type { GetLocator } from "@/types/get-locator";
+import type { Locator } from "@playwright/test";
 
 export class TodoFeature {
   public static getHeader: GetLocator = async (page) =>

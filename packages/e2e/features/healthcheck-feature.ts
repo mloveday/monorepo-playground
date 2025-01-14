@@ -1,4 +1,4 @@
-import { GetLocator } from "@/types/get-locator";
+import type { GetLocator } from "@/types/get-locator";
 
 export class HealthcheckFeature {
   public static getHeader: GetLocator = async (page) =>

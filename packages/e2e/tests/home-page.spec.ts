@@ -1,6 +1,6 @@
-import { test, expect } from "@playwright/test";
-import { HomePage } from "@/pages/home-page";
 import { TodoFeature } from "@/features/todo-feature";
+import { HomePage } from "@/pages/home-page";
+import { expect, test } from "@playwright/test";
 
 test.describe("Home Page", () => {
   test("should have title", async ({ page }) => {

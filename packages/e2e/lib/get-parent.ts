@@ -1,3 +1,3 @@
-import { Locator } from "@playwright/test";
+import type { Locator } from "@playwright/test";
 
 export const getParent = (locator: Locator): Locator => locator.locator("..");

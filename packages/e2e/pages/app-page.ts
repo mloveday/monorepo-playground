@@ -1,4 +1,4 @@
-import { type Page, type Response } from "@playwright/test";
+import type { Page, Response } from "@playwright/test";
 
 export abstract class AppPage {
   readonly page: Page;
