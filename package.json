@@ -1,15 +1,20 @@
 {
   "name": "next-root",
   "workspaces": [
-    "next",
-    "e2e"
+    "apps/*",
+    "packages/*"
   ],
   "scripts": {
-    "dev": "npm run dev -w next",
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
     "test:app": "npm run test -w next",
     "test:app:coverage": "npm run test:coverage -w next",
-    "test:e2e": "npm run test -w e2e",
-    "lint":  "npm run lint -ws",
-    "lint:fix":  "npm run lint:fix -ws"
-  }
+    "test:e2e": "npm run test -w packages/e2e",
+    "lint:fix": "npm run lint:fix -ws"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.3"
+  },
+  "packageManager": "npm@10.9.0"
 }
