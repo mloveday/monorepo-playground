@@ -48,17 +48,17 @@ export const AddTodoReactHookForms = (props: AddTodoProps) => {
       data-testid="add-todo-react-hook-forms"
       className="box flex flex-col gap-4"
     >
-      <h2>Add todo</h2>
-      <label className="grid grid-cols-2 gap-2">
+      <h2>Add todo (RHF)</h2>
+      <label className="grid grid-cols-[auto_1fr] gap-2">
         <span className="self-center">Title</span>
-        <input type="text" {...form.register("title")} />
+        <FormError error={form.formState.errors.title?.message} />
+        <input className="col-span-2" type="text" {...form.register("title")} />
       </label>
-      <FormError error={form.formState.errors.title?.message} />
       <label className="grid grid-cols-2 gap-2">
         <span className="self-center">Notes (optional)</span>
-        <input type="text" {...form.register("notes")} />
+        <FormError error={form.formState.errors.notes?.message} />
+        <input className="col-span-2" type="text" {...form.register("notes")} />
       </label>
-      <FormError error={form.formState.errors.notes?.message} />
       <button type="submit">Add todo</button>
     </form>
   );

@@ -46,10 +46,12 @@ export const AddTodoFormik = (props: AddTodoProps) => {
       data-testid="add-todo-formik"
       className="box flex flex-col gap-4"
     >
-      <h2>Add todo</h2>
+      <h2>Add todo (Formik)</h2>
       <label className="grid grid-cols-2 gap-2">
         <span className="self-center">Title</span>
+        <FormError error={form.errors.title} />
         <input
+          className="col-span-2"
           name="title"
           type="text"
           onChange={form.handleChange}
@@ -57,10 +59,11 @@ export const AddTodoFormik = (props: AddTodoProps) => {
           value={form.values.title}
         />
       </label>
-      <FormError error={form.errors.title} />
       <label className="grid grid-cols-2 gap-2">
         <span className="self-center">Notes (optional)</span>
+        <FormError error={form.errors.notes} />
         <input
+          className="col-span-2"
           name="notes"
           type="text"
           onChange={form.handleChange}
@@ -68,7 +71,6 @@ export const AddTodoFormik = (props: AddTodoProps) => {
           value={form.values.notes}
         />
       </label>
-      <FormError error={form.errors.notes} />
       <button disabled={formHasErrors(form.errors)} type="submit">
         Add todo
       </button>
