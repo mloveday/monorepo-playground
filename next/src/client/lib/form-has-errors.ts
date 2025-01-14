@@ -1,4 +1,4 @@
-import { FormikErrors } from "formik";
+import type { FormikErrors } from "formik";
 
 import { isDefined } from "@/lib/equality-checks";
 

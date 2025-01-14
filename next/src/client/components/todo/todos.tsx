@@ -20,7 +20,9 @@ export const Todos = () => {
           <li className="box flex flex-col gap-2" key={todo.id}>
             <h3>{todo.title}</h3>
             <p>{todo.notes}</p>
-            <button onClick={() => todos.removeTodo(todo)}>Remove</button>
+            <button type="button" onClick={() => todos.removeTodo(todo)}>
+              Remove
+            </button>
           </li>
         ))}
       </ul>
@@ -28,7 +30,9 @@ export const Todos = () => {
         <AddTodoFormik addTodo={todos.addTodo} />
         <AddTodoReactHookForms addTodo={todos.addTodo} />
       </div>
-      <button onClick={todos.reset}>Reset</button>
+      <button type="button" onClick={todos.reset}>
+        Reset
+      </button>
     </div>
   );
 };

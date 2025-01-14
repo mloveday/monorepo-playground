@@ -1,9 +1,9 @@
 "use server";
-import { NextRequest } from "next/server";
+import type { NextRequest } from "next/server";
 
 import { getSearchParamsAsRecord } from "@/server/lib/get-search-params-as-record";
 import { healthCheckRequestSchema } from "@/shared/api/healthcheck/health-check-request";
-import { HealthCheckResponse } from "@/shared/api/healthcheck/health-check-response";
+import type { HealthCheckResponse } from "@/shared/api/healthcheck/health-check-response";
 
 const OK = {
   success: true,

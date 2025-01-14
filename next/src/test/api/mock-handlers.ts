@@ -1,5 +1,5 @@
 import { http, HttpResponse } from "msw";
-import { HttpResponseResolver } from "msw/core/http";
+import type { HttpResponseResolver } from "msw/core/http";
 
 // adds a small amount of latency to the call to allow the UI to show loading states
 export const withLatency =

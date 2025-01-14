@@ -1,4 +1,4 @@
-import { Reducer, useReducer } from "react";
+import { type Reducer, useReducer } from "react";
 
 export type Todo = {
   id: string;
@@ -57,13 +57,14 @@ const todoReducer: Reducer<TodoState, TodoAction> = (state, action) => {
         todos: [...state.todos, action.payload],
         isEmpty: false,
       };
-    case TodoActionKey.REMOVE:
+    case TodoActionKey.REMOVE: {
       const todos = state.todos.filter((t) => t.id !== action.payload.id);
       return {
         ...state,
         todos,
         isEmpty: todos.length === 0,
       };
+    }
   }
 };
 

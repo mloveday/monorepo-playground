@@ -10,7 +10,7 @@ describe("equality-checks", () => {
       ["string", ""],
       ["zero", 0],
       ["one", 1],
-      ["NaN", NaN],
+      ["NaN", Number.NaN],
       ["true", true],
       ["false", false],
     ];

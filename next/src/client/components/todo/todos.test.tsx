@@ -4,7 +4,10 @@ import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { Todos } from "@/client/components/todo/todos";
-import { TodoService, useTodoService } from "@/client/state/use-todo-service";
+import {
+  type TodoService,
+  useTodoService,
+} from "@/client/state/use-todo-service";
 import { buildTodo } from "@/test/builders/todo/build-todo";
 
 vi.mock("@/client/state/use-todo-service");

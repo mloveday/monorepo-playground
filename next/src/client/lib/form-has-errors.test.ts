@@ -1,4 +1,4 @@
-import { FormikErrors } from "formik";
+import type { FormikErrors } from "formik";
 import { describe, expect, it } from "vitest";
 
 import { formHasErrors } from "@/client/lib/form-has-errors";

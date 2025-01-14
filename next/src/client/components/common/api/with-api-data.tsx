@@ -1,13 +1,14 @@
-import {
+import type {
   BaseQueryFn,
   QueryArgFrom,
   QueryDefinition,
 } from "@reduxjs/toolkit/query";
-import {
-  type TypedUseQuery,
+import type {
+  TypedUseQuery,
   TypedUseQueryHookResult,
 } from "@reduxjs/toolkit/query/react";
-import React, { PropsWithChildren } from "react";
+import type React from "react";
+import type { PropsWithChildren } from "react";
 
 import { ApiError } from "@/client/components/common/api/api-error";
 import { ApiLoading } from "@/client/components/common/api/api-loading"; // when we pass data to the component, it will only receive the case where isSuccess is true

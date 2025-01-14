@@ -1,6 +1,7 @@
 import { waitFor } from "@testing-library/react";
 import { http, HttpResponse } from "msw";
-import React, { PropsWithChildren } from "react";
+import type React from "react";
+import type { PropsWithChildren } from "react";
 import { describe, expect, it } from "vitest";
 
 import { useHealthcheckQuery } from "@/client/api/endpoints/healthcheck/use-healthcheck-query";

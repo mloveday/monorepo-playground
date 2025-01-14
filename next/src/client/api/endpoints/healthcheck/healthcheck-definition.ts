@@ -1,7 +1,7 @@
-import { ApiEndpointDefinition } from "@/client/api/api-types";
-import { HealthCheckRequest } from "@/shared/api/healthcheck/health-check-request";
+import type { ApiEndpointDefinition } from "@/client/api/api-types";
+import type { HealthCheckRequest } from "@/shared/api/healthcheck/health-check-request";
 import {
-  HealthCheckResponse,
+  type HealthCheckResponse,
   healthCheckResponseSchema,
 } from "@/shared/api/healthcheck/health-check-response";
 
