@@ -5,8 +5,8 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "test:app": "npm run test -w next",
-    "test:app:coverage": "npm run test:coverage -w next",
+    "test:app": "npm run test -w apps/next",
+    "test:app:coverage": "npm run test:coverage -w apps/next",
     "test:e2e": "npm run test -w packages/e2e",
     "lint:fix": "npm run lint:fix -ws"
   },

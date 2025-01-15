@@ -26,7 +26,6 @@
         "useSimplifiedLogicExpression": "error"
       },
       "correctness": {
-        "noUndeclaredDependencies": "error",
         "noUndeclaredVariables": "error",
         "noUnusedFunctionParameters": "error",
         "noUnusedImports": "error",
