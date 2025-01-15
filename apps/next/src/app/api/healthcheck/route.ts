@@ -1,9 +1,9 @@
 "use server";
 import type { NextRequest } from "next/server";
 
-import { getSearchParamsAsRecord } from "@/server/lib/get-search-params-as-record";
 import { healthCheckRequestSchema } from "@repo/schemas/api/healthcheck/health-check-request";
 import type { HealthCheckResponse } from "@repo/schemas/api/healthcheck/health-check-response";
+import { getSearchParamsAsRecord } from "@repo/server/lib/get-search-params-as-record";
 
 const OK = {
   success: true,

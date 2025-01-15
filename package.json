@@ -2,11 +2,11 @@
   "name": "next-root",
   "workspaces": ["apps/*", "packages/*"],
   "scripts": {
-    "build": "turbo build",
+    "build": "turbo build --force --no-cache",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "test:app": "npm run test -w apps/next",
-    "test:app:coverage": "npm run test:coverage -w apps/next",
+    "test": "turbo test",
+    "test:coverage": "turbo test:coverage",
     "test:e2e": "npm run test -w packages/e2e",
     "lint:fix": "npm run lint:fix -ws"
   },

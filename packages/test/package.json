@@ -1,5 +1,5 @@
 {
-  "name": "@repo/schemas",
+  "name": "@repo/test",
   "version": "0.0.0",
   "type": "module",
   "private": true,
@@ -8,15 +8,13 @@
     "build": "tsc && tsc-alias",
     "check-types": "tsc --noEmit",
     "lint": "biome check",
-    "lint:fix": "biome check --write",
-    "test": "vitest run",
-    "test:coverage": "vitest run --coverage",
-    "test:watch": "vitest watch"
+    "lint:fix": "biome check --write"
   },
   "dependencies": {
-    "zod": "^3.24.1"
+    "@repo/schemas": "*"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "tsc-alias": "^1.8.10",
     "typescript": "^5",
     "vite-tsconfig-paths": "^5.1.4",

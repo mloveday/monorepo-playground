@@ -1,7 +1,7 @@
 "use client";
-import { ClientBoundary } from "@/client/client-boundary";
-import { InteractiveHealthCheck } from "@/client/components/healthcheck/interactive-health-check";
-import { Todos } from "@/client/components/todo/todos";
+import { ClientBoundary } from "@repo/client/client-boundary";
+import { InteractiveHealthCheck } from "@repo/client/components/healthcheck/interactive-health-check";
+import { Todos } from "@repo/client/components/todo/todos";
 
 export default function Home() {
   return (
