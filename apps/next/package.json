@@ -17,7 +17,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
     "@reduxjs/toolkit": "^2.5.0",
-    "@testing-library/user-event": "^14.5.2",
+    "@repo/schemas": "*",
     "formik": "^2.4.6",
     "next": "15.1.3",
     "react": "^19.0.0",
@@ -35,6 +35,7 @@
     "@repo/typescript-config": "*",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { booleanAsStringSchema } from "@/server/lib/boolean-as-string-schema";
+import { booleanAsStringSchema } from "./boolean-as-string-schema";
 
 describe("booleanAsStringSchema", () => {
   it('should parse "true" as true', () => {

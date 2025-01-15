@@ -4,8 +4,8 @@ import type { PropsWithChildren } from "react";
 import type { ApiBaseQuery } from "@/client/api/api-types";
 import { useHealthcheckQuery } from "@/client/api/endpoints/healthcheck/use-healthcheck-query";
 import { withApiData } from "@/client/components/common/api/with-api-data";
-import type { HealthCheckRequest } from "@/shared/api/healthcheck/health-check-request";
-import type { HealthCheckResponse } from "@/shared/api/healthcheck/health-check-response";
+import type { HealthCheckRequest } from "@repo/schemas/api/healthcheck/health-check-request";
+import type { HealthCheckResponse } from "@repo/schemas/api/healthcheck/health-check-response";
 
 const Content = ({ children }: PropsWithChildren) => (
   <div className="flex flex-col gap-4">
