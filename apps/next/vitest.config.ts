@@ -14,6 +14,7 @@ export default defineConfig({
       thresholds: {
         100: true,
       },
+      exclude: ["src/test/**", "node_modules", ".next", ".turbo"],
     },
     alias: {
       "@": path.resolve(__dirname, "./src"),

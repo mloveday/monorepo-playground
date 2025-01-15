@@ -83,7 +83,7 @@ describe("Todos", () => {
       const result = render(<Todos />);
 
       const form = within(result.getByTestId(formId));
-      await userEvent.type(form.getByRole("textbox", { name: "Title" }), title);
+      await userEvent.type(form.getByRole("textbox", { name: /Title/ }), title);
       await userEvent.click(form.getByRole("button", { name: "Add todo" }));
 
       expect(todoService.addTodo).toHaveBeenCalledWith({
@@ -104,9 +104,9 @@ describe("Todos", () => {
       const result = render(<Todos />);
 
       const form = within(result.getByTestId(formId));
-      await userEvent.type(form.getByRole("textbox", { name: "Title" }), title);
+      await userEvent.type(form.getByRole("textbox", { name: /Title/ }), title);
       await userEvent.type(
-        form.getByRole("textbox", { name: "Notes (optional)" }),
+        form.getByRole("textbox", { name: /Notes \(optional\)/ }),
         notes,
       );
       await userEvent.click(form.getByRole("button", { name: "Add todo" }));
