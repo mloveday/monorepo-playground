@@ -3,9 +3,9 @@ import { v4 } from "uuid";
 import { z } from "zod";
 import { toFormikValidationSchema } from "zod-formik-adapter";
 
-import { formHasErrors } from "../../lib/form-has-errors";
-import type { TodoService } from "../../state/use-todo-service";
-import { FormError } from "../common/form/form-error";
+import { FormError } from "@/components/common/form/form-error";
+import { formHasErrors } from "@/lib/form-has-errors";
+import type { TodoService } from "@/state/use-todo-service";
 
 type AddTodoProps = {
   addTodo: TodoService["addTodo"];

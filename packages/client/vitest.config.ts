@@ -14,7 +14,13 @@ export default defineConfig({
       thresholds: {
         100: true,
       },
-      exclude: ["test/**", "node_modules", ".turbo", "dist"],
+      exclude: [
+        "src/test/**",
+        "node_modules",
+        ".turbo",
+        "dist",
+        "tailwind.config.ts",
+      ],
     },
     alias: {
       "@": path.resolve(__dirname, "./src"),

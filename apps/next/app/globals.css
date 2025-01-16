@@ -56,20 +56,3 @@ h3 {
 h4 {
   @apply text-lg;
 }
-
-.box {
-  @apply border rounded-md p-4;
-}
-
-.auto-grid-sm {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-}
-.auto-grid-md {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-}
-.auto-grid-lg {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
-}

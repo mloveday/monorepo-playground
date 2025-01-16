@@ -1,6 +1,6 @@
+import { AddTodoFormik } from "@/components/todo/add-todo-formik";
+import { AddTodoReactHookForms } from "@/components/todo/add-todo-react-hook-forms";
 import { useTodoService } from "@/state/use-todo-service";
-import { AddTodoFormik } from "./add-todo-formik";
-import { AddTodoReactHookForms } from "./add-todo-react-hook-forms";
 
 // basic TODO app
 export const Todos = () => {

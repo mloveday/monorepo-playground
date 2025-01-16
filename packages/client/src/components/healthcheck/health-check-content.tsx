@@ -3,9 +3,9 @@ import type { PropsWithChildren } from "react";
 
 import type { ApiBaseQuery } from "@/api/api-types";
 import { useHealthcheckQuery } from "@/api/endpoints/healthcheck/use-healthcheck-query";
+import { withApiData } from "@/components/common/api/with-api-data";
 import type { HealthCheckRequest } from "@repo/schemas/api/healthcheck/health-check-request";
 import type { HealthCheckResponse } from "@repo/schemas/api/healthcheck/health-check-response";
-import { withApiData } from "../common/api/with-api-data";
 
 const Content = ({ children }: PropsWithChildren) => (
   <div className="flex flex-col gap-4">

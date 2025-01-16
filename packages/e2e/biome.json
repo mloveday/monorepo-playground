@@ -1,6 +1,6 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "extends": ["@repo/biome-config/biome"],
+  "extends": ["@repo/config-biome/biome"],
   "linter": {
     "rules": {
       "complexity": { "noStaticOnlyClass": "off" }

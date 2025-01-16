@@ -16,6 +16,7 @@
   "dependencies": {},
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@repo/config-typescript": "*",
     "tsc-alias": "^1.8.10",
     "typescript": "^5",
     "vite-tsconfig-paths": "^5.1.4",

@@ -3,8 +3,8 @@ import { type SubmitHandler, useForm } from "react-hook-form";
 import { v4 } from "uuid";
 import { z } from "zod";
 
-import type { TodoService } from "../../state/use-todo-service";
-import { FormError } from "../common/form/form-error";
+import { FormError } from "@/components/common/form/form-error";
+import type { TodoService } from "@/state/use-todo-service";
 
 type AddTodoProps = {
   addTodo: TodoService["addTodo"];
