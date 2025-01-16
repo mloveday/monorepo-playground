@@ -16,5 +16,6 @@ export default defineConfig({
     alias: {
       "@repo/server": path.resolve(__dirname, "./src"),
     },
+    restoreMocks: true,
   },
 });

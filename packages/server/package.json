@@ -12,10 +12,13 @@
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest watch"
   },
-  "dependencies": {},
+  "dependencies": {
+    "next": "15.1.3"
+  },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@repo/config-typescript": "*",
+    "@repo/schemas": "*",
     "typescript": "^5",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^2.1.8"
