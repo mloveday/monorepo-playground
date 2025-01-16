@@ -8,16 +8,16 @@ export default defineConfig({
   plugins: [tsconfigPaths(), react()],
   test: {
     environment: "happy-dom",
-    setupFiles: ["src/test/setup.ts"],
+    setupFiles: ["test/setup.ts"],
     coverage: {
       provider: "istanbul",
       thresholds: {
         100: true,
       },
-      exclude: ["src/test/**", "node_modules", ".next", ".turbo"],
+      exclude: ["test/**", "node_modules", ".next", ".turbo"],
     },
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(__dirname),
     },
   },
 });
