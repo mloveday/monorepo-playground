@@ -1,7 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { api } from "@repo/client/api/api.ts";
 import { useDispatch, useSelector } from "react-redux";
-
-import { api } from "@/api/api";
 
 export const makeStore = () => {
   return configureStore({

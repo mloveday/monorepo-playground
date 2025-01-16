@@ -1,12 +1,11 @@
-import { render } from "@testing-library/react";
+import Home from "@/app/page.tsx";
+import { testRender } from "@repo/test/test-render.ts";
 import { describe, expect, it } from "vitest";
-
-import Home from "@/app/page";
 
 describe("/", () => {
   describe("Home", () => {
     it("should render a title and sample components", () => {
-      const result = render(<Home />);
+      const result = testRender(<Home />);
 
       expect(result.getByRole("heading", { name: "HL POC" })).not.toBeNull();
       expect(

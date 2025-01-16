@@ -1,5 +1,4 @@
+import { mockHandlers } from "@repo/test/api/mock-handlers.ts";
 import { setupServer } from "msw/node";
-
-import { mockHandlers } from "@/api/mock-handlers";
 
 export const server = setupServer(...mockHandlers);

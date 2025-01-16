@@ -1,5 +1,4 @@
 import * as path from "node:path";
-
 import react from "@vitejs/plugin-react";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { defineConfig } from "vitest/config";
@@ -15,7 +14,7 @@ export default defineConfig({
       exclude: ["test/**", "node_modules", ".turbo", "dist"],
     },
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@repo/schemas": path.resolve(__dirname, "./src"),
     },
   },
 });

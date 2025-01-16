@@ -1,9 +1,8 @@
 "use server";
+import { healthCheckRequestSchema } from "@repo/schemas/api/healthcheck/health-check-request.ts";
+import type { HealthCheckResponse } from "@repo/schemas/api/healthcheck/health-check-response.ts";
+import { getSearchParamsAsRecord } from "@repo/server/lib/get-search-params-as-record.ts";
 import type { NextRequest } from "next/server";
-
-import { healthCheckRequestSchema } from "@repo/schemas/api/healthcheck/health-check-request";
-import type { HealthCheckResponse } from "@repo/schemas/api/healthcheck/health-check-response";
-import { getSearchParamsAsRecord } from "@repo/server/lib/get-search-params-as-record";
 
 const OK = {
   success: true,

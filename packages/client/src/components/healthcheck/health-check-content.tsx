@@ -1,11 +1,10 @@
+import type { ApiBaseQuery } from "@repo/client/api/api-types.ts";
+import { useHealthcheckQuery } from "@repo/client/api/endpoints/healthcheck/use-healthcheck-query.ts";
+import { withApiData } from "@repo/client/components/common/api/with-api-data.tsx";
+import type { HealthCheckRequest } from "@repo/schemas/api/healthcheck/health-check-request.ts";
+import type { HealthCheckResponse } from "@repo/schemas/api/healthcheck/health-check-response.ts";
 import type React from "react";
 import type { PropsWithChildren } from "react";
-
-import type { ApiBaseQuery } from "@/api/api-types";
-import { useHealthcheckQuery } from "@/api/endpoints/healthcheck/use-healthcheck-query";
-import { withApiData } from "@/components/common/api/with-api-data";
-import type { HealthCheckRequest } from "@repo/schemas/api/healthcheck/health-check-request";
-import type { HealthCheckResponse } from "@repo/schemas/api/healthcheck/health-check-response";
 
 const Content = ({ children }: PropsWithChildren) => (
   <div className="flex flex-col gap-4">

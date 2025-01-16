@@ -1,6 +1,5 @@
+import { isDefined } from "@repo/lib/equality-checks.ts";
 import { describe, expect, it } from "vitest";
-
-import { isDefined } from "@/equality-checks";
 
 describe("equality-checks", () => {
   describe("isDefined", () => {

@@ -1,18 +1,17 @@
+import type { ApiBaseQuery } from "@repo/client/api/api-types.ts";
+import { useHealthcheckQuery } from "@repo/client/api/endpoints/healthcheck/use-healthcheck-query.ts";
+import { withApiData } from "@repo/client/components/common/api/with-api-data.tsx";
+import { withStore } from "@repo/client/test/with-store.tsx";
+import type { HealthCheckRequest } from "@repo/schemas/api/healthcheck/health-check-request.ts";
+import type { HealthCheckResponse } from "@repo/schemas/api/healthcheck/health-check-response.ts";
+import { withLatency } from "@repo/test/api/mock-handlers.ts";
+import { server } from "@repo/test/api/setup-server.ts";
+import { testRender } from "@repo/test/test-render.ts";
 import { waitFor } from "@testing-library/react";
 import { http, HttpResponse } from "msw";
 import type React from "react";
 import type { PropsWithChildren } from "react";
 import { describe, expect, it } from "vitest";
-
-import type { ApiBaseQuery } from "@/api/api-types";
-import { useHealthcheckQuery } from "@/api/endpoints/healthcheck/use-healthcheck-query";
-import { withApiData } from "@/components/common/api/with-api-data";
-import { withStore } from "@/test/with-store";
-import type { HealthCheckRequest } from "@repo/schemas/api/healthcheck/health-check-request";
-import type { HealthCheckResponse } from "@repo/schemas/api/healthcheck/health-check-response";
-import { withLatency } from "@repo/test/api/mock-handlers";
-import { server } from "@repo/test/api/setup-server";
-import { testRender } from "@repo/test/test-render";
 
 describe("withApiData", () => {
   const Wrapper: React.FC<PropsWithChildren> = ({ children }) => (

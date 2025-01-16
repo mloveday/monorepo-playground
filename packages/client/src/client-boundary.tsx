@@ -1,8 +1,6 @@
 "use client";
-
+import { StoreProvider } from "@repo/client/store/store-provider.tsx";
 import type { PropsWithChildren } from "react";
-
-import { StoreProvider } from "./store/store-provider";
 
 export const ClientBoundary = ({ children }: PropsWithChildren) => {
   return <StoreProvider>{children}</StoreProvider>;

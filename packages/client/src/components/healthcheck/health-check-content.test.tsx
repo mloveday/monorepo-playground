@@ -1,14 +1,12 @@
+import { HealthCheckContent } from "@repo/client/components/healthcheck/health-check-content.tsx";
+import { withStore } from "@repo/client/test/with-store.tsx";
+import { noop } from "@repo/lib/no-op.ts";
+import { withLatency } from "@repo/test/api/mock-handlers.ts";
+import { server } from "@repo/test/api/setup-server.ts";
+import { testRender } from "@repo/test/test-render.ts";
 import { waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { http, HttpResponse } from "msw";
 import { beforeEach, describe, expect, it } from "vitest";
-
-import { withStore } from "@/test/with-store";
-import { noop } from "@repo/lib/no-op";
-import { withLatency } from "@repo/test/api/mock-handlers";
-import { server } from "@repo/test/api/setup-server";
-import { testRender } from "@repo/test/test-render";
-import { HealthCheckContent } from "./health-check-content";
 
 describe("HealthCheckContent", () => {
   const Component = withStore(HealthCheckContent);
@@ -42,7 +40,7 @@ describe("HealthCheckContent", () => {
 
     const role = result.getByRole("button", { name: "Reload" });
     expect(role).not.toBeNull();
-    await userEvent.click(role);
+    await result.user.click(role);
 
     await waitFor(() => expect(result.getByText("fetching")).not.toBeNull());
     await waitFor(() =>
@@ -60,7 +58,7 @@ describe("HealthCheckContent", () => {
 
     const role = result.getByRole("button", { name: "Reload" });
     expect(role).not.toBeNull();
-    await userEvent.click(role);
+    await result.user.click(role);
 
     await waitFor(() => expect(result.getByText("fetching")).not.toBeNull());
     await waitFor(() =>

@@ -1,4 +1,4 @@
-import type { Todo } from "@repo/schemas/state/todo";
+import type { Todo } from "@repo/schemas/state/todo.ts";
 import { type Reducer, useReducer } from "react";
 
 export type TodoState = {

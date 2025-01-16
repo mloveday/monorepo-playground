@@ -1,7 +1,6 @@
+import { GET } from "@/app/api/healthcheck/route";
 import { NextRequest } from "next/server";
 import { describe, expect, it } from "vitest";
-
-import { GET } from "@/app/api/healthcheck/route";
 
 describe("/api/healthcheck", () => {
   const baseUrl = "http://localhost:3000/api/healthcheck";

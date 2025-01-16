@@ -1,6 +1,5 @@
+import { HealthCheckContent } from "@repo/client/components/healthcheck/health-check-content.tsx";
 import { useState } from "react";
-
-import { HealthCheckContent } from "./health-check-content";
 
 export const InteractiveHealthCheck = () => {
   const [forceSucceed, setForceSucceed] = useState(true);

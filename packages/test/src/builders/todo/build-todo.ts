@@ -1,7 +1,6 @@
 import { faker } from "@faker-js/faker/locale/en";
+import type { Todo } from "@repo/schemas/state/todo.ts";
 import { v4 } from "uuid";
-
-import type { Todo } from "@repo/schemas/state/todo";
 
 export const buildTodo = <Overrides extends Partial<Todo>>(
   overrides: Overrides,

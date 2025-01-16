@@ -1,7 +1,6 @@
+import { formHasErrors } from "@repo/client/lib/form-has-errors.ts";
 import type { FormikErrors } from "formik";
 import { describe, expect, it } from "vitest";
-
-import { formHasErrors } from "@/lib/form-has-errors";
 
 describe("form-has-errors", () => {
   const trueCases: [string, FormikErrors<unknown>][] = [

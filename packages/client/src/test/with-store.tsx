@@ -1,7 +1,6 @@
+import { ClientBoundary } from "@repo/client/client-boundary.tsx";
 import type React from "react";
 import type { PropsWithChildren } from "react";
-
-import { ClientBoundary } from "@/client-boundary";
 
 export const withStore = <Props extends PropsWithChildren = object>(
   Component: React.FC<Props>,

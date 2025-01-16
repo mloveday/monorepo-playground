@@ -5,7 +5,6 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "tsc --project tsconfig.build.json && tsc-alias",
     "check-types": "tsc --noEmit",
     "lint": "biome check",
     "lint:fix": "biome check --write",
@@ -17,25 +16,14 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@repo/config-typescript": "*",
-    "tsc-alias": "^1.8.10",
     "typescript": "^5",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^2.1.8"
   },
   "exports": {
-    "./*": "./dist/*.js"
+    "./*": "./src/*"
   },
   "publishConfig": {
-    "access": "public",
-    "typesVersions": {
-      "*": {
-        "*": ["dist/*.d.ts"]
-      }
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "*": ["./*.ts"]
-    }
+    "access": "public"
   }
 }

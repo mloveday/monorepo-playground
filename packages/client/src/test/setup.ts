@@ -1,8 +1,7 @@
+import { api } from "@repo/client/api/api.ts";
+import { server } from "@repo/test/api/setup-server.ts";
 import { cleanup } from "@testing-library/react";
 import { afterAll, afterEach, beforeAll, beforeEach } from "vitest";
-
-import { api } from "@/api/api";
-import { server } from "@repo/test/api/setup-server";
 
 server.listen();
 

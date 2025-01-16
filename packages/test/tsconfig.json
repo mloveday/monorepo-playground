@@ -2,13 +2,11 @@
   "extends": "@repo/config-typescript/base.json",
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/*"]
+      "@repo/test/*": ["./src/*"]
     },
     "baseUrl": ".",
     "outDir": "dist",
-    "rootDir": "src",
-    "module": "esnext",
-    "moduleResolution": "bundler"
+    "rootDir": "."
   },
   "include": ["src"],
   "exclude": ["node_modules", "vitest.config.ts", "dist"]

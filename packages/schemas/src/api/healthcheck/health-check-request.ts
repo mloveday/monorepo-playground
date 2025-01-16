@@ -1,6 +1,5 @@
+import { booleanAsStringSchema } from "@repo/schemas/parsing/boolean-as-string-schema.ts";
 import { z } from "zod";
-
-import { booleanAsStringSchema } from "@/parsing/boolean-as-string-schema";
 
 export const healthCheckRequestSchema = z.object({
   forceSucceed: booleanAsStringSchema,

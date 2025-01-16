@@ -1,4 +1,4 @@
-import { isDefined } from "@repo/lib/equality-checks";
+import { isDefined } from "@repo/lib/equality-checks.ts";
 
 type FormErrorProps = {
   error?: string;

@@ -1,7 +1,6 @@
 import type { QueryDefinition } from "@reduxjs/toolkit/query";
-
-import type { apiBaseQuery } from "@/api/api-base-query";
-import type { apiReducerPath } from "@/api/api-reducer-path";
+import type { apiBaseQuery } from "@repo/client/api/api-base-query.ts";
+import type { apiReducerPath } from "@repo/client/api/api-reducer-path.ts";
 
 export type ApiBaseQuery = typeof apiBaseQuery;
 export type ApiReducerPath = typeof apiReducerPath;

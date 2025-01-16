@@ -21,19 +21,9 @@
     "vitest": "^2.1.8"
   },
   "exports": {
-    "./*": "./dist/*.js"
+    "./*": "./src/*"
   },
   "publishConfig": {
-    "access": "public",
-    "typesVersions": {
-      "*": {
-        "*": ["dist/*.d.ts"]
-      }
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "*": ["./*.ts"]
-    }
+    "access": "public"
   }
 }

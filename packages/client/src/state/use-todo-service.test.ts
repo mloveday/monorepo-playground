@@ -1,8 +1,7 @@
+import { useTodoService } from "@repo/client/state/use-todo-service.ts";
+import { buildTodo } from "@repo/test/builders/todo/build-todo.ts";
 import { renderHook, waitFor } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-
-import { useTodoService } from "@/state/use-todo-service";
-import { buildTodo } from "@repo/test/builders/todo/build-todo";
 
 describe("useTodoService", () => {
   const initialTodo = {

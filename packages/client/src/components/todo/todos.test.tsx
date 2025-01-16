@@ -1,13 +1,15 @@
 import { faker } from "@faker-js/faker/locale/en";
-import { render, within } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { Todos } from "@repo/client/components/todo/todos.tsx";
+import {
+  type TodoService,
+  useTodoService,
+} from "@repo/client/state/use-todo-service.ts";
+import { buildTodo } from "@repo/test/builders/todo/build-todo.ts";
+import { testRender } from "@repo/test/test-render.js";
+import { within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { type TodoService, useTodoService } from "@/state/use-todo-service";
-import { buildTodo } from "@repo/test/builders/todo/build-todo";
-import { Todos } from "./todos";
-
-vi.mock("@/state/use-todo-service");
+vi.mock("@repo/client/state/use-todo-service");
 
 describe("Todos", () => {
   const buildTodoService = (overrides?: Partial<TodoService>): TodoService => ({
@@ -26,7 +28,7 @@ describe("Todos", () => {
   });
 
   it("should show an empty list message when no TODOs are present", () => {
-    const result = render(<Todos />);
+    const result = testRender(<Todos />);
 
     expect(
       result.getByText(
@@ -45,7 +47,7 @@ describe("Todos", () => {
       }),
     );
 
-    const result = render(<Todos />);
+    const result = testRender(<Todos />);
 
     expect(
       result.findByText(
@@ -61,9 +63,9 @@ describe("Todos", () => {
     const todoService = buildTodoService();
     vi.mocked(useTodoService).mockReturnValue(todoService);
 
-    const result = render(<Todos />);
+    const result = testRender(<Todos />);
 
-    await userEvent.click(result.getByRole("button", { name: "Reset" }));
+    await result.user.click(result.getByRole("button", { name: "Reset" }));
 
     expect(todoService.reset).toHaveBeenCalledOnce();
   });
@@ -77,11 +79,14 @@ describe("Todos", () => {
       vi.mocked(useTodoService).mockReturnValue(todoService);
       const title = "some title";
 
-      const result = render(<Todos />);
+      const result = testRender(<Todos />);
 
       const form = within(result.getByTestId(formId));
-      await userEvent.type(form.getByRole("textbox", { name: /Title/ }), title);
-      await userEvent.click(form.getByRole("button", { name: "Add todo" }));
+      await result.user.type(
+        form.getByRole("textbox", { name: /Title/ }),
+        title,
+      );
+      await result.user.click(form.getByRole("button", { name: "Add todo" }));
 
       expect(todoService.addTodo).toHaveBeenCalledWith({
         id: expect.stringContaining(""),
@@ -98,15 +103,18 @@ describe("Todos", () => {
       const title = "some title";
       const notes = "some notes";
 
-      const result = render(<Todos />);
+      const result = testRender(<Todos />);
 
       const form = within(result.getByTestId(formId));
-      await userEvent.type(form.getByRole("textbox", { name: /Title/ }), title);
-      await userEvent.type(
+      await result.user.type(
+        form.getByRole("textbox", { name: /Title/ }),
+        title,
+      );
+      await result.user.type(
         form.getByRole("textbox", { name: /Notes \(optional\)/ }),
         notes,
       );
-      await userEvent.click(form.getByRole("button", { name: "Add todo" }));
+      await result.user.click(form.getByRole("button", { name: "Add todo" }));
 
       expect(todoService.addTodo).toHaveBeenCalledWith({
         id: expect.stringContaining(""),
@@ -123,9 +131,9 @@ describe("Todos", () => {
     });
     vi.mocked(useTodoService).mockReturnValue(todoService);
 
-    const result = render(<Todos />);
+    const result = testRender(<Todos />);
 
-    await userEvent.click(result.getByRole("button", { name: "Remove" }));
+    await result.user.click(result.getByRole("button", { name: "Remove" }));
 
     expect(todoService.removeTodo).toHaveBeenCalledWith(todo);
   });

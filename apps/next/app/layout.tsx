@@ -1,7 +1,6 @@
 // istanbul ignore file -- @preserve
 import "./globals.css";
 import "@repo/client/styles.css";
-
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import type React from "react";

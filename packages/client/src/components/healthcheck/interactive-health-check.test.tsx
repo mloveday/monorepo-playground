@@ -1,16 +1,15 @@
-import { render, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { InteractiveHealthCheck } from "@repo/client/components/healthcheck/interactive-health-check.tsx";
+import { withStore } from "@repo/client/test/with-store.tsx";
+import { testRender } from "@repo/test/test-render.js";
+import { waitFor } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-
-import { withStore } from "../../test/with-store";
-import { InteractiveHealthCheck } from "./interactive-health-check";
 
 describe("InteractiveHealthCheck", () => {
   const Component = withStore(InteractiveHealthCheck);
 
   const name = "Force API success";
   it("should default to success and be user-changeable", async () => {
-    const result = render(<Component />);
+    const result = testRender(<Component />);
 
     await waitFor(() =>
       expect(
@@ -18,7 +17,7 @@ describe("InteractiveHealthCheck", () => {
       ).not.toBeNull(),
     );
 
-    await userEvent.click(result.getByRole("checkbox", { name: name }));
+    await result.user.click(result.getByRole("checkbox", { name: name }));
 
     await waitFor(() =>
       expect(

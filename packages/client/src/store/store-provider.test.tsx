@@ -1,9 +1,8 @@
+import * as storeProvider from "@repo/client/store/store-provider.tsx";
+import * as store from "@repo/client/store/store.ts";
 import { renderHook, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-
-import { useHealthcheckQuery } from "../api/endpoints/healthcheck/use-healthcheck-query";
-import * as store from "./store";
-import * as storeProvider from "./store-provider";
+import { useHealthcheckQuery } from "../api/endpoints/healthcheck/use-healthcheck-query.ts";
 
 describe("StoreProvider", () => {
   it("should make & provide a single store across renders", async () => {

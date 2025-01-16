@@ -7,11 +7,10 @@ import type {
   TypedUseQuery,
   TypedUseQueryHookResult,
 } from "@reduxjs/toolkit/query/react";
+import { ApiError } from "@repo/client/components/common/api/api-error.tsx";
+import { ApiLoading } from "@repo/client/components/common/api/api-loading.tsx"; // when we pass data to the component, it will only receive the case where isSuccess is true
 import type React from "react";
 import type { PropsWithChildren } from "react";
-
-import { ApiError } from "./api-error";
-import { ApiLoading } from "./api-loading"; // when we pass data to the component, it will only receive the case where isSuccess is true
 
 // when we pass data to the component, it will only receive the case where isSuccess is true
 // this is cribbed from the RTK TypedUseQueryHookResult definition - update this if that is updated
