@@ -7,7 +7,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 vi.mock("@repo/server/repo/some-data/some-data-repo.ts");
 
 describe("/some-data", () => {
-  const baseUrl = "http://localhost:3000/api/some-data";
+  const baseUrl = "http://localhost:3001/api/some-data";
 
   beforeEach(() => {
     vi.mocked(findMostRecentlyCreatedSomeData).mockImplementation(

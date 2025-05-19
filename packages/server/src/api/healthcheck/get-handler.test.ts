@@ -3,7 +3,7 @@ import { NextRequest } from "next/server.js";
 import { describe, expect, it, vi } from "vitest";
 
 describe("GET healthcheck handler", () => {
-  const baseUrl = "http://localhost:3000/api/healthcheck";
+  const baseUrl = "http://localhost:3001/api/healthcheck";
 
   // we don't want to wait 1000ms in tests - mock this to resolve immediately
   const wait = vi.fn().mockResolvedValue(undefined);

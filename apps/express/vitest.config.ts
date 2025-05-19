@@ -6,7 +6,6 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   plugins: [tsconfigPaths(), react()],
   test: {
-    environment: "happy-dom",
     setupFiles: ["test/setup.ts"],
     coverage: {
       provider: "istanbul",
@@ -15,8 +14,8 @@ export default defineConfig({
       },
       exclude: [
         "test/**",
+        "src/app.ts",
         "node_modules",
-        ".next",
         ".turbo",
         "tailwind.config.ts",
       ],

@@ -42,7 +42,7 @@ describe("withApiData", () => {
   it("should render ApiLoading when loading", async () => {
     server.use(
       http.get(
-        "/api/healthcheck",
+        "http://localhost:3001/api/healthcheck",
         withLatency(() =>
           HttpResponse.json({
             success: true,
@@ -61,7 +61,9 @@ describe("withApiData", () => {
   });
 
   it("should render ApiError when error", async () => {
-    server.use(http.get("/api/healthcheck", HttpResponse.error));
+    server.use(
+      http.get("http://localhost:3001/api/healthcheck", HttpResponse.error),
+    );
 
     const result = testRender(<TestComponent />);
 

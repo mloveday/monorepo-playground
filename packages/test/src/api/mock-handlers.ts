@@ -10,7 +10,7 @@ export const withLatency =
   };
 
 export const mockHandlers = [
-  http.get("/api/healthcheck", () =>
+  http.get("http://localhost:3001/api/healthcheck", () =>
     HttpResponse.json({
       success: true,
       message: "mocked healthcheck response",

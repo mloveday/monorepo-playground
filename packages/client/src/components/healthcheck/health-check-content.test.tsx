@@ -14,7 +14,7 @@ describe("HealthCheckContent", () => {
   beforeEach(() => {
     server.use(
       http.get(
-        "/api/healthcheck",
+        "http://localhost:3001/api/healthcheck",
         withLatency(({ request }) => {
           const forceSucceed =
             new URL(request.url).searchParams.get("forceSucceed") === "true";
