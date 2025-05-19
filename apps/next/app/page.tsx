@@ -1,6 +1,8 @@
 "use client";
 import { ClientBoundary } from "@repo/client/client-boundary.tsx";
 import { InteractiveHealthCheck } from "@repo/client/components/healthcheck/interactive-health-check.tsx";
+import { AddSomeData } from "@repo/client/components/some-data/add-some-data.tsx";
+import { RecentSomeData } from "@repo/client/components/some-data/recent-some-data.tsx";
 import { Todos } from "@repo/client/components/todo/todos.tsx";
 
 export default function Home() {
@@ -14,6 +16,8 @@ export default function Home() {
         </ol>
         <ClientBoundary>
           <InteractiveHealthCheck />
+          <RecentSomeData />
+          <AddSomeData />
           <Todos />
         </ClientBoundary>
       </main>

@@ -1,0 +1,13 @@
+{
+  "extends": "@repo/config-typescript/base.json",
+  "compilerOptions": {
+    "paths": {
+      "@repo/lib/*": ["./src/*"]
+    },
+    "baseUrl": ".",
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "vitest.config.ts", "dist"]
+}

@@ -6,6 +6,8 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   plugins: [tsconfigPaths(), react()],
   test: {
+    setupFiles: ["src/test/setup.ts"],
+    globals: true,
     coverage: {
       provider: "istanbul",
       thresholds: {
