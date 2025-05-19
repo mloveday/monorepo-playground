@@ -17,8 +17,6 @@ export const GET: ApiHandler = async (req) => {
       { success: false, message: params.error },
       { status: 400 },
     );
-  // biome-ignore lint/suspicious/noConsole: <explanation>
-  console.log("params", params);
   return NextResponse.json(
     await findMostRecentlyCreatedSomeData(
       params.data.count,

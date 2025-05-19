@@ -1,0 +1,45 @@
+{
+  "name": "express-api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx -r dotenv/config src/app.ts",
+    "build": "echo \"Error: not implemented\" && exit 0",
+    "start": "echo \"Error: not implemented\" && exit 0",
+    "check-types": "tsc --noEmit",
+    "lint": "biome check",
+    "lint:fix": "biome check --write",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest watch"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.5.0",
+    "@repo/db": "*",
+    "@repo/lib": "*",
+    "@repo/schemas": "*",
+    "@repo/server": "*",
+    "@types/cors": "2.8.18",
+    "@types/express": "5.0.2",
+    "cors": "2.8.5",
+    "dotenv": "16.5.0",
+    "express": "5.1.0",
+    "uuid": "11.0.4",
+    "zod": "3.24.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@faker-js/faker": "^9.3.0",
+    "@repo/config-biome": "*",
+    "@repo/config-tailwind": "*",
+    "@repo/config-typescript": "*",
+    "@repo/test": "*",
+    "@types/node": "^20",
+    "@vitest/coverage-istanbul": "^2.1.8",
+    "tsx": "4.19.4",
+    "typescript": "^5",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "3.0.5"
+  }
+}
