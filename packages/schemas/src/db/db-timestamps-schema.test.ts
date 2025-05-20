@@ -3,7 +3,7 @@ import {
   dbTimestampsParsedSchema,
   dbTimestampsSchema,
   dbTimestampsSerializedSchema,
-} from "@repo/schemas/db/db-timestamps-schema.js";
+} from "@repo/schemas/db/db-timestamps-schema.ts";
 import { describe, expect, it } from "vitest";
 
 describe("db-timestamps-schema", () => {

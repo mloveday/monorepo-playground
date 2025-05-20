@@ -1,6 +1,6 @@
-import { usePostSomeData } from "@repo/client/api/endpoints/some-data/use-post-some-data.js";
-import { AddSomeData } from "@repo/client/components/some-data/add-some-data.js";
-import { testRender } from "@repo/test/test-render.js";
+import { usePostSomeData } from "@repo/client/api/endpoints/some-data/use-post-some-data.ts";
+import { AddSomeData } from "@repo/client/components/some-data/add-some-data.ts";
+import { testRender } from "@repo/test/test-render.ts";
 import { describe, expect, it, vi } from "vitest";
 
 vi.mock("@repo/client/api/endpoints/some-data/use-post-some-data.ts");

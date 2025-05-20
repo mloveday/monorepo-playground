@@ -1,5 +1,5 @@
-import { healthCheckRequestSchema } from "@repo/schemas/api/healthcheck/health-check-request.js";
-import type { HealthCheckResponse } from "@repo/schemas/api/healthcheck/health-check-response.js";
+import { healthCheckRequestSchema } from "@repo/schemas/api/healthcheck/health-check-request.ts";
+import type { HealthCheckResponse } from "@repo/schemas/api/healthcheck/health-check-response.ts";
 import type { Handler } from "express";
 
 export const getHealthcheckHandler = (async (req, res) => {

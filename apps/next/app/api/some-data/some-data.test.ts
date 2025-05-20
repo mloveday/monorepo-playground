@@ -5,7 +5,7 @@ import {
   storeSomeData,
 } from "@repo/server/repo/some-data/some-data-repo.ts";
 import { buildSomeData } from "@repo/server/test/builders/some-data/build-some-data.ts";
-import { NextRequest } from "next/server.js";
+import { NextRequest } from "next/server.ts";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("@repo/server/repo/some-data/some-data-repo.ts");

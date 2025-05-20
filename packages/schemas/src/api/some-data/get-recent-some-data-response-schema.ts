@@ -1,7 +1,7 @@
 import {
   someDataParsedSchema,
   someDataSerializedSchema,
-} from "@repo/schemas/api/some-data/some-data-schema.js";
+} from "@repo/schemas/api/some-data/some-data-schema.ts";
 import type { z } from "zod/v4";
 
 export const getRecentSomeDataResponseSchema = someDataSerializedSchema.array();

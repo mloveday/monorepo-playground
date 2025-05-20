@@ -1,6 +1,6 @@
 import { InteractiveHealthCheck } from "@repo/client/components/healthcheck/interactive-health-check.tsx";
 import { withStore } from "@repo/client/test/with-store.tsx";
-import { testRender } from "@repo/test/test-render.js";
+import { testRender } from "@repo/test/test-render.ts";
 import { waitFor } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 

@@ -1,7 +1,7 @@
 import {
   getRecentSomeDataRequestParsedSchema,
   getRecentSomeDataRequestSchema,
-} from "@repo/schemas/api/some-data/get-recent-some-data-request-schema.js";
+} from "@repo/schemas/api/some-data/get-recent-some-data-request-schema.ts";
 import { describe, expect, it } from "vitest";
 
 describe("get-recent-some-data-request-schema", () => {

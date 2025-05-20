@@ -1,8 +1,8 @@
-import { AddSomeData } from "@repo/client/components/some-data/add-some-data.js";
-import { RecentSomeData } from "@repo/client/components/some-data/recent-some-data.js";
-import { server } from "@repo/test/api/setup-server.js";
-import { buildSomeData } from "@repo/test/builders/some-data/build-some-data.js";
-import { testRender } from "@repo/test/test-render.js";
+import { AddSomeData } from "@repo/client/components/some-data/add-some-data.ts";
+import { RecentSomeData } from "@repo/client/components/some-data/recent-some-data.ts";
+import { server } from "@repo/test/api/setup-server.ts";
+import { buildSomeData } from "@repo/test/builders/some-data/build-some-data.ts";
+import { testRender } from "@repo/test/test-render.ts";
 import { waitFor } from "@testing-library/react";
 import { http } from "msw";
 import { describe, expect, it } from "vitest";

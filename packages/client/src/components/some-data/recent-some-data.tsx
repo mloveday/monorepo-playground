@@ -2,7 +2,7 @@ import type { ApiBaseQuery } from "@repo/client/api/api-types.ts";
 import { useRecentSomeData } from "@repo/client/api/endpoints/some-data/use-recent-some-data.ts";
 import { withApiData } from "@repo/client/components/common/api/with-api-data.tsx";
 import type { GetRecentSomeDataRequest } from "@repo/schemas/api/some-data/get-recent-some-data-request-schema.ts";
-import type { GetRecentSomeDataResponse } from "@repo/schemas/api/some-data/get-recent-some-data-response-schema.js";
+import type { GetRecentSomeDataResponse } from "@repo/schemas/api/some-data/get-recent-some-data-response-schema.ts";
 import type React from "react";
 import type { PropsWithChildren } from "react";
 

@@ -5,7 +5,7 @@ import {
   useTodoService,
 } from "@repo/client/state/use-todo-service.ts";
 import { buildTodo } from "@repo/test/builders/todo/build-todo.ts";
-import { testRender } from "@repo/test/test-render.js";
+import { testRender } from "@repo/test/test-render.ts";
 import { within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 

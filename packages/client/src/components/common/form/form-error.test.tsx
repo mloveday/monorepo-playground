@@ -1,5 +1,5 @@
 import { FormError } from "@repo/client/components/common/form/form-error.tsx";
-import { testRender } from "@repo/test/test-render.js";
+import { testRender } from "@repo/test/test-render.ts";
 import { describe, expect, it } from "vitest";
 
 describe("FormError", () => {

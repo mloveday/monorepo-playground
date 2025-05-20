@@ -1,4 +1,4 @@
-import { dbIdSchema } from "@repo/schemas/db/db-id-schema.js";
+import { dbIdSchema } from "@repo/schemas/db/db-id-schema.ts";
 import { describe, expect, it } from "vitest";
 
 describe("db-id-schema", () => {

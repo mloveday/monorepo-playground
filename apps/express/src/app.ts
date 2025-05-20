@@ -1,17 +1,18 @@
-import { getHealthcheckHandler } from "@/src/handlers/healthcheck/get-healthcheck-handler.js";
-import { getSomeDataHandler } from "@/src/handlers/some-data/get-some-data-handler.js";
-import { putSomeDataHandler } from "@/src/handlers/some-data/put-some-data-handler.js";
+import { getHealthcheckHandler } from "@/src/handlers/healthcheck/get-healthcheck-handler.ts";
+import { getSomeDataHandler } from "@/src/handlers/some-data/get-some-data-handler.ts";
+import { putSomeDataHandler } from "@/src/handlers/some-data/put-some-data-handler.ts";
+import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
 import { z } from "zod/v4";
 
 const app = express();
 
-app.use(cors());
+app.use(cors(), bodyParser.json());
 
 app.get("/api/healthcheck", getHealthcheckHandler);
 app.get("/api/some-data", getSomeDataHandler);
-app.put("/api/some-data", putSomeDataHandler);
+app.post("/api/some-data", putSomeDataHandler);
 
 const port = z.string().min(1).parse(process.env.PORT);
 

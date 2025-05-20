@@ -1,6 +1,6 @@
-import { getHealthcheckHandler } from "@/src/handlers/healthcheck/get-healthcheck-handler.js";
-import { requestBuilder } from "@/test/builders/request-builder.js";
-import { responseBuilder } from "@/test/builders/response-builder.js";
+import { getHealthcheckHandler } from "@/src/handlers/healthcheck/get-healthcheck-handler.ts";
+import { requestBuilder } from "@/test/builders/request-builder.ts";
+import { responseBuilder } from "@/test/builders/response-builder.ts";
 import { describe, expect, it } from "vitest";
 
 describe("getHealthcheckHandler", () => {

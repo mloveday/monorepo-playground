@@ -8,7 +8,7 @@ import type { GetRecentSomeDataRequest } from "@repo/schemas/api/some-data/get-r
 import {
   type GetRecentSomeDataResponse,
   getRecentSomeDataResponseSchema,
-} from "@repo/schemas/api/some-data/get-recent-some-data-response-schema.js";
+} from "@repo/schemas/api/some-data/get-recent-some-data-response-schema.ts";
 
 export const getRecentSomeDataDefinition = {
   query: (params) => ({ url: "/some-data", params }),

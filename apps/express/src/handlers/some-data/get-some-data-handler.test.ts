@@ -1,6 +1,6 @@
-import { getSomeDataHandler } from "@/src/handlers/some-data/get-some-data-handler.js";
-import { requestBuilder } from "@/test/builders/request-builder.js";
-import { responseBuilder } from "@/test/builders/response-builder.js";
+import { getSomeDataHandler } from "@/src/handlers/some-data/get-some-data-handler.ts";
+import { requestBuilder } from "@/test/builders/request-builder.ts";
+import { responseBuilder } from "@/test/builders/response-builder.ts";
 import { Prisma, getPrisma } from "@repo/db";
 import { describe, expect, it, vi } from "vitest";
 import { ZodError } from "zod/v4";

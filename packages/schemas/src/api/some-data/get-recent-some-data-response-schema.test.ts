@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker/locale/en";
 import {
   getRecentSomeDataParsedResponseSchema,
   getRecentSomeDataResponseSchema,
-} from "@repo/schemas/api/some-data/get-recent-some-data-response-schema.js";
+} from "@repo/schemas/api/some-data/get-recent-some-data-response-schema.ts";
 import { describe, expect, it } from "vitest";
 
 describe("get-recent-some-data-response-schema", () => {

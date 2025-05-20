@@ -1,5 +1,5 @@
-import { getHealthcheckHandlerFactory } from "@repo/server/api/healthcheck/get-handler.js";
-import { NextRequest } from "next/server.js";
+import { getHealthcheckHandlerFactory } from "@repo/server/api/healthcheck/get-handler.ts";
+import { NextRequest } from "next/server.ts";
 import { describe, expect, it, vi } from "vitest";
 
 describe("GET healthcheck handler", () => {

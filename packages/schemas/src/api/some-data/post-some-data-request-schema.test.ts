@@ -1,4 +1,4 @@
-import { postSomeDataRequestSchema } from "@repo/schemas/api/some-data/post-some-data-request-schema.js";
+import { postSomeDataRequestSchema } from "@repo/schemas/api/some-data/post-some-data-request-schema.ts";
 import { describe, expect, it } from "vitest";
 
 describe("post-some-data-request-schema", () => {

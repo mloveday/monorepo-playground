@@ -2,8 +2,8 @@ import { Prisma, getPrisma } from "@repo/db";
 import {
   findMostRecentlyCreatedSomeData,
   storeSomeData,
-} from "@repo/server/repo/some-data/some-data-repo.js";
-import { buildSomeData } from "@repo/server/test/builders/some-data/build-some-data.js";
+} from "@repo/server/repo/some-data/some-data-repo.ts";
+import { buildSomeData } from "@repo/server/test/builders/some-data/build-some-data.ts";
 import { describe, expect, it, vi } from "vitest";
 
 describe("some-data-repo", () => {

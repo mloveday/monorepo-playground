@@ -3,7 +3,7 @@ import {
   someDataParsedSchema,
   someDataSchema,
   someDataSerializedSchema,
-} from "@repo/schemas/api/some-data/some-data-schema.js";
+} from "@repo/schemas/api/some-data/some-data-schema.ts";
 import { describe, expect, it } from "vitest";
 
 describe("some-data-schema", () => {

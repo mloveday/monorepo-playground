@@ -1,5 +1,5 @@
-import { getRecentSomeDataRequestParsedSchema } from "@repo/schemas/api/some-data/get-recent-some-data-request-schema.js";
-import { findMostRecentlyCreatedSomeData } from "@repo/server/repo/some-data/some-data-repo.js";
+import { getRecentSomeDataRequestParsedSchema } from "@repo/schemas/api/some-data/get-recent-some-data-request-schema.ts";
+import { findMostRecentlyCreatedSomeData } from "@repo/server/repo/some-data/some-data-repo.ts";
 import type { Handler } from "express";
 
 export const getSomeDataHandler = (async (req, res) => {
