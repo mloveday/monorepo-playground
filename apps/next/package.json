@@ -21,15 +21,13 @@
     "@repo/lib": "*",
     "@repo/schemas": "*",
     "@repo/server": "*",
-    "formik": "^2.4.6",
     "next": "15.1.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
     "react-redux": "^9.2.0",
     "uuid": "^11.0.4",
-    "zod": "^3.24.1",
-    "zod-formik-adapter": "^1.3.0"
+    "zod": "3.25.7"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",

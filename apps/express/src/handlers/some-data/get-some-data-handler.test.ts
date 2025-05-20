@@ -3,7 +3,7 @@ import { requestBuilder } from "@/test/builders/request-builder.js";
 import { responseBuilder } from "@/test/builders/response-builder.js";
 import { Prisma, getPrisma } from "@repo/db";
 import { describe, expect, it, vi } from "vitest";
-import { ZodError } from "zod";
+import { ZodError } from "zod/v4";
 
 describe("getSomeDataHandler", () => {
   it('should return a 200 "all good" response when request', async () => {

@@ -3,7 +3,7 @@ import { getSomeDataHandler } from "@/src/handlers/some-data/get-some-data-handl
 import { putSomeDataHandler } from "@/src/handlers/some-data/put-some-data-handler.js";
 import cors from "cors";
 import express from "express";
-import { z } from "zod";
+import { z } from "zod/v4";
 
 const app = express();
 

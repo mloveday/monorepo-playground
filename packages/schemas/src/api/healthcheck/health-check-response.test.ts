@@ -1,6 +1,6 @@
 import { healthCheckResponseSchema } from "@repo/schemas/api/healthcheck/health-check-response.ts";
 import { describe, expect, it } from "vitest";
-import { ZodError } from "zod";
+import { ZodError } from "zod/v4";
 
 describe("HealthCheckResponse", () => {
   it("should parse valid responses", () => {

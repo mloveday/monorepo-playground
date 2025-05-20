@@ -4,7 +4,7 @@ import {
   dbTimestampsSchema,
   dbTimestampsSerializedSchema,
 } from "@repo/schemas/db/db-timestamps-schema.ts";
-import { z } from "zod";
+import { z } from "zod/v4";
 
 const rootSchema = z
   .object({

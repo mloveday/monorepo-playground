@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { usePostSomeData } from "@repo/client/api/endpoints/some-data/use-post-some-data.ts";
 import { FormError } from "@repo/client/components/common/form/form-error.tsx";
 import { type SubmitHandler, useForm } from "react-hook-form";
-import { z } from "zod";
+import { z } from "zod/v4";
 
 const formSchema = z.object({
   message: z.string().min(2),

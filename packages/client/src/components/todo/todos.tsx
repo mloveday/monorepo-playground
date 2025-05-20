@@ -1,4 +1,3 @@
-import { AddTodoFormik } from "@repo/client/components/todo/add-todo-formik.tsx";
 import { AddTodoReactHookForms } from "@repo/client/components/todo/add-todo-react-hook-forms.tsx";
 import { useTodoService } from "@repo/client/state/use-todo-service.ts";
 
@@ -27,7 +26,6 @@ export const Todos = () => {
         ))}
       </ul>
       <div className="auto-grid-lg w-full gap-2">
-        <AddTodoFormik addTodo={todos.addTodo} />
         <AddTodoReactHookForms addTodo={todos.addTodo} />
       </div>
       <button type="button" onClick={todos.reset}>

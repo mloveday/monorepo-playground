@@ -8,13 +8,14 @@ import {
   storeSomeData,
 } from "@repo/server/repo/some-data/some-data-repo.ts";
 import { NextResponse } from "next/server";
+import { z } from "zod/v4";
 
 export const GET: ApiHandler = async (req) => {
   const searchParams = getSearchParamsAsRecord(req.nextUrl.searchParams);
   const params = getRecentSomeDataRequestParsedSchema.safeParse(searchParams);
   if (!params.success)
     return NextResponse.json(
-      { success: false, message: params.error },
+      { success: false, message: z.prettifyError(params.error) },
       { status: 400 },
     );
   return NextResponse.json(
@@ -26,7 +27,12 @@ export const GET: ApiHandler = async (req) => {
 };
 
 export const POST: ApiHandler = async (req) => {
-  const params = postSomeDataRequestSchema.parse(await req.json());
-  const someData = await storeSomeData(params);
-  return Response.json(someData);
+  const params = postSomeDataRequestSchema.safeParse(await req.json());
+  if (!params.success)
+    return NextResponse.json(
+      { success: false, message: z.prettifyError(params.error) },
+      { status: 400 },
+    );
+  const someData = await storeSomeData(params.data);
+  return Response.json({ success: true, data: someData });
 };

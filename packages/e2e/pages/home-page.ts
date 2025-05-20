@@ -32,8 +32,6 @@ export class HomePage extends AppPage {
   public getTodoByTitle = async (title: string) =>
     TodoFeature.getTodoByTitle(await this.getTodoList(), title);
 
-  public getTodoFormikForm = async () => TodoFeature.getFormikForm(this.page);
-
   public getTodoRHFForm = async () =>
     TodoFeature.getReactHookFormsForm(this.page);
 }

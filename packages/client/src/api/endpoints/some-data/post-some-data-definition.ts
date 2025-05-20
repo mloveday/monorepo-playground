@@ -5,7 +5,7 @@ import {
 } from "@repo/client/api/tags/some-data-tags.ts";
 import type { postSomeDataRequestSchema } from "@repo/schemas/api/some-data/post-some-data-request-schema.ts";
 import { someDataSerializedSchema } from "@repo/schemas/api/some-data/some-data-schema.ts";
-import type { z } from "zod";
+import type { z } from "zod/v4";
 
 export type PostSomeDataResponse = z.infer<typeof someDataSerializedSchema>;
 

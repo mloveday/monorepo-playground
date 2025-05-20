@@ -61,32 +61,7 @@ test.describe("Home Page", () => {
       TodoFeature.getTodoByTitle(list, initialTodo.title),
     ).not.toBeAttached();
 
-    // Add a todo using Formik
-    const formikForm = await home.getTodoFormikForm();
-    const formikTodo = {
-      title: "Formik todo",
-      notes: "Formik notes",
-    };
-
-    await TodoFeature.getTitleInput(formikForm).fill("fail");
-    await expect(TodoFeature.getTitleError(formikForm)).toHaveText(
-      "String must contain at least 5 character(s)",
-    );
-
-    await TodoFeature.getTitleInput(formikForm).fill(formikTodo.title);
-    await TodoFeature.getNotesInput(formikForm).fill(formikTodo.notes);
-    await TodoFeature.getAddTodoButton(formikForm).click();
-
-    const formikTodoContainer = TodoFeature.getTodoByTitle(
-      list,
-      formikTodo.title,
-    );
-    await expect(formikTodoContainer).toBeVisible();
-    await expect(TodoFeature.getTodoNotes(formikTodoContainer)).toHaveText(
-      formikTodo.notes,
-    );
-
-    // Add a todo using RHF
+    // Add a todo
     const rhfForm = await home.getTodoRHFForm();
     const rhfTodo = {
       title: "RHF todo",

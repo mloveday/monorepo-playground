@@ -3,7 +3,7 @@ import { FormError } from "@repo/client/components/common/form/form-error.tsx";
 import type { TodoService } from "@repo/client/state/use-todo-service.ts";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { v4 } from "uuid";
-import { z } from "zod";
+import { z } from "zod/v4";
 
 type AddTodoProps = {
   addTodo: TodoService["addTodo"];

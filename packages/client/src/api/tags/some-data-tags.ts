@@ -1,6 +1,6 @@
 import type { TagDescription } from "@reduxjs/toolkit/query";
 import type { someDataParsedSchema } from "@repo/schemas/api/some-data/some-data-schema.js";
-import type { z } from "zod";
+import type { z } from "zod/v4";
 
 export type SomeDataTagType = "SomeData";
 export const someDataTagType: SomeDataTagType = "SomeData";
