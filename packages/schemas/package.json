@@ -16,6 +16,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@faker-js/faker": "9.8.0",
     "@repo/config-typescript": "*",
     "typescript": "^5",
     "vite-tsconfig-paths": "^5.1.4",
