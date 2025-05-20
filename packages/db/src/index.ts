@@ -1,2 +1,2 @@
-export { getPrisma } from "./client";
-export * from "../generated/client";
+export { getPrisma } from "./client.js";
+export * from "../generated/client/index.js";

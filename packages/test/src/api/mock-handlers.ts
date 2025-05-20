@@ -5,7 +5,7 @@ import type { HttpResponseResolver } from "msw/core/http";
 export const withLatency =
   (fn: HttpResponseResolver): HttpResponseResolver =>
   async (...args) => {
-    await new Promise((r) => setTimeout(r, 5));
+    await new Promise((r) => setTimeout(r, 10));
     return fn(...args);
   };
 
