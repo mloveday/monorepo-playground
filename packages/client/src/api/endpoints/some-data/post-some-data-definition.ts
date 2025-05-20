@@ -5,13 +5,24 @@ import {
 } from "@repo/client/api/tags/some-data-tags.ts";
 import type { postSomeDataRequestSchema } from "@repo/schemas/api/some-data/post-some-data-request-schema.ts";
 import { someDataSerializedSchema } from "@repo/schemas/api/some-data/some-data-schema.ts";
-import type { z } from "zod/v4";
+import { z } from "zod/v4";
 
-export type PostSomeDataResponse = z.infer<typeof someDataSerializedSchema>;
+const postSomeDataResponseSchema = z.discriminatedUnion("success", [
+  z.object({
+    success: z.literal(true),
+    data: someDataSerializedSchema,
+  }),
+  z.object({
+    success: z.literal(false),
+    message: z.string(),
+  }),
+]);
+
+export type PostSomeDataResponse = z.infer<typeof postSomeDataResponseSchema>;
 
 export const postSomeDataDefinition = {
   query: (body) => ({ url: "/some-data", method: "POST", body }),
-  transformResponse: (r) => someDataSerializedSchema.parse(r),
+  transformResponse: (r) => postSomeDataResponseSchema.parse(r),
   invalidatesTags: () => [someDataListTag],
 } satisfies ApiEndpointMutationDefinition<
   z.infer<typeof postSomeDataRequestSchema>,
