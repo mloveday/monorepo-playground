@@ -2,14 +2,13 @@ import { putSomeDataHandler } from "@/src/handlers/some-data/put-some-data-handl
 import { requestBuilder } from "@/test/builders/request-builder.ts";
 import { responseBuilder } from "@/test/builders/response-builder.ts";
 import { getPrisma } from "@repo/db";
+import { buildSomeData } from "@repo/test/builders/some-data/build-some-data.ts";
 import { describe, expect, it, vi } from "vitest";
-import { ZodError } from "zod/v4";
 
 describe("putSomeDataHandler", () => {
   it('should return a 200 "all good" response when request', async () => {
-    const someData = { some: "data" };
-    const create = vi.fn(() => someData);
-    vi.mocked(getPrisma).mockReturnValue({ someData: { create } });
+    const someData = buildSomeData();
+    vi.mocked(getPrisma().someData.create).mockResolvedValue(someData);
 
     const req = requestBuilder({
       body: { message: "some-message" },
@@ -18,7 +17,9 @@ describe("putSomeDataHandler", () => {
 
     await putSomeDataHandler(req, res);
 
-    expect(create).toHaveBeenCalledWith({ data: { message: "some-message" } });
+    expect(getPrisma().someData.create).toHaveBeenCalledWith({
+      data: { message: "some-message" },
+    });
 
     expect(res.status).not.toHaveBeenCalled();
     expect(res.json).toHaveBeenCalledWith({
@@ -37,7 +38,9 @@ describe("putSomeDataHandler", () => {
 
     expect(res.status).toHaveBeenCalledWith(400);
     expect(res.json).toHaveBeenCalledWith({
-      message: expect.any(ZodError),
+      message: expect.stringContaining(
+        "Invalid input: expected object, received undefined",
+      ),
       success: false,
     });
   });

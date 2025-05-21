@@ -1,5 +1,4 @@
 import { getHealthcheckHandlerFactory } from "@repo/server/api/healthcheck/get-handler.ts";
-import { NextRequest } from "next/server.ts";
 import { describe, expect, it, vi } from "vitest";
 
 describe("GET healthcheck handler", () => {
@@ -11,10 +10,9 @@ describe("GET healthcheck handler", () => {
   it("should return OK response when forceSucceed is true", async () => {
     const url = new URL(baseUrl);
     url.searchParams.set("forceSucceed", "true");
-    const req = new NextRequest(url);
     const handler = getHealthcheckHandlerFactory({ wait });
 
-    const response = await handler(req);
+    const response = await handler(url.searchParams);
 
     expect(wait).toHaveBeenCalledOnce();
     expect(response.status).toEqual(200);
@@ -27,10 +25,9 @@ describe("GET healthcheck handler", () => {
   it("should return NOPE response when forceSucceed is true", async () => {
     const url = new URL(baseUrl);
     url.searchParams.set("forceSucceed", "false");
-    const req = new NextRequest(url);
     const handler = getHealthcheckHandlerFactory({ wait });
 
-    const response = await handler(req);
+    const response = await handler(url.searchParams);
 
     expect(wait).toHaveBeenCalledOnce();
     expect(response.status).toEqual(200);
@@ -41,10 +38,9 @@ describe("GET healthcheck handler", () => {
   });
 
   it("should return 400 & BAD_RESPONSE response when request is poorly formed", async () => {
-    const req = new NextRequest(baseUrl);
     const handler = getHealthcheckHandlerFactory({ wait });
 
-    const response = await handler(req);
+    const response = await handler(new URL(baseUrl).searchParams);
 
     expect(wait).toHaveBeenCalledOnce();
     expect(response.status).toEqual(400);
