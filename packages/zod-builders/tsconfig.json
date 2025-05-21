@@ -2,7 +2,7 @@
   "extends": "@repo/config-typescript/base.json",
   "compilerOptions": {
     "paths": {
-      "@repo/lib/*": ["./src/*"]
+      "@repo/zod-builders/*": ["./src/*"]
     },
     "baseUrl": ".",
     "outDir": "dist",
