@@ -1,14 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { api } from "@repo/client/api/api.ts";
+import { api, javaApi } from "@repo/client/api/api.ts";
 import { useDispatch, useSelector } from "react-redux";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       [api.reducerPath]: api.reducer,
+      [javaApi.reducerPath]: javaApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(api.middleware),
+      getDefaultMiddleware().concat(api.middleware, javaApi.middleware),
   });
 };
 

@@ -1,4 +1,4 @@
-import { api } from "@repo/client/api/api.ts";
+import { api, javaApi } from "@repo/client/api/api.ts";
 import { server } from "@repo/test/api/setup-server.ts";
 import { cleanup } from "@testing-library/react";
 import { afterAll, afterEach, beforeAll, beforeEach } from "vitest";
@@ -11,6 +11,7 @@ beforeAll(() => {
 
 beforeEach(() => {
   api.util.resetApiState();
+  javaApi.util.resetApiState();
 });
 
 afterEach(() => {

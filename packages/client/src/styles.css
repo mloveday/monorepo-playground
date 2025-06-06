@@ -58,4 +58,19 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
   }
+
+  .indented-list {
+    padding: 0.5rem 1rem;
+    @apply flex flex-col gap-2;
+  }
+
+  .indented-list-item {
+    padding: 0 1rem 0.5rem 1rem;
+    @apply border-gray-200 border-l flex flex-col gap-2;
+    border-left: solid 2px lightgrey;
+  }
+
+  .board-message {
+    white-space: pre-wrap;
+  }
 }
