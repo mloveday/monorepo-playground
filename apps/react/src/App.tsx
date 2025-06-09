@@ -1,8 +1,5 @@
 import "./App.css";
 import { ClientBoundary } from "@repo/client/client-boundary.tsx";
-import { InteractiveHealthCheck } from "@repo/client/components/healthcheck/interactive-health-check.tsx";
-import { AddSomeData } from "@repo/client/components/some-data/add-some-data.tsx";
-import { RecentSomeData } from "@repo/client/components/some-data/recent-some-data.tsx";
 import { Todos } from "@repo/client/components/todo/todos.tsx";
 import { AuthButton } from "@repo/client/components/auth-button.tsx";
 import { Board } from "@repo/client/components/board/board.tsx";
@@ -18,9 +15,6 @@ export const App = () => (
       <ClientBoundary>
         <AuthButton />
         <Board />
-        <InteractiveHealthCheck />
-        <RecentSomeData />
-        <AddSomeData />
         <Todos />
       </ClientBoundary>
     </main>
