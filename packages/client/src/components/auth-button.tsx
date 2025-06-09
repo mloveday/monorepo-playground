@@ -1,21 +1,17 @@
-import { keycloak, keycloakInit } from "@repo/client/state/keycloack-auth.ts";
-import { useEffect } from "react";
+import {
+  keycloak,
+  useIsAuthenticated,
+} from "@repo/client/state/keycloack-auth.ts";
 
 export const AuthButton = () => {
-  useEffect(() => {
-    (async () => {
-      try {
-        const auth = await keycloakInit;
-        console.log("authenticated", auth);
-      } catch (e) {
-        console.log(e);
-      }
-    })();
-  }, []);
+  const isAuthenticated = useIsAuthenticated();
 
   return (
-    <button type="button" onClick={() => keycloak.login()}>
-      Auth me
+    <button
+      type="button"
+      onClick={() => (isAuthenticated ? keycloak.logout() : keycloak.login())}
+    >
+      {isAuthenticated ? "Sign out" : "Sign in"}
     </button>
   );
 };
