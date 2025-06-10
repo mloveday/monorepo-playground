@@ -1,9 +1,16 @@
 import { z } from "zod/v4";
 
+export const userSchema = z.object({
+  provider: z.string(),
+  sub: z.uuid(),
+  name: z.string(),
+});
+
 export const apiEntityResponseBase = z.object({
   id: z.number().int(),
   createdAt: z.string(),
   updatedAt: z.string(),
+  user: userSchema,
 });
 
 export const boardMessageResponse = apiEntityResponseBase.extend({

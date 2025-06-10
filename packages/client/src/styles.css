@@ -74,6 +74,10 @@
     white-space: pre-wrap;
   }
 
+  .board-message-user {
+    @apply text-sm text-gray-400 font-bold;
+  }
+
   .board-message-timestamp {
     @apply text-sm text-gray-400;
   }
