@@ -7,7 +7,7 @@ import {
 import { useAppSelector } from "@repo/client/store/store.ts";
 
 export const keycloak = new Keycloak({
-  url: "http://localhost:7080",
+  url: "http://idp:7080",
   realm: "local-demo",
   clientId: "java-demo",
 });
@@ -41,7 +41,11 @@ export const initAuth = createAsyncThunk(
       state.keycloak.requestId !== thunkAPI.requestId
     )
       return;
-    return keycloak.init({ onLoad: "check-sso" });
+    return keycloak.init({
+      checkLoginIframe: false,
+      flow: "standard",
+      onLoad: "check-sso",
+    });
   },
 );
 

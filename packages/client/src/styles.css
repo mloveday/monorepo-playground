@@ -60,7 +60,7 @@
   }
 
   .indented-list {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
     @apply flex flex-col gap-2;
   }
 
@@ -72,5 +72,9 @@
 
   .board-message {
     white-space: pre-wrap;
+  }
+
+  .board-message-timestamp {
+    @apply text-sm text-gray-400;
   }
 }

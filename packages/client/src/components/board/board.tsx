@@ -1,16 +1,22 @@
 import { javaApi } from "@repo/client/api/api.ts";
 import type { BoardMessageResponse } from "@repo/schemas/api/board/board-thread.ts";
 import { BoardMessageReply } from "@repo/client/components/board/board-message-reply.tsx";
+import { format } from "date-fns";
 
 type BoardMessageProps = {
   message: BoardMessageResponse;
   boardThreadId: number;
 };
 
+const TIMESTAMP_FORMAT = "PPpp";
+
 const Message = ({ message, boardThreadId }: BoardMessageProps) => {
   return (
     <li className="indented-list-item" key={message.id}>
       <div className="board-message">{message.message}</div>
+      <div className="board-message-timestamp">
+        Replied {format(message.createdAt, TIMESTAMP_FORMAT)}
+      </div>
       {message.childMessages.length > 0 && (
         <ul className="indented-list">
           {message.childMessages.map((childMessage) => (
@@ -36,13 +42,28 @@ export const Board = () => {
     return <div>Loading</div>;
   }
   if (!response.isSuccess) {
-    return <div>Failed to get board</div>;
+    return (
+      <div>
+        Failed to get board
+        <button type="button" onClick={response.refetch}>
+          Reload
+        </button>
+      </div>
+    );
   }
   return (
     <ul className="indented-list">
+      <li>
+        <button type="button" onClick={response.refetch}>
+          Reload
+        </button>
+      </li>
       {response.data.map((thread) => (
         <li className="indented-list-item" key={thread.id}>
           <h3>{thread.title}</h3>
+          <div className="board-message-timestamp">
+            Posted {format(thread.createdAt, TIMESTAMP_FORMAT)}
+          </div>
           <div className="board-message">{thread.message}</div>
           {thread.boardMessages.length > 0 && (
             <ul className="indented-list">
