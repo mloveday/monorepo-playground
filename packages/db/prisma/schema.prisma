@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output = "../generated/client"
+  output   = "../generated/client"
 }
 
 datasource db {
@@ -15,11 +15,59 @@ datasource db {
 }
 
 model SomeData {
-  id Int @id @default(autoincrement())
-  message String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id        Int       @id @default(autoincrement())
+  message   String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
   expiresAt DateTime?
 
   @@map("some_data")
+}
+
+model User {
+  sub   String @id
+  name  String
+  email String
+
+  boardThreads  BoardThread[]  @relation("user")
+  boardMessages BoardMessage[] @relation("user")
+
+  @@map("user")
+}
+
+model BoardThread {
+  id      Int    @id @default(autoincrement())
+  title   String
+  message String
+
+  userSub String @map("user_sub")
+  user    User   @relation("user", fields: [userSub], references: [sub])
+
+  boardMessages BoardMessage[] @relation("boardThread")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  expiresAt DateTime? @map("expires_at")
+
+  @@map("board_thread")
+}
+
+model BoardMessage {
+  id      Int    @id @default(autoincrement())
+  message String
+
+  userSub         String        @map("user_sub")
+  user            User          @relation("user", fields: [userSub], references: [sub])
+  boardThreadId   Int           @map("board_thread_id")
+  boardThread     BoardThread   @relation("boardThread", fields: [boardThreadId], references: [id])
+  parentMessageId Int?          @map("parent_message_id")
+  parentMessage   BoardMessage? @relation("parentMessage", fields: [parentMessageId], references: [id])
+
+  childMessages BoardMessage[] @relation("parentMessage")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  expiresAt DateTime? @map("expires_at")
+
+  @@map("board_message")
 }

@@ -13,20 +13,20 @@ import type {
   JavaApiBaseQuery,
   JavaApiReducerPath,
 } from "@repo/client/api/api-types.ts";
-import { healthcheckDefinition } from "@repo/client/api/endpoints/healthcheck/healthcheck-definition.ts";
-import { getRecentSomeDataDefinition } from "@repo/client/api/endpoints/some-data/get-recent-some-data-definition.ts";
-import { postSomeDataDefinition } from "@repo/client/api/endpoints/some-data/post-some-data-definition.ts";
-import {
-  type SomeDataTagType,
-  someDataTagType,
-} from "@repo/client/api/tags/some-data-tags.ts";
 import { getBoardThreadsDefinition } from "@repo/client/api/endpoints/board/get-board-threads-definition.ts";
 import { getBoardMessageDefinition } from "@repo/client/api/endpoints/board/get-board-message-definition.ts";
 import { postBoardReplyDefinition } from "@repo/client/api/endpoints/board/post-board-reply-definition.ts";
 import { postBoardThreadDefinition } from "@repo/client/api/endpoints/board/post-board-thread-definition.ts";
+import { healthcheckDefinition } from "@repo/client/api/endpoints/healthcheck/healthcheck-definition.ts";
+import {
+  type BoardMessageTagType,
+  boardMessageTagType,
+  type BoardThreadTagType,
+  boardThreadTagType,
+} from "@repo/client/api/tags/board-tags.ts";
 
-type TagTypes = SomeDataTagType;
-const tagTypes = [someDataTagType];
+type TagTypes = BoardThreadTagType | BoardMessageTagType;
+const tagTypes = [boardThreadTagType, boardMessageTagType];
 
 export const api = createApi({
   reducerPath: apiReducerPath,
@@ -36,8 +36,10 @@ export const api = createApi({
     builder: EndpointBuilder<ApiBaseQuery, TagTypes, ApiReducerPath>,
   ) => ({
     getHealthCheck: builder.query(healthcheckDefinition),
-    getRecentSomeData: builder.query(getRecentSomeDataDefinition),
-    postSomeData: builder.mutation(postSomeDataDefinition),
+    getBoardThreads: builder.query(getBoardThreadsDefinition),
+    getBoardMessage: builder.query(getBoardMessageDefinition),
+    createBoardMessage: builder.mutation(postBoardReplyDefinition),
+    createBoardThread: builder.mutation(postBoardThreadDefinition),
   }),
 });
 

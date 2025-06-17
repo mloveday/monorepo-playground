@@ -1,4 +1,4 @@
-import { javaApi } from "@repo/client/api/api.ts";
+import { api } from "@repo/client/api/api.ts";
 import type { BoardMessageResponse } from "@repo/schemas/api/board/board-thread.ts";
 import { BoardMessageReply } from "@repo/client/components/board/board-message-reply.tsx";
 import { format } from "date-fns";
@@ -41,7 +41,7 @@ const Message = ({ message, boardThreadId }: BoardMessageProps) => {
 };
 
 export const Board = () => {
-  const response = javaApi.endpoints.getBoardThreads.useQuery({});
+  const response = api.endpoints.getBoardThreads.useQuery({});
   if (response.isLoading) {
     return <div>Loading</div>;
   }

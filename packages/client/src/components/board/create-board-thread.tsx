@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
-import { javaApi } from "@repo/client/api/api.ts";
+import { api } from "@repo/client/api/api.ts";
 import { withAuthenticatedOnly } from "@repo/client/components/auth/authenticated-only.tsx";
 
 const formSchema = z.object({
@@ -21,7 +21,7 @@ export const CreateBoardThread = withAuthenticatedOnly(() => {
     defaultValues,
     resolver,
   });
-  const [createBoardThread] = javaApi.endpoints.createBoardThread.useMutation();
+  const [createBoardThread] = api.endpoints.createBoardThread.useMutation();
 
   const onSubmit: SubmitHandler<CreateBoardThreadForm> = (values) => {
     createBoardThread({

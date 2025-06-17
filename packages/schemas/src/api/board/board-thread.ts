@@ -6,6 +6,8 @@ export const userSchema = z.object({
   name: z.string(),
 });
 
+export type UserViewModel = z.infer<typeof userSchema>;
+
 export const apiEntityResponseBase = z.object({
   id: z.number().int(),
   createdAt: z.string(),

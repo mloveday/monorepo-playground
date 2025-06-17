@@ -5,7 +5,7 @@ import type {
 } from "@repo/schemas/api/board/board-thread.ts";
 
 export type BoardThreadTagType = "BoardThread";
-const boardThreadTagType: BoardThreadTagType = "BoardThread";
+export const boardThreadTagType: BoardThreadTagType = "BoardThread";
 const listId = "LIST";
 
 export const boardThreadItemTag = (
@@ -21,7 +21,7 @@ export const boardThreadListTag = {
 } satisfies TagDescription<BoardThreadTagType>;
 
 export type BoardMessageTagType = "BoardMessage";
-const boardMessageTagType: BoardMessageTagType = "BoardMessage";
+export const boardMessageTagType: BoardMessageTagType = "BoardMessage";
 
 export const boardMessageTagFromId = (
   id: number,
