@@ -4,13 +4,15 @@
   "type": "module",
   "scripts": {
     "db:generate": "prisma generate",
-    "db:migrate": "dotenv -- prisma migrate dev --name migrate",
-    "db:deploy": "dotenv -- prisma migrate deploy"
+    "db:migrate": "dotenvx run -- npx prisma migrate dev --name migrate",
+    "db:deploy": "dotenvx run -- npx prisma migrate deploy",
+    "db:test": "dotenvx run -f .env.test -- npx prisma db push"
   },
   "dependencies": {
     "@prisma/client": "^6.2.1"
   },
   "devDependencies": {
+    "@dotenvx/dotenvx": "1.44.2",
     "dotenv-cli": "^8.0.0",
     "prisma": "^6.2.1"
   },

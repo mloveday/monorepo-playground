@@ -11,9 +11,11 @@
     "test:e2e": "npm run test -w packages/e2e",
     "lint:fix": "npm run lint:fix -ws",
     "db:local:up": "docker run --name poc-postgres -e POSTGRES_USER=local_pg_user -e POSTGRES_PASSWORD=local_pg_pass -e POSTGRES_DB=poc_db -p 5433:5432 -d postgres",
+    "db:test:up": "docker run --name test-postgres -e POSTGRES_USER=test -e POSTGRES_PASSWORD=test -e POSTGRES_DB=test -p 5434:5432 -d postgres",
     "db:generate": "turbo db:generate",
     "db:migrate": "turbo db:migrate",
-    "db:deploy": "turbo db:deploy"
+    "db:deploy": "turbo db:deploy",
+    "db:test": "turbo db:test"
   },
   "devDependencies": {
     "turbo": "^2.3.3"

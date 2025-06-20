@@ -14,7 +14,7 @@ export const boardThreadToResponse = (
   user: userToResponse(bt.user),
   title: bt.title,
   message: bt.message,
-  boardMessages: bt.boardMessages.map((bm) =>
-    boardMessageToViewModel(bm, allBoardMessages),
-  ),
+  boardMessages: bt.boardMessages
+    .filter((bm) => bm.parentMessageId === null)
+    .map((bm) => boardMessageToViewModel(bm, allBoardMessages)),
 });

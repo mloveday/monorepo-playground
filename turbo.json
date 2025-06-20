@@ -37,6 +37,11 @@
       "cache": false,
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "env": ["DATABASE_URL"]
+    },
+    "db:test": {
+      "cache": false,
+      "inputs": ["$TURBO_DEFAULT$", ".env.test"],
+      "env": ["DATABASE_URL"]
     }
   }
 }

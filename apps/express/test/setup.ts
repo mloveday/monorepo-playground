@@ -1,12 +1,13 @@
-import { getPrisma } from "@repo/db";
 import { beforeEach, vi } from "vitest";
-import { mockDeep } from "vitest-mock-extended";
+import { jwtVerify } from "jose";
+import { jwtVerifyDecodeOnlyMock } from "@/test/builders/jwt-verify-decode-only-mock.ts";
+import { getPrisma } from "@repo/db";
 
-vi.mock(import("@repo/db"), async (importOriginal) => {
-  const og = await importOriginal();
-  return { ...og, getPrisma: vi.fn() };
-});
+vi.mock("jose", { spy: true });
 
-beforeEach(() => {
-  vi.mocked(getPrisma).mockReturnValue(mockDeep());
+beforeEach(async () => {
+  await getPrisma().$executeRawUnsafe(`
+    truncate table "board_message", "board_thread", "user" cascade;
+  `);
+  vi.mocked(jwtVerify).mockImplementation(jwtVerifyDecodeOnlyMock);
 });

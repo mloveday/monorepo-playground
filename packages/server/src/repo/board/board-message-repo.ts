@@ -41,7 +41,11 @@ const getBoardMessageChildren = async (
   let workingDepth = depth;
   let incomplete = workingDepth === undefined || workingDepth > 0;
   while (incomplete) {
-    const results = await getBoardMessagesByIds(toBeProcessed);
+    const notFoundYet = toBeProcessed.filter(
+      (id) => allResults.find((m) => m.id === id) === undefined,
+    );
+    const results =
+      notFoundYet.length > 0 ? [] : await getBoardMessagesByIds(notFoundYet);
     allResults.push(...results);
     toBeProcessed = results.flatMap(getChildIds);
     if (workingDepth !== undefined) workingDepth--;

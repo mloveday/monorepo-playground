@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "tsx -r dotenv/config src/app.ts",
+    "dev": "tsx -r dotenv/config src/server.ts",
     "build": "echo \"Error: not implemented\" && exit 0",
     "start": "echo \"Error: not implemented\" && exit 0",
     "check-types": "tsc --noEmit",
@@ -39,7 +39,9 @@
     "@repo/config-typescript": "*",
     "@repo/test": "*",
     "@types/node": "^20",
+    "@types/supertest": "6.0.3",
     "@vitest/coverage-istanbul": "^2.1.8",
+    "supertest": "7.1.1",
     "tsx": "4.19.4",
     "typescript": "^5",
     "vite-tsconfig-paths": "^5.1.4",
