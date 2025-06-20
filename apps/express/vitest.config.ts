@@ -9,7 +9,6 @@ configDotenv({ path: ".env.test" });
 export default defineConfig({
   plugins: [tsconfigPaths(), react()],
   test: {
-    fileParallelism: false, // tests use a shared DB
     setupFiles: ["test/setup.ts"],
     coverage: {
       provider: "istanbul",
