@@ -17,14 +17,17 @@ app.get(
     const OK = {
       success: true,
       message: "All good",
+      sub: res.locals.auth?.sub,
     } satisfies HealthCheckResponse;
     const NOPE = {
       success: false,
       message: "Nope",
+      sub: res.locals.auth?.sub,
     } satisfies HealthCheckResponse;
     const BAD_REQUEST = {
       success: false,
       message: "Bad request",
+      sub: res.locals.auth?.sub,
     } satisfies HealthCheckResponse;
 
     const query = healthCheckRequestSchema.safeParse(req.query);

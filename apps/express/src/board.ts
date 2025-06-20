@@ -44,7 +44,7 @@ board.post("/messages", authorizationMiddleware(), async (req, res) => {
   const user = await getOrCreateUser(getServerUserFromResponse(res));
   const boardThread = await getBoardThread(requestMessage.boardThreadId);
   if (!boardThread) {
-    res.status(404);
+    res.sendStatus(404);
     return;
   }
   const parentMessage =

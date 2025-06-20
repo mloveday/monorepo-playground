@@ -108,10 +108,38 @@ describe("POST board/messages", () => {
     await supertest(app)
       .post("/board/messages")
       .send({
-        title: "some title",
+        boardThreadId: 1,
         message: "some message",
       })
       .expect(403);
+
+    expect(await getPrisma().boardThread.findMany({})).toHaveLength(0);
+  });
+
+  it("should reject the request when user authentication is not a JWT", async () => {
+    await supertest(app)
+      .post("/board/messages")
+      .set("Authorization", "Bearer not-a-token")
+      .send({
+        boardThreadId: 1,
+        message: "some message",
+      })
+      .expect(403);
+
+    expect(await getPrisma().boardThread.findMany({})).toHaveLength(0);
+  });
+
+  it("should reject the request when thread is not found", async () => {
+    const user = await persistUser();
+
+    await supertest(app)
+      .post("/board/messages")
+      .set("Authorization", `Bearer ${bearerTokenBuilder(user)}`)
+      .send({
+        boardThreadId: 1,
+        message: "some message",
+      })
+      .expect(404);
 
     expect(await getPrisma().boardThread.findMany({})).toHaveLength(0);
   });

@@ -22,7 +22,12 @@ const logger = new Console(process.stdout, process.stderr);
 beforeAll(async () => {
   // define random schema, set up prisma connection
   const schema = `test-${v4()}`;
-  logger.log("[setup]", "setting up schema connection", schema);
+  logger.log(
+    "[setup]",
+    "setting up schema connection",
+    schema,
+    performance.now(),
+  );
   const url = new URL(
     `postgresql://test:test@localhost:5434/test?schema=${schema}`,
   ).toString();
@@ -34,7 +39,7 @@ beforeAll(async () => {
   );
 
   // create DB structure
-  logger.log("[setup]", "creating schema", schema);
+  logger.log("[setup]", "creating schema", schema, performance.now());
   execSync(
     `npm exec --prefix ${dbPackageLocation} prisma db push -- --schema=${dbSchemaLocation}`,
     {
@@ -47,7 +52,7 @@ beforeAll(async () => {
 
   // clean up schemas after tests complete
   return async () => {
-    logger.log("[setup]", "deleting schema", schema);
+    logger.log("[setup]", "deleting schema", schema, performance.now());
     await getPrisma().$executeRawUnsafe(
       `DROP SCHEMA IF EXISTS "${schema}" CASCADE;`,
     );
@@ -57,7 +62,7 @@ beforeAll(async () => {
 
 beforeEach(async () => {
   // clear tables of data
-  logger.log("[setup]", "truncating tables");
+  logger.log("[setup]", "truncating tables", performance.now());
   await getPrisma().$executeRawUnsafe(`
     truncate table "board_message", "board_thread", "user" cascade;
   `);
