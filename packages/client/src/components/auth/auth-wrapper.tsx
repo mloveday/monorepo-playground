@@ -3,7 +3,7 @@ import { useAppDispatch } from "@repo/client/store/store.ts";
 import {
   initAuth,
   useIsAuthenticationStatusKnown,
-} from "@repo/client/state/keycloack-auth.ts";
+} from "@repo/client/state/keycloak-auth.ts";
 
 export const AuthWrapper = ({ children }: PropsWithChildren) => {
   const isAuthenticationStatusKnown = useIsAuthenticationStatusKnown();

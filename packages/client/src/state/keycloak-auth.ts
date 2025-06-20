@@ -54,6 +54,7 @@ export const keycloakSlice = createSlice({
   initialState: initialState as KeycloakState,
   reducers: {
     reset: () => initialState,
+    setAuth: (_, action) => action.payload,
   },
   extraReducers: (builder) => {
     builder.addCase(initAuth.pending, (state, action) =>

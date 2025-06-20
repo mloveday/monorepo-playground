@@ -11,7 +11,7 @@ export const app = express();
 app.use(cors(), bodyParser.json());
 
 app.get(
-  "/api/healthcheck",
+  "/healthcheck",
   authorizationMiddleware({ optional: true }),
   async (req, res) => {
     const OK = {

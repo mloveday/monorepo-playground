@@ -1,14 +1,34 @@
-import { ClientBoundary } from "@repo/client/client-boundary.tsx";
 import type React from "react";
+import { useEffect } from "react";
 import type { PropsWithChildren } from "react";
+import { StoreProvider } from "../store/store-provider";
+import { useAppDispatch } from "@repo/client/store/store.ts";
+import { keycloakSlice } from "@repo/client/state/keycloak-auth.ts";
+
+const AuthSetter: React.FC<{ authenticated: boolean }> = ({
+  authenticated,
+}) => {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(
+      keycloakSlice.actions.setAuth({
+        authenticated,
+        state: "done",
+      }),
+    );
+  });
+  return null;
+};
 
 export const withStore = <Props extends PropsWithChildren = object>(
   Component: React.FC<Props>,
+  authenticated = true,
 ): React.FC<Props> => {
   const wrapped: React.FC<Props> = (props) => (
-    <ClientBoundary>
+    <StoreProvider>
+      <AuthSetter authenticated={authenticated} />
       <Component {...props}>{props.children}</Component>
-    </ClientBoundary>
+    </StoreProvider>
   );
   wrapped.displayName = `WithStore_${Component.displayName}`;
   return wrapped;

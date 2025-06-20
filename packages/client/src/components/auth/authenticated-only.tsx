@@ -1,4 +1,4 @@
-import { useIsAuthenticated } from "@repo/client/state/keycloack-auth.ts";
+import { useIsAuthenticated } from "@repo/client/state/keycloak-auth.ts";
 import type React from "react";
 import type { PropsWithChildren } from "react";
 

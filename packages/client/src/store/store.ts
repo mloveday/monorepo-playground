@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { api, javaApi } from "@repo/client/api/api.ts";
 import { useDispatch, useSelector } from "react-redux";
-import { keycloakSlice } from "@repo/client/state/keycloack-auth.ts";
+import { keycloakSlice } from "@repo/client/state/keycloak-auth.ts";
 
 export const makeStore = () => {
   return configureStore({
