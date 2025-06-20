@@ -16,12 +16,11 @@ export default defineConfig({
         100: true,
       },
       exclude: [
+        "vitest.config.ts",
         "test/**",
-        "src/app.ts",
         "src/server.ts",
         "node_modules",
         ".turbo",
-        "tailwind.config.ts",
       ],
     },
     alias: {
