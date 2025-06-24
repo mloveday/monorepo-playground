@@ -1,7 +1,5 @@
-import {
-  keycloak,
-  useIsAuthenticated,
-} from "@repo/client/state/keycloak-auth.ts";
+import { useIsAuthenticated } from "@repo/client/state/keycloak-auth.ts";
+import { getKeycloakInstance } from "@repo/client/state/get-keycloak-instance.ts";
 
 export const AuthButton = () => {
   const isAuthenticated = useIsAuthenticated();
@@ -9,7 +7,10 @@ export const AuthButton = () => {
   return (
     <button
       type="button"
-      onClick={() => (isAuthenticated ? keycloak.logout() : keycloak.login())}
+      onClick={() => {
+        const keycloak = getKeycloakInstance();
+        return isAuthenticated ? keycloak.logout() : keycloak.login();
+      }}
     >
       {isAuthenticated ? "Sign out" : "Sign in"}
     </button>

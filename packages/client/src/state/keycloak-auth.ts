@@ -1,16 +1,10 @@
-import Keycloak from "keycloak-js";
 import {
   createAsyncThunk,
   createSlice,
   type GetThunkAPI,
 } from "@reduxjs/toolkit";
 import { useAppSelector } from "@repo/client/store/store.ts";
-
-export const keycloak = new Keycloak({
-  url: "http://idp:7080",
-  realm: "local-demo",
-  clientId: "java-demo",
-});
+import { getKeycloakInstance } from "@repo/client/state/get-keycloak-instance.ts";
 
 type AuthenticatedState = { authenticated: boolean };
 
@@ -41,7 +35,7 @@ export const initAuth = createAsyncThunk(
       state.keycloak.requestId !== thunkAPI.requestId
     )
       return;
-    return keycloak.init({
+    return getKeycloakInstance().init({
       checkLoginIframe: false,
       flow: "standard",
       onLoad: "check-sso",

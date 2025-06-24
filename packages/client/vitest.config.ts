@@ -22,7 +22,7 @@ export default defineConfig({
       ],
     },
     alias: {
-      "@repo/client": path.resolve(__dirname, "./src"),
+      "@repo/client": path.resolve(__dirname, "src"),
     },
   },
 });
