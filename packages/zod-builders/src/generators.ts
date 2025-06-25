@@ -22,6 +22,20 @@ export const stringGenerator = {
   generate: () => faker.string.alpha(8),
 } satisfies SchemaGenerator<$ZodString>;
 
+export const datetimeStringGenerator = {
+  match: (schema): schema is $ZodString =>
+    // @ts-ignore
+    schema._zod.def.type === "string" && schema._zod.def.format === "datetime",
+  generate: () => faker.date.recent().toISOString(),
+} satisfies SchemaGenerator<$ZodString>;
+
+export const uuidGenerator = {
+  match: (schema): schema is $ZodString =>
+    // @ts-ignore
+    schema._zod.def.type === "string" && schema._zod.def.format === "uuid",
+  generate: () => faker.string.uuid(),
+} satisfies SchemaGenerator<$ZodString>;
+
 export const booleanGenerator = {
   match: (schema): schema is $ZodBoolean => schema._zod.def.type === "boolean",
   generate: () => faker.datatype.boolean(),
@@ -39,7 +53,8 @@ export const bigIntGenerator = {
 
 export const objectGenerator = {
   match: (schema): schema is $ZodObject => schema._zod.def.type === "object",
-  generate: (schema, config) => getFixtureOfObjectSchema(schema, config),
+  generate: (schema, path, config) =>
+    getFixtureOfObjectSchema(schema, path, config),
 } satisfies SchemaGenerator<$ZodObject>;
 
 export const undefinedGenerator = {
@@ -56,9 +71,9 @@ export const nullGenerator = {
 
 export const arrayGenerator = {
   match: (schema): schema is $ZodArray => schema._zod.def.type === "array",
-  generate: (schema, config) =>
+  generate: (schema, path, config) =>
     Array.from({ length: 5 }).map(() =>
-      getFixtureOfSchema(schema._zod.def.element, config),
+      getFixtureOfSchema(schema._zod.def.element, path, config),
     ),
 } satisfies SchemaGenerator<$ZodArray>;
 
@@ -68,19 +83,22 @@ const isPipe = (schema: $ZodType): schema is $ZodPipe =>
 export const transformGenerator = {
   match: (schema): schema is $ZodPipe =>
     isPipe(schema) && schema._zod.def.out._zod.def.type === "transform",
-  generate: (schema, config) =>
+  generate: (schema, path, config) =>
     (schema._zod.def.out._zod.def as $ZodTransformDef).transform(
-      getFixtureOfSchema(schema._zod.def.in, config),
+      getFixtureOfSchema(schema._zod.def.in, path, config),
       { value: undefined, issues: [] },
     ),
 } satisfies SchemaGenerator<$ZodPipe>;
 
 export const pipeGenerators = {
   match: isPipe,
-  generate: (schema, config) => getFixtureOfSchema(schema._zod.def.out, config),
+  generate: (schema, path, config) =>
+    getFixtureOfSchema(schema._zod.def.out, path, config),
 } satisfies SchemaGenerator<$ZodPipe>;
 
 export const defaultGenerators: LooseSchemaGenerator[] = [
+  datetimeStringGenerator,
+  uuidGenerator,
   stringGenerator,
   booleanGenerator,
   numberGenerator,

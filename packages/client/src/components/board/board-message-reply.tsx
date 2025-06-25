@@ -38,7 +38,9 @@ export const BoardMessageReply = withAuthenticatedOnly(
     };
 
     return (
-      <details>
+      <details
+        data-testid={`reply-to-${boardThreadId}${parentMessageId ? `-${parentMessageId}` : ""}`}
+      >
         <summary className="self-center">Reply to message</summary>
         <form
           onSubmit={form.handleSubmit(onSubmit)}

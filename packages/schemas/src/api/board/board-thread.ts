@@ -10,8 +10,8 @@ export type UserViewModel = z.infer<typeof userSchema>;
 
 export const apiEntityResponseBase = z.object({
   id: z.number().int(),
-  createdAt: z.string(),
-  updatedAt: z.string(),
+  createdAt: z.iso.datetime(),
+  updatedAt: z.iso.datetime(),
   user: userSchema,
 });
 

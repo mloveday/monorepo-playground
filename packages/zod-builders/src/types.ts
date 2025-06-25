@@ -18,7 +18,7 @@ export type ObjectBuilderVals<Schema extends $ZodObject> = {
 };
 
 export type ObjectBuilderInternals<Schema extends $ZodObject> = {
-  vals: ObjectBuilderVals<Schema>;
+  vals: Partial<ObjectBuilderVals<Schema>>;
   build: () => z.infer<Schema>;
 };
 
@@ -33,18 +33,28 @@ type SchemaMatcher<T extends $ZodType> = (schema: $ZodType) => schema is T;
 export type LooseSchemaGenerator = {
   // biome-ignore lint/suspicious/noExplicitAny: see above
   match: SchemaMatcher<any>;
-  // biome-ignore lint/suspicious/noExplicitAny: see above
-  generate: (schema: any, config?: BuilderGeneratorConfig) => unknown;
+  generate: (
+    // biome-ignore lint/suspicious/noExplicitAny: see above
+    schema: any,
+    path: string,
+    config?: BuilderGeneratorConfig,
+  ) => unknown;
 };
 
 export type SchemaGenerator<SchemaType extends $ZodType> = {
   match: SchemaMatcher<SchemaType>;
   generate: (
     schema: SchemaType,
+    path: string,
     config?: BuilderGeneratorConfig,
   ) => z.infer<SchemaType>;
 };
 
 export type BuilderGeneratorConfig = {
   generators?: LooseSchemaGenerator[];
+  paths?: {
+    path: string;
+    // biome-ignore lint/suspicious/noExplicitAny: user-defined override, can be anything
+    generate: (config?: BuilderGeneratorConfig) => any;
+  }[];
 };

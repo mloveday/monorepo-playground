@@ -137,4 +137,38 @@ describe("zod-builder", () => {
       custom: "some-custom",
     });
   });
+
+  it("should handle circular references with a paths override", () => {
+    const schema = z.object({
+      id: z.int(),
+      get children() {
+        return schema.array();
+      },
+    });
+
+    const builder = generateBuilderFromSchema(schema, {
+      paths: [
+        {
+          // overrides the children of nested objects with an empty array
+          path: "$.children.children",
+          generate: () => [],
+        },
+      ],
+    });
+
+    const childExpect = {
+      id: expect.any(Number),
+      children: [],
+    };
+    expect(builder.build()).toEqual({
+      id: expect.any(Number),
+      children: [
+        childExpect,
+        childExpect,
+        childExpect,
+        childExpect,
+        childExpect,
+      ],
+    });
+  });
 });

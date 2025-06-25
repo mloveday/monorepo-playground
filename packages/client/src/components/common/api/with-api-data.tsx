@@ -89,3 +89,9 @@ export const withApiData = <
   Wrapped.displayName = `WithApiData_${Component.displayName ?? componentName ?? "Unknown"}`;
   return Wrapped;
 };
+
+export const NoWrapper = (({ children }) => (
+  <>{children}</>
+)) satisfies React.FC<PropsWithChildren>;
+
+export const noQueryProps = () => ({});

@@ -8,8 +8,11 @@ const formSchema = z.object({
   title: z.string().min(2),
   message: z.string().min(2),
 });
+
 type CreateBoardThreadForm = z.infer<typeof formSchema>;
+
 const resolver = zodResolver(formSchema);
+
 const defaultValues = {
   title: "",
   message: "",
@@ -34,7 +37,7 @@ export const CreateBoardThread = withAuthenticatedOnly(() => {
   return (
     <form
       onSubmit={form.handleSubmit(onSubmit)}
-      data-testid="add-some-data-react-hook-forms"
+      data-testid="create-board-thread"
       className="box flex flex-col gap-4"
     >
       <label className="grid grid-cols-[auto_1fr] gap-2">

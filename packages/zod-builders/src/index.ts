@@ -6,6 +6,11 @@ import type {
 } from "@repo/zod-builders/types.ts";
 import type { ZodObject } from "zod/v4";
 
+export type {
+  ObjectBuilder,
+  LooseSchemaGenerator,
+} from "@repo/zod-builders/types.ts";
+
 const capitalize = <I extends string>(input: I): Capitalize<I> =>
   `${input[0]?.toUpperCase() ?? ""}${input.slice(1)}` as Capitalize<I>;
 
@@ -17,8 +22,11 @@ export const generateBuilderFromSchema = <Schema extends ZodObject>(
   config?: BuilderGeneratorConfig,
 ): ObjectBuilder<Schema> => {
   const builder: ObjectBuilderInternals<Schema> = {
-    vals: getFixtureOfObjectSchema(schema, config),
-    build: () => builder.vals,
+    vals: {},
+    build: () => ({
+      ...getFixtureOfObjectSchema(schema, "$", config),
+      ...builder.vals,
+    }),
   };
   for (const key of Object.keys(schema.def.shape)) {
     (builder as Record<string, unknown>)[withKey(key)] = (v: unknown) => {
