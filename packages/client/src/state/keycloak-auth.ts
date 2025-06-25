@@ -47,7 +47,6 @@ export const keycloakSlice = createSlice({
   name: "keycloak",
   initialState: initialState as KeycloakState,
   reducers: {
-    reset: () => initialState,
     setAuth: (_, action) => action.payload,
   },
   extraReducers: (builder) => {
@@ -85,4 +84,9 @@ export const useIsAuthenticated = () => {
 export const useIsAuthenticationStatusKnown = () => {
   const keycloakState = useKeycloakState();
   return keycloakState.state === "done";
+};
+
+export const useIsAuthenticationError = () => {
+  const keycloakState = useKeycloakState();
+  return keycloakState.state === "error";
 };
