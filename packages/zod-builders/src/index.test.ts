@@ -14,6 +14,8 @@ describe("zod-builder", () => {
       object: z.object({
         bar: z.number(),
       }),
+      uuid: z.uuid(),
+      dateTimeString: z.iso.datetime(),
       bigint: z.bigint(),
       undefined: z.undefined(),
       null: z.null(),
@@ -33,6 +35,8 @@ describe("zod-builder", () => {
       object: {
         bar: expect.any(Number),
       },
+      uuid: expect.any(String),
+      dateTimeString: expect.any(String),
       bigint: expect.any(BigInt),
       undefined: undefined,
       optional: undefined,
@@ -46,6 +50,8 @@ describe("zod-builder", () => {
       .withBoolean(false)
       .withNumber(10)
       .withObject({ bar: 42 })
+      .withUuid("7f6b3a97-956b-48d2-8d51-fe6f12925e9f")
+      .withDateTimeString("2025-06-25T12:54:16.116Z")
       .withBigint(BigInt(5))
       .withOptional("defined")
       .withNullable("not null");
@@ -56,6 +62,8 @@ describe("zod-builder", () => {
       boolean: false,
       number: 10,
       object: { bar: 42 },
+      uuid: "7f6b3a97-956b-48d2-8d51-fe6f12925e9f",
+      dateTimeString: "2025-06-25T12:54:16.116Z",
       bigint: BigInt(5),
       undefined: undefined,
       optional: "defined",
@@ -138,7 +146,7 @@ describe("zod-builder", () => {
     });
   });
 
-  it("should handle circular references with a paths override", () => {
+  it("should handle circular references and other overrides with a paths override", () => {
     const schema = z.object({
       id: z.int(),
       get children() {
@@ -170,5 +178,21 @@ describe("zod-builder", () => {
         childExpect,
       ],
     });
+  });
+
+  it("should throw an error for an unknown zod schema", () => {
+    const schema = z.object({ unknown: z.unknown() });
+    const builder = generateBuilderFromSchema(schema);
+
+    expect(() => builder.build()).toThrow("schema not known: unknown");
+  });
+
+  it("should handle an empty string for a property", () => {
+    const schema = z.object({ "": z.string() });
+    const builder = generateBuilderFromSchema(schema);
+
+    expect(builder.build()).toEqual({ "": expect.any(String) });
+
+    expect(builder.with("foo").build()).toEqual({ "": "foo" });
   });
 });

@@ -9,15 +9,11 @@ export const getFixtureOfObjectSchema = <Schema extends $ZodObject>(
   schema: Schema,
   path: string,
   config?: BuilderGeneratorConfig,
-): ObjectBuilderVals<Schema> => {
-  const pathOverride = config?.paths?.find((p) => p.path === path);
-  return pathOverride !== undefined
-    ? pathOverride.generate(config)
-    : (Object.entries(schema._zod.def.shape).reduce(
-        (acc, [k, propSchema]) => {
-          acc[k] = getFixtureOfSchema(propSchema, `${path}.${k}`, config);
-          return acc;
-        },
-        {} as Record<string, unknown>,
-      ) as ObjectBuilderVals<Schema>);
-};
+): ObjectBuilderVals<Schema> =>
+  Object.entries(schema._zod.def.shape).reduce(
+    (acc, [k, propSchema]) => {
+      acc[k] = getFixtureOfSchema(propSchema, `${path}.${k}`, config);
+      return acc;
+    },
+    {} as Record<string, unknown>,
+  ) as ObjectBuilderVals<Schema>;
