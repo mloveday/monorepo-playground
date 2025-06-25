@@ -14,14 +14,10 @@ import {
   getBoardMessagesForThreads,
 } from "@repo/server/repo/board/board-message-repo.ts";
 import { boardThreadToResponse } from "@repo/server/models/board/board-thread-to-response.ts";
-import {
-  createBoardThreadRequest,
-} from "@repo/schemas/api/board/board-thread.ts";
-import { getOrCreateUser } from "@repo/server/repo/board/user-repo.ts";
+import { createBoardThreadRequest } from "@repo/schemas/api/board/board-thread.ts";
+import { getOrCreateUser } from "@repo/server/repo/user/user-repo.ts";
 import { boardMessageToViewModel } from "@repo/server/models/board/board-message-to-view-model.ts";
-import {
-  createBoardMessageRequest
-} from "@repo/schemas/api/board/board-message.ts";
+import { createBoardMessageRequest } from "@repo/schemas/api/board/board-message.ts";
 
 export const board = express.Router();
 

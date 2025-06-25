@@ -24,9 +24,9 @@ export const getBoardThreads = async ({ cursor, count }: Pagination) =>
   });
 
 export const getBoardThread = async (id: number) =>
-  getPrisma().boardThread.findUnique({
+  (await getPrisma().boardThread.findUnique({
     where: { id },
-  }) ?? undefined;
+  })) ?? undefined;
 
 export const createBoardThread = async (
   boardThread: CreateBoardThreadRequest,

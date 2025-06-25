@@ -5,12 +5,8 @@ import {
   type Prisma,
   type User,
 } from "@repo/db";
-import type { Pagination } from "@repo/schemas/api/requests/pagination-schema.ts";
 import type { BoardThreadWithUserAndBoardMessages } from "@repo/server/repo/board/board-thread-repo.ts";
-
-import {
-  CreateBoardMessageRequest
-} from "@repo/schemas/api/board/board-message.ts";
+import type { CreateBoardMessageRequest } from "@repo/schemas/api/board/board-message.ts";
 
 const include = {
   user: true,
@@ -61,13 +57,6 @@ const getBoardMessageChildren = async (
 
 const getBoardMessagesByIds = async (ids: number[]) =>
   getPrisma().boardMessage.findMany({ include, where: { id: { in: ids } } });
-
-export const getBoardMessages = async ({ cursor, count }: Pagination) =>
-  getPrisma().boardMessage.findMany({
-    cursor: cursor ? { id: cursor } : undefined,
-    take: count,
-    include: { user: true },
-  });
 
 export const getBoardMessage = async (id: number) =>
   (await getPrisma().boardMessage.findUnique({
