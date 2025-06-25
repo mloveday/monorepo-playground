@@ -7,7 +7,10 @@ import {
 } from "@repo/db";
 import type { Pagination } from "@repo/schemas/api/requests/pagination-schema.ts";
 import type { BoardThreadWithUserAndBoardMessages } from "@repo/server/repo/board/board-thread-repo.ts";
-import type { CreateBoardMessageRequest } from "@repo/schemas/api/board/board-thread.ts";
+
+import {
+  CreateBoardMessageRequest
+} from "@repo/schemas/api/board/board-message.ts";
 
 const include = {
   user: true,

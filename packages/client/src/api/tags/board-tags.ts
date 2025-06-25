@@ -1,8 +1,8 @@
 import type { TagDescription } from "@reduxjs/toolkit/query";
 import type {
-  BoardMessageResponse,
   BoardThreadResponse,
 } from "@repo/schemas/api/board/board-thread.ts";
+import {BoardMessageResponse} from "@repo/schemas/api/board/board-message.ts";
 
 export type BoardThreadTagType = "BoardThread";
 export const boardThreadTagType: BoardThreadTagType = "BoardThread";

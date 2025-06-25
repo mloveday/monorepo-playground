@@ -1,14 +1,14 @@
 import {
-  boardMessageResponse,
-  type BoardMessageResponse,
-  createBoardMessageRequest,
-  type CreateBoardMessageRequest,
-} from "@repo/schemas/api/board/board-thread.ts";
-import {
   boardMessageTagFromId,
   boardThreadListTag,
 } from "@repo/client/api/tags/board-tags.ts";
 import type { JavaApiEndpointMutationDefinition } from "@repo/client/api/api-types.ts";
+import {
+  boardMessageResponse,
+  BoardMessageResponse,
+  createBoardMessageRequest,
+  CreateBoardMessageRequest
+} from "@repo/schemas/api/board/board-message.ts";
 
 export const postBoardReplyDefinition = {
   query: (params) => ({
