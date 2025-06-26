@@ -3,7 +3,7 @@ import { boardMessageToViewModel } from "@repo/server/models/board/board-message
 import { userToResponse } from "@repo/server/models/user/user-to-response.ts";
 import type { BoardThreadWithUserAndBoardMessages } from "@repo/server/repo/board/board-thread-repo.ts";
 
-export const boardThreadToResponse = (
+export const boardThreadToViewModel = (
   bt: BoardThreadWithUserAndBoardMessages,
 ): BoardThreadResponse => ({
   id: bt.id,
