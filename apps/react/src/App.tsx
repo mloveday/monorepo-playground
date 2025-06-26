@@ -1,8 +1,8 @@
 import "./App.css";
 import { ClientBoundary } from "@repo/client/client-boundary.tsx";
-import { Todos } from "@repo/client/components/todo/todos.tsx";
 import { AuthButton } from "@repo/client/components/auth-button.tsx";
 import { Board } from "@repo/client/components/board/board.tsx";
+import { Todos } from "@repo/client/components/todo/todos.tsx";
 
 export const App = () => (
   <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
