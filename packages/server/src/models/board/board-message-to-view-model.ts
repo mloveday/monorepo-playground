@@ -1,7 +1,7 @@
 import { userToResponse } from "@repo/server/models/user/user-to-response.ts";
 import type { BoardMessageWithUserAndChildren } from "@repo/server/repo/board/board-message-repo.ts";
 import { isDefined } from "@repo/lib/equality-checks.ts";
-import {BoardMessageResponse} from "@repo/schemas/api/board/board-message.ts";
+import type { BoardMessageResponse } from "@repo/schemas/api/board/board-message.ts";
 
 export const boardMessageToViewModel = (
   bm: BoardMessageWithUserAndChildren,

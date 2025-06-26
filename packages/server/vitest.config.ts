@@ -13,7 +13,7 @@ export default defineConfig({
       thresholds: {
         100: true,
       },
-      exclude: ["test/**", "node_modules", ".turbo", "dist"],
+      exclude: ["src/test/**", "node_modules", ".turbo", "dist"],
     },
     alias: {
       "@repo/server": path.resolve(__dirname, "./src"),
