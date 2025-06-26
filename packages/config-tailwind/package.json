@@ -6,7 +6,7 @@
   "type": "module",
   "devDependencies": {
     "@repo/config-typescript": "*",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "3.4.17"
   },
   "exports": {
     ".": "./src/tailwind.config.ts"

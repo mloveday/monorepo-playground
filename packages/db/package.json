@@ -9,12 +9,12 @@
     "db:test": "dotenvx run -f .env.test -- npx prisma db push"
   },
   "dependencies": {
-    "@prisma/client": "^6.2.1"
+    "@prisma/client": "6.10.1"
   },
   "devDependencies": {
-    "@dotenvx/dotenvx": "1.44.2",
-    "dotenv-cli": "^8.0.0",
-    "prisma": "^6.2.1"
+    "@dotenvx/dotenvx": "1.45.1",
+    "dotenv-cli": "8.0.0",
+    "prisma": "6.10.1"
   },
   "exports": {
     ".": "./src/index.ts"

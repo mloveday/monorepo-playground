@@ -15,37 +15,37 @@
     "test:watch": "vitest watch"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^2.5.0",
+    "@reduxjs/toolkit": "2.8.2",
     "@repo/db": "*",
     "@repo/lib": "*",
     "@repo/schemas": "*",
     "@repo/server": "*",
-    "@types/cors": "2.8.18",
-    "@types/express": "5.0.2",
+    "@types/cors": "2.8.19",
+    "@types/express": "5.0.3",
     "body-parser": "2.2.0",
     "cors": "2.8.5",
     "dotenv": "16.5.0",
     "express": "5.1.0",
     "express-jwt": "8.5.1",
     "jose": "6.0.11",
-    "uuid": "11.0.4",
-    "zod": "3.25.7"
+    "uuid": "11.1.0",
+    "zod": "3.25.67"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@faker-js/faker": "^9.3.0",
+    "@faker-js/faker": "9.8.0",
     "@repo/config-biome": "*",
     "@repo/config-tailwind": "*",
     "@repo/config-typescript": "*",
     "@repo/test": "*",
-    "@types/node": "^20",
+    "@types/node": "22.15.33",
     "@types/supertest": "6.0.3",
     "@vitest/coverage-istanbul": "3.2.4",
     "supertest": "7.1.1",
-    "tsx": "4.19.4",
-    "typescript": "^5",
-    "vite-tsconfig-paths": "^5.1.4",
+    "tsx": "4.20.3",
+    "typescript": "5.8.3",
+    "vite-tsconfig-paths": "5.1.4",
     "vitest": "3.2.4",
-    "vitest-mock-extended": "^2.0.2"
+    "vitest-mock-extended": "3.1.0"
   }
 }

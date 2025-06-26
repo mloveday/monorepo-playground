@@ -19,10 +19,10 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@repo/config-typescript": "*",
-    "typescript": "^5",
-    "vite-tsconfig-paths": "^5.1.4",
+    "typescript": "5.8.3",
+    "vite-tsconfig-paths": "5.1.4",
     "vitest": "3.2.4",
-    "vitest-mock-extended": "^2.0.2"
+    "vitest-mock-extended": "2.0.2"
   },
   "exports": {
     "./*": "./src/*"

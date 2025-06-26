@@ -13,14 +13,14 @@
     "test:watch": "vitest watch"
   },
   "dependencies": {
-    "zod": "3.25.7"
+    "zod": "3.25.67"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@repo/config-biome": "*",
     "@repo/config-typescript": "*",
-    "typescript": "^5",
-    "vite-tsconfig-paths": "^5.1.4",
+    "typescript": "5.8.3",
+    "vite-tsconfig-paths": "5.1.4",
     "vitest": "3.2.4"
   },
   "exports": {
