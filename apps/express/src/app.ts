@@ -1,10 +1,10 @@
-import express from "express";
-import cors from "cors";
-import bodyParser from "body-parser";
-import { authorizationMiddleware } from "@/src/middleware/authorization-middleware.ts";
-import type { HealthCheckResponse } from "@repo/schemas/api/healthcheck/health-check-response.ts";
-import { healthCheckRequestSchema } from "@repo/schemas/api/healthcheck/health-check-request.ts";
 import { board } from "@/src/board.ts";
+import { authorizationMiddleware } from "@/src/middleware/authorization-middleware.ts";
+import { healthCheckRequestSchema } from "@repo/schemas/api/healthcheck/health-check-request.ts";
+import type { HealthCheckResponse } from "@repo/schemas/api/healthcheck/health-check-response.ts";
+import bodyParser from "body-parser";
+import cors from "cors";
+import express from "express";
 
 export const app = express();
 

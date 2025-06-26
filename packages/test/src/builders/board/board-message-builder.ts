@@ -1,6 +1,6 @@
 import { generateBuilderFromSchema } from "@repo/zod-builders";
 
-import {boardMessageResponse} from "@repo/schemas/api/board/board-message.ts";
+import { boardMessageResponse } from "@repo/schemas/api/board/board-message.ts";
 
 export const boardMessageBuilder = generateBuilderFromSchema(
   boardMessageResponse,

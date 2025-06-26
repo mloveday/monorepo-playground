@@ -1,12 +1,12 @@
-import { describe, expect, it } from "vitest";
-import supertest from "supertest";
 import { app } from "@/src/app.ts";
-import { bearerTokenBuilder } from "@/test/builders/bearer-token-builder.ts";
-import { getPrisma } from "@repo/db";
-import { persistUser } from "@/test/data/persist-user.ts";
-import { persistThread } from "@/test/data/persist-thread.ts";
-import { persistMessage } from "@/test/data/persist-message.ts";
 import { dateRegex } from "@/test/assertions/date.ts";
+import { bearerTokenBuilder } from "@/test/builders/bearer-token-builder.ts";
+import { persistMessage } from "@/test/data/persist-message.ts";
+import { persistThread } from "@/test/data/persist-thread.ts";
+import { persistUser } from "@/test/data/persist-user.ts";
+import { getPrisma } from "@repo/db";
+import supertest from "supertest";
+import { describe, expect, it } from "vitest";
 
 describe("POST board/messages", () => {
   it("should create message on a thread when user is authenticated", async () => {

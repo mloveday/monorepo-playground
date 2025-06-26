@@ -1,6 +1,6 @@
-import { getPrisma, type User, type Prisma } from "@repo/db";
-import type { Pagination } from "@repo/schemas/api/requests/pagination-schema.ts";
+import { type Prisma, type User, getPrisma } from "@repo/db";
 import type { CreateBoardThreadRequest } from "@repo/schemas/api/board/board-thread.ts";
+import type { Pagination } from "@repo/schemas/api/requests/pagination-schema.ts";
 
 const include = {
   user: true,

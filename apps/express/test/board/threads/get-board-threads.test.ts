@@ -1,10 +1,10 @@
-import { describe, expect, it } from "vitest";
-import { bearerTokenBuilder } from "@/test/builders/bearer-token-builder.ts";
-import supertest from "supertest";
 import { app } from "@/src/app.ts";
+import { bearerTokenBuilder } from "@/test/builders/bearer-token-builder.ts";
+import { persistMessage } from "@/test/data/persist-message.ts";
 import { persistThread } from "@/test/data/persist-thread.ts";
 import { persistUser } from "@/test/data/persist-user.ts";
-import { persistMessage } from "@/test/data/persist-message.ts";
+import supertest from "supertest";
+import { describe, expect, it } from "vitest";
 
 describe("GET board/threads", () => {
   const testCases = [{ auth: "authenticated" }, { auth: "anonymous" }];

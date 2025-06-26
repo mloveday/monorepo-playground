@@ -1,9 +1,9 @@
+import { keycloakSlice } from "@repo/client/state/keycloak-auth.ts";
+import { useAppDispatch } from "@repo/client/store/store.ts";
 import type React from "react";
 import { useEffect } from "react";
 import type { PropsWithChildren } from "react";
 import { StoreProvider } from "../store/store-provider";
-import { useAppDispatch } from "@repo/client/store/store.ts";
-import { keycloakSlice } from "@repo/client/state/keycloak-auth.ts";
 
 const AuthSetter: React.FC<{ authenticated: boolean }> = ({
   authenticated,

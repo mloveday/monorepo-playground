@@ -1,8 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { type SubmitHandler, useForm } from "react-hook-form";
-import { z } from "zod";
 import { api } from "@repo/client/api/api.ts";
 import { withAuthenticatedOnly } from "@repo/client/components/auth/authenticated-only.tsx";
+import { type SubmitHandler, useForm } from "react-hook-form";
+import { z } from "zod";
 
 const formSchema = z.object({
   title: z.string().min(2),

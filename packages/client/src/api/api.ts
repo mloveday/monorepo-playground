@@ -1,4 +1,4 @@
-import { createApi, type EndpointBuilder } from "@reduxjs/toolkit/query/react";
+import { type EndpointBuilder, createApi } from "@reduxjs/toolkit/query/react";
 import {
   apiBaseQuery,
   javaApiBaseQuery,
@@ -19,8 +19,8 @@ import { postBoardThreadDefinition } from "@repo/client/api/endpoints/board/post
 import { healthcheckDefinition } from "@repo/client/api/endpoints/healthcheck/healthcheck-definition.ts";
 import {
   type BoardMessageTagType,
-  boardMessageTagType,
   type BoardThreadTagType,
+  boardMessageTagType,
   boardThreadTagType,
 } from "@repo/client/api/tags/board-tags.ts";
 

@@ -1,9 +1,9 @@
 import {
   type BoardMessage,
   type BoardThread,
-  getPrisma,
   type Prisma,
   type User,
+  getPrisma,
 } from "@repo/db";
 import type { CreateBoardMessageRequest } from "@repo/schemas/api/board/board-message.ts";
 

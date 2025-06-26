@@ -1,5 +1,5 @@
-import { useIsAuthenticated } from "@repo/client/state/keycloak-auth.ts";
 import { getKeycloakInstance } from "@repo/client/state/get-keycloak-instance.ts";
+import { useIsAuthenticated } from "@repo/client/state/keycloak-auth.ts";
 
 export const AuthButton = () => {
   const isAuthenticated = useIsAuthenticated();

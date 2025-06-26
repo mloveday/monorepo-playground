@@ -1,22 +1,22 @@
-import express from "express";
 import {
   authorizationMiddleware,
   getServerUserFromResponse,
 } from "@/src/middleware/authorization-middleware.ts";
+import { createBoardMessageRequest } from "@repo/schemas/api/board/board-message.ts";
+import { createBoardThreadRequest } from "@repo/schemas/api/board/board-thread.ts";
+import { boardMessageToViewModel } from "@repo/server/models/board/board-message-to-view-model.ts";
+import { boardThreadToViewModel } from "@repo/server/models/board/board-thread-to-view-model.ts";
+import {
+  createBoardMessage,
+  getBoardMessage,
+} from "@repo/server/repo/board/board-message-repo.ts";
 import {
   createBoardThread,
   getBoardThread,
   getBoardThreads,
 } from "@repo/server/repo/board/board-thread-repo.ts";
-import {
-  createBoardMessage,
-  getBoardMessage,
-} from "@repo/server/repo/board/board-message-repo.ts";
-import { boardThreadToViewModel } from "@repo/server/models/board/board-thread-to-view-model.ts";
-import { createBoardThreadRequest } from "@repo/schemas/api/board/board-thread.ts";
 import { getOrCreateUser } from "@repo/server/repo/user/user-repo.ts";
-import { boardMessageToViewModel } from "@repo/server/models/board/board-message-to-view-model.ts";
-import { createBoardMessageRequest } from "@repo/schemas/api/board/board-message.ts";
+import express from "express";
 
 export const board = express.Router();
 

@@ -1,8 +1,8 @@
 import {
   type BoardMessage,
   type BoardThread,
-  getPrisma,
   type User,
+  getPrisma,
 } from "@repo/db";
 
 export const persistMessage = (

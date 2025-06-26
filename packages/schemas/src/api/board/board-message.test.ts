@@ -1,10 +1,10 @@
-import { describe, expect, it } from "vitest";
-import {} from "@repo/schemas/api/board/board-thread.ts";
 import { faker } from "@faker-js/faker/locale/en";
 import {
   boardMessageResponse,
   createBoardMessageRequest,
 } from "@repo/schemas/api/board/board-message.ts";
+import {} from "@repo/schemas/api/board/board-thread.ts";
+import { describe, expect, it } from "vitest";
 
 describe("board message schemas", () => {
   describe("board message response", () => {

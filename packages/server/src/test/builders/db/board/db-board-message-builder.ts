@@ -1,6 +1,6 @@
+import { faker } from "@faker-js/faker/locale/en";
 import type { BoardMessage } from "@repo/db";
 import { dbTimestamps } from "@repo/server/test/builders/db/db-timestamps.ts";
-import { faker } from "@faker-js/faker/locale/en";
 import { idInteger } from "@repo/server/test/builders/db/id-integer.ts";
 
 export const dbBoardMessageBuilder = (

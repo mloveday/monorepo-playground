@@ -1,7 +1,7 @@
-import { format } from "date-fns";
 import { BoardMessageReply } from "@repo/client/components/board/board-message-reply.tsx";
 import { TIMESTAMP_FORMAT } from "@repo/client/components/common/formatting/timestamp-format.ts";
-import {BoardMessageResponse} from "@repo/schemas/api/board/board-message.ts";
+import type { BoardMessageResponse } from "@repo/schemas/api/board/board-message.ts";
+import { format } from "date-fns";
 
 type BoardMessageProps = {
   message: BoardMessageResponse;

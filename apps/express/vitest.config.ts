@@ -1,8 +1,8 @@
 import path from "node:path";
 import react from "@vitejs/plugin-react";
+import { configDotenv } from "dotenv";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { defineConfig } from "vitest/config";
-import { configDotenv } from "dotenv";
 
 configDotenv({ path: ".env.test" });
 

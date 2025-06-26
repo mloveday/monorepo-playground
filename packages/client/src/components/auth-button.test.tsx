@@ -1,8 +1,8 @@
-import { describe, expect, it, vi } from "vitest";
 import { AuthButton } from "@repo/client/components/auth-button.tsx";
-import { withStore } from "../test/with-store";
-import { testRender } from "@repo/test/test-render.ts";
 import { getKeycloakInstance } from "@repo/client/state/get-keycloak-instance.ts";
+import { testRender } from "@repo/test/test-render.ts";
+import { describe, expect, it, vi } from "vitest";
+import { withStore } from "../test/with-store";
 
 vi.mock("@repo/client/state/get-keycloak-instance.ts", () => {
   // NB: these functions cause page navigation to the keycloak IDP, we can't test the effect here

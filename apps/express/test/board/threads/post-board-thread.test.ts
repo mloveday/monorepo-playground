@@ -1,9 +1,9 @@
-import { describe, expect, it } from "vitest";
-import supertest from "supertest";
 import { app } from "@/src/app.ts";
+import { dateRegex } from "@/test/assertions/date.ts";
 import { bearerTokenBuilder } from "@/test/builders/bearer-token-builder.ts";
 import { getPrisma } from "@repo/db";
-import { dateRegex } from "@/test/assertions/date.ts";
+import supertest from "supertest";
+import { describe, expect, it } from "vitest";
 
 describe("POST board/threads", () => {
   it("should create thread when user is authenticated", async () => {

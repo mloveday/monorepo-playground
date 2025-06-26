@@ -1,4 +1,4 @@
-import { getPrisma, type User, type BoardThread } from "@repo/db";
+import { type BoardThread, type User, getPrisma } from "@repo/db";
 
 export const persistThread = (
   user: User,

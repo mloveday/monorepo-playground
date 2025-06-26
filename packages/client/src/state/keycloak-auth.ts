@@ -1,10 +1,10 @@
 import {
+  type GetThunkAPI,
   createAsyncThunk,
   createSlice,
-  type GetThunkAPI,
 } from "@reduxjs/toolkit";
-import { useAppSelector } from "@repo/client/store/store.ts";
 import { getKeycloakInstance } from "@repo/client/state/get-keycloak-instance.ts";
+import { useAppSelector } from "@repo/client/store/store.ts";
 
 type AuthenticatedState = { authenticated: boolean };
 

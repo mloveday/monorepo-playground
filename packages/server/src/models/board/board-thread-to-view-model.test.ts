@@ -1,8 +1,8 @@
-import { describe, expect, it } from "vitest";
-import { dbBoardMessageWithUserAndChildrenBuilder } from "@repo/server/test/builders/db/board/db-board-message-with-user-and-children-builder.ts";
-import { dbBoardThreadWithUserAndBoardMessagesBuilder } from "@repo/server/test/builders/db/board/db-board-thread-with-user-and-board-messages-builder.ts";
 import { boardThreadToViewModel } from "@repo/server/models/board/board-thread-to-view-model.ts";
 import { userToResponse } from "@repo/server/models/user/user-to-response.ts";
+import { dbBoardMessageWithUserAndChildrenBuilder } from "@repo/server/test/builders/db/board/db-board-message-with-user-and-children-builder.ts";
+import { dbBoardThreadWithUserAndBoardMessagesBuilder } from "@repo/server/test/builders/db/board/db-board-thread-with-user-and-board-messages-builder.ts";
+import { describe, expect, it } from "vitest";
 
 describe("board-thread-to-view-model", () => {
   it("should map a DB model to a view model", () => {

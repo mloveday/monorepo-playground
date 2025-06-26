@@ -1,4 +1,4 @@
-import { getPrisma, type User } from "@repo/db";
+import { type User, getPrisma } from "@repo/db";
 
 export const persistUser = (overrides?: {
   sub?: string;

@@ -1,5 +1,5 @@
-import { z } from "zod/v4";
 import { apiEntityResponseBase } from "@repo/schemas/api/api-entity-response-base.ts";
+import { z } from "zod/v4";
 
 export const boardMessageResponse = apiEntityResponseBase.extend({
   message: z.string(),

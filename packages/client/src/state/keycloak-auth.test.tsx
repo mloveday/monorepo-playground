@@ -1,13 +1,13 @@
-import { describe, expect, it, vi } from "vitest";
 import { AuthButton } from "@repo/client/components/auth-button.tsx";
+import { AuthWrapper } from "@repo/client/components/auth/auth-wrapper.tsx";
 import { getKeycloakInstance } from "@repo/client/state/get-keycloak-instance.ts";
-import { testRender } from "@repo/test/test-render.ts";
-import { useAppDispatch } from "@repo/client/store/store.ts";
-import type React from "react";
-import { useEffect } from "react";
 import { initAuth } from "@repo/client/state/keycloak-auth.ts";
 import { StoreProvider } from "@repo/client/store/store-provider.tsx";
-import { AuthWrapper } from "@repo/client/components/auth/auth-wrapper.tsx";
+import { useAppDispatch } from "@repo/client/store/store.ts";
+import { testRender } from "@repo/test/test-render.ts";
+import type React from "react";
+import { useEffect } from "react";
+import { describe, expect, it, vi } from "vitest";
 
 vi.mock("@repo/client/state/get-keycloak-instance.ts", () => {
   // NB: these functions cause page navigation to the keycloak IDP, we can't test the effect here

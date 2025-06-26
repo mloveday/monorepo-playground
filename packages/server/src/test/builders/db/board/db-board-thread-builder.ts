@@ -1,7 +1,7 @@
-import { dbTimestamps } from "@repo/server/test/builders/db/db-timestamps.ts";
-import { idInteger } from "@repo/server/test/builders/db/id-integer.ts";
 import { faker } from "@faker-js/faker/locale/en";
 import type { BoardThread } from "@repo/db";
+import { dbTimestamps } from "@repo/server/test/builders/db/db-timestamps.ts";
+import { idInteger } from "@repo/server/test/builders/db/id-integer.ts";
 
 export const dbBoardThreadBuilder = (
   overrides?: Partial<BoardThread>,

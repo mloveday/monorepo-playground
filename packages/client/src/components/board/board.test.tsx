@@ -1,14 +1,14 @@
-import { describe, expect, it } from "vitest";
-import { server } from "@repo/test/api/setup-server.ts";
-import { http, HttpResponse } from "msw";
-import { boardThreadBuilder } from "@repo/test/builders/board/board-thread-builder.ts";
-import { testRender } from "@repo/test/test-render.ts";
-import { withStore } from "@repo/client/test/with-store.tsx";
 import { Board } from "@repo/client/components/board/board.tsx";
 import { TIMESTAMP_FORMAT } from "@repo/client/components/common/formatting/timestamp-format.ts";
-import { format } from "date-fns";
-import { within } from "@testing-library/react";
+import { withStore } from "@repo/client/test/with-store.tsx";
+import { server } from "@repo/test/api/setup-server.ts";
 import { boardMessageBuilder } from "@repo/test/builders/board/board-message-builder.ts";
+import { boardThreadBuilder } from "@repo/test/builders/board/board-thread-builder.ts";
+import { testRender } from "@repo/test/test-render.ts";
+import { within } from "@testing-library/react";
+import { format } from "date-fns";
+import { http, HttpResponse } from "msw";
+import { describe, expect, it } from "vitest";
 
 describe("Board", () => {
   const threadsURL = "http://localhost:3001/board/threads";

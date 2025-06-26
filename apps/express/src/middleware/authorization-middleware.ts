@@ -1,7 +1,7 @@
+import type { ServerUser } from "@repo/server/models/user/user.ts";
 import type { RequestHandler, Response } from "express";
 import { createRemoteJWKSet, jwtVerify } from "jose";
 import { z } from "zod/v4";
-import type { ServerUser } from "@repo/server/models/user/user.ts";
 
 const authHeaderSchema = z.string().startsWith("Bearer ").optional();
 

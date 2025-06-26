@@ -1,7 +1,7 @@
-import { describe, expect, it } from "vitest";
-import { dbBoardMessageWithUserAndChildrenBuilder } from "@repo/server/test/builders/db/board/db-board-message-with-user-and-children-builder.ts";
 import { boardMessageToViewModel } from "@repo/server/models/board/board-message-to-view-model.ts";
 import { userToResponse } from "@repo/server/models/user/user-to-response.ts";
+import { dbBoardMessageWithUserAndChildrenBuilder } from "@repo/server/test/builders/db/board/db-board-message-with-user-and-children-builder.ts";
+import { describe, expect, it } from "vitest";
 
 describe("board-message-to-view-model", () => {
   it("should map top-level message", () => {

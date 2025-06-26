@@ -1,8 +1,8 @@
 import {
+  type CryptoKey,
   type JWTVerifyResult,
   type ResolvedKey,
   UnsecuredJWT,
-  type CryptoKey,
   type jwtVerify,
 } from "jose";
 

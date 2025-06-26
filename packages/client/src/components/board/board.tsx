@@ -1,14 +1,14 @@
 import { api } from "@repo/client/api/api.ts";
 import { BoardMessageReply } from "@repo/client/components/board/board-message-reply.tsx";
-import { format } from "date-fns";
+import { BoardMessage } from "@repo/client/components/board/board-message.tsx";
 import { CreateBoardThread } from "@repo/client/components/board/create-board-thread.tsx";
 import {
-  noQueryProps,
   NoWrapper,
+  noQueryProps,
   withApiData,
 } from "@repo/client/components/common/api/with-api-data.tsx";
-import { BoardMessage } from "@repo/client/components/board/board-message.tsx";
 import { TIMESTAMP_FORMAT } from "@repo/client/components/common/formatting/timestamp-format.ts";
+import { format } from "date-fns";
 
 export const Board = withApiData(
   ({ apiResult }) => {

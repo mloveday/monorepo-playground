@@ -1,9 +1,9 @@
-import { describe, expect, it } from "vitest";
+import { faker } from "@faker-js/faker/locale/en";
 import {
   boardThreadResponse,
   createBoardThreadRequest,
 } from "@repo/schemas/api/board/board-thread.ts";
-import { faker } from "@faker-js/faker/locale/en";
+import { describe, expect, it } from "vitest";
 
 describe("board thread schemas", () => {
   describe("board thread response", () => {

@@ -1,7 +1,7 @@
-import { describe, expect, it } from "vitest";
-import supertest from "supertest";
 import { app } from "@/src/app.ts";
 import { bearerTokenBuilder } from "@/test/builders/bearer-token-builder.ts";
+import supertest from "supertest";
+import { describe, expect, it } from "vitest";
 
 describe("GET /healthcheck", () => {
   it('should return a 200 "all good" response when anonymous and forceSucceed is true', async () => {

@@ -1,15 +1,15 @@
-import { describe, expect, it, vi } from "vitest";
+import { faker } from "@faker-js/faker/locale/en";
 import { getPrisma } from "@repo/db";
-import { dbBoardThreadWithUserAndBoardMessagesBuilder } from "@repo/server/test/builders/db/board/db-board-thread-with-user-and-board-messages-builder.ts";
+import type { CreateBoardThreadRequest } from "@repo/schemas/api/board/board-thread.ts";
 import {
   createBoardThread,
   getBoardThread,
   getBoardThreads,
 } from "@repo/server/repo/board/board-thread-repo.ts";
 import { dbBoardThreadBuilder } from "@repo/server/test/builders/db/board/db-board-thread-builder.ts";
+import { dbBoardThreadWithUserAndBoardMessagesBuilder } from "@repo/server/test/builders/db/board/db-board-thread-with-user-and-board-messages-builder.ts";
 import { dbUserBuilder } from "@repo/server/test/builders/db/user/db-user-builder.ts";
-import type { CreateBoardThreadRequest } from "@repo/schemas/api/board/board-thread.ts";
-import { faker } from "@faker-js/faker/locale/en";
+import { describe, expect, it, vi } from "vitest";
 
 describe("board-thread-repo", () => {
   describe("getBoardThreads", () => {

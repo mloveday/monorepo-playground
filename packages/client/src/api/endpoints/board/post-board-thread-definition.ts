@@ -1,11 +1,11 @@
 import type { JavaApiEndpointMutationDefinition } from "@repo/client/api/api-types.ts";
+import { boardThreadListTag } from "@repo/client/api/tags/board-tags.ts";
 import {
   type BoardThreadResponse,
+  type CreateBoardThreadRequest,
   boardThreadResponse,
   createBoardThreadRequest,
-  type CreateBoardThreadRequest,
 } from "@repo/schemas/api/board/board-thread.ts";
-import { boardThreadListTag } from "@repo/client/api/tags/board-tags.ts";
 
 export const postBoardThreadDefinition = {
   query: (params) => ({

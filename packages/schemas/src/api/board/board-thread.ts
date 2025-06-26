@@ -1,6 +1,6 @@
-import { z } from "zod/v4";
 import { apiEntityResponseBase } from "@repo/schemas/api/api-entity-response-base.ts";
 import { boardMessageResponse } from "@repo/schemas/api/board/board-message.ts";
+import { z } from "zod/v4";
 
 export const boardThreadResponse = apiEntityResponseBase.extend({
   title: z.string(),

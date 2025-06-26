@@ -1,10 +1,10 @@
-import { type PropsWithChildren, useEffect } from "react";
-import { useAppDispatch } from "@repo/client/store/store.ts";
 import {
   initAuth,
   useIsAuthenticationError,
   useIsAuthenticationStatusKnown,
 } from "@repo/client/state/keycloak-auth.ts";
+import { useAppDispatch } from "@repo/client/store/store.ts";
+import { type PropsWithChildren, useEffect } from "react";
 
 export const AuthWrapper = ({ children }: PropsWithChildren) => {
   const isAuthenticationStatusKnown = useIsAuthenticationStatusKnown();

@@ -1,7 +1,7 @@
-import { describe, expect, it, vi } from "vitest";
 import { faker } from "@faker-js/faker/locale/en";
 import { getPrisma } from "@repo/db";
 import { getOrCreateUser } from "@repo/server/repo/user/user-repo.ts";
+import { describe, expect, it, vi } from "vitest";
 
 describe("user-repo", () => {
   it("should return existing user", async () => {

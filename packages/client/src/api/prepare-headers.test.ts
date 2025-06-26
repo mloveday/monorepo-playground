@@ -1,7 +1,7 @@
-import { describe, expect, it, vi } from "vitest";
 import { faker } from "@faker-js/faker/locale/en";
 import { prepareHeadersFactory } from "@repo/client/api/prepare-headers.ts";
 import type Keycloak from "keycloak-js";
+import { describe, expect, it, vi } from "vitest";
 
 describe("prepare-headers", () => {
   it("should set Authorization header to bearer <token> when authenticated", async () => {

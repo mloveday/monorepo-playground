@@ -1,13 +1,13 @@
-import { describe, expect, it, vi } from "vitest";
+import { getPrisma } from "@repo/db";
+import type { CreateBoardMessageRequest } from "@repo/schemas/api/board/board-message.ts";
 import {
   createBoardMessage,
   getBoardMessage,
 } from "@repo/server/repo/board/board-message-repo.ts";
-import { getPrisma } from "@repo/db";
 import { dbBoardMessageBuilder } from "@repo/server/test/builders/db/board/db-board-message-builder.ts";
-import { dbUserBuilder } from "@repo/server/test/builders/db/user/db-user-builder.ts";
 import { dbBoardThreadBuilder } from "@repo/server/test/builders/db/board/db-board-thread-builder.ts";
-import type { CreateBoardMessageRequest } from "@repo/schemas/api/board/board-message.ts";
+import { dbUserBuilder } from "@repo/server/test/builders/db/user/db-user-builder.ts";
+import { describe, expect, it, vi } from "vitest";
 
 describe("board-message-repo", () => {
   describe("getBoardMessage", () => {
