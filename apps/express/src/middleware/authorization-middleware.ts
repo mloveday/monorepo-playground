@@ -1,4 +1,4 @@
-import type { ServerUser } from "@repo/server/models/user/user.ts";
+import type { ServerUser } from "@repo/server/models/user/server-user.ts";
 import type { RequestHandler, Response } from "express";
 import { createRemoteJWKSet, jwtVerify } from "jose";
 import { z } from "zod/v4";
@@ -44,5 +44,4 @@ export const getServerUserFromResponse = (res: Response): ServerUser => ({
   sub: res.locals.auth.sub,
   name: res.locals.auth.name,
   email: res.locals.auth.email,
-  provider: "keycloak",
 });

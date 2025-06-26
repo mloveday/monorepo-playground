@@ -1,6 +1,6 @@
 import type { BoardThreadResponse } from "@repo/schemas/api/board/board-thread.ts";
 import { boardMessageToViewModel } from "@repo/server/models/board/board-message-to-view-model.ts";
-import { userToResponse } from "@repo/server/models/user/user-to-response.ts";
+import { userToViewModel } from "@repo/server/models/user/user-to-view-model.ts";
 import type { BoardThreadWithUserAndBoardMessages } from "@repo/server/repo/board/board-thread-repo.ts";
 
 export const boardThreadToViewModel = (
@@ -9,7 +9,7 @@ export const boardThreadToViewModel = (
   id: bt.id,
   createdAt: bt.createdAt.toISOString(),
   updatedAt: bt.updatedAt.toISOString(),
-  user: userToResponse(bt.user),
+  user: userToViewModel(bt.user),
   title: bt.title,
   message: bt.message,
   boardMessages: bt.boardMessages

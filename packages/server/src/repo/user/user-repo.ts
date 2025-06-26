@@ -1,5 +1,5 @@
 import { getPrisma } from "@repo/db";
-import type { ServerUser } from "@repo/server/models/user/user.ts";
+import type { ServerUser } from "@repo/server/models/user/server-user.ts";
 
 export const getOrCreateUser = async (user: ServerUser) => {
   const existing = await getPrisma().user.findUnique({

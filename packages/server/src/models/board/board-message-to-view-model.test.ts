@@ -1,5 +1,5 @@
 import { boardMessageToViewModel } from "@repo/server/models/board/board-message-to-view-model.ts";
-import { userToResponse } from "@repo/server/models/user/user-to-response.ts";
+import { userToViewModel } from "@repo/server/models/user/user-to-view-model.ts";
 import { dbBoardMessageWithUserAndChildrenBuilder } from "@repo/server/test/builders/db/board/db-board-message-with-user-and-children-builder.ts";
 import { describe, expect, it } from "vitest";
 
@@ -13,7 +13,7 @@ describe("board-message-to-view-model", () => {
       id: message.id,
       createdAt: message.createdAt.toISOString(),
       updatedAt: message.updatedAt.toISOString(),
-      user: userToResponse(message.user),
+      user: userToViewModel(message.user),
       message: message.message,
       childMessages: [],
       boardThreadId: message.boardThreadId,
@@ -29,7 +29,7 @@ describe("board-message-to-view-model", () => {
       id: message.id,
       createdAt: message.createdAt.toISOString(),
       updatedAt: message.updatedAt.toISOString(),
-      user: userToResponse(message.user),
+      user: userToViewModel(message.user),
       message: message.message,
       childMessages: [],
       parentMessageId: message.parentMessageId,
@@ -57,21 +57,21 @@ describe("board-message-to-view-model", () => {
       id: message.id,
       createdAt: message.createdAt.toISOString(),
       updatedAt: message.updatedAt.toISOString(),
-      user: userToResponse(message.user),
+      user: userToViewModel(message.user),
       message: message.message,
       childMessages: [
         {
           id: childOneDeep.id,
           createdAt: childOneDeep.createdAt.toISOString(),
           updatedAt: childOneDeep.updatedAt.toISOString(),
-          user: userToResponse(childOneDeep.user),
+          user: userToViewModel(childOneDeep.user),
           message: childOneDeep.message,
           childMessages: [
             {
               id: childTwoDeep.id,
               createdAt: childTwoDeep.createdAt.toISOString(),
               updatedAt: childTwoDeep.updatedAt.toISOString(),
-              user: userToResponse(childTwoDeep.user),
+              user: userToViewModel(childTwoDeep.user),
               message: childTwoDeep.message,
               childMessages: [],
               parentMessageId: childTwoDeep.parentMessageId,

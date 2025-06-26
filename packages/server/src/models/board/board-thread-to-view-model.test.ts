@@ -1,5 +1,5 @@
 import { boardThreadToViewModel } from "@repo/server/models/board/board-thread-to-view-model.ts";
-import { userToResponse } from "@repo/server/models/user/user-to-response.ts";
+import { userToViewModel } from "@repo/server/models/user/user-to-view-model.ts";
 import { dbBoardMessageWithUserAndChildrenBuilder } from "@repo/server/test/builders/db/board/db-board-message-with-user-and-children-builder.ts";
 import { dbBoardThreadWithUserAndBoardMessagesBuilder } from "@repo/server/test/builders/db/board/db-board-thread-with-user-and-board-messages-builder.ts";
 import { describe, expect, it } from "vitest";
@@ -22,7 +22,7 @@ describe("board-thread-to-view-model", () => {
       id: thread.id,
       createdAt: thread.createdAt.toISOString(),
       updatedAt: thread.updatedAt.toISOString(),
-      user: userToResponse(thread.user),
+      user: userToViewModel(thread.user),
       title: thread.title,
       message: thread.message,
       boardMessages: [
@@ -30,14 +30,14 @@ describe("board-thread-to-view-model", () => {
           id: message.id,
           createdAt: message.createdAt.toISOString(),
           updatedAt: message.updatedAt.toISOString(),
-          user: userToResponse(message.user),
+          user: userToViewModel(message.user),
           message: message.message,
           childMessages: [
             {
               id: childMessage.id,
               createdAt: childMessage.createdAt.toISOString(),
               updatedAt: childMessage.updatedAt.toISOString(),
-              user: userToResponse(childMessage.user),
+              user: userToViewModel(childMessage.user),
               message: childMessage.message,
               childMessages: [],
               parentMessageId: childMessage.parentMessageId,
