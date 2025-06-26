@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker/locale/en";
 import {
-  boardMessageResponse,
+  boardMessageViewModel,
   createBoardMessageRequest,
 } from "@repo/schemas/api/board/board-message.ts";
 import {} from "@repo/schemas/api/board/board-thread.ts";
@@ -23,7 +23,7 @@ describe("board message schemas", () => {
         },
       };
 
-      expect(boardMessageResponse.parse(data)).toEqual(data);
+      expect(boardMessageViewModel.parse(data)).toEqual(data);
     });
   });
 

@@ -1,14 +1,14 @@
 import { apiEntityResponseBase } from "@repo/schemas/api/api-entity-response-base.ts";
-import { boardMessageResponse } from "@repo/schemas/api/board/board-message.ts";
+import { boardMessageViewModel } from "@repo/schemas/api/board/board-message.ts";
 import { z } from "zod/v4";
 
-export const boardThreadResponse = apiEntityResponseBase.extend({
+export const boardThreadViewModel = apiEntityResponseBase.extend({
   title: z.string(),
   message: z.string(),
-  boardMessages: boardMessageResponse.array(),
+  boardMessages: boardMessageViewModel.array(),
 });
 
-export type BoardThreadResponse = z.infer<typeof boardThreadResponse>;
+export type BoardThreadViewModel = z.infer<typeof boardThreadViewModel>;
 
 export const createBoardThreadRequest = z.object({
   title: z.string(),

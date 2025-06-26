@@ -4,9 +4,9 @@ import {
   boardThreadListTag,
 } from "@repo/client/api/tags/board-tags.ts";
 import {
-  type BoardMessageResponse,
+  type BoardMessageViewModel,
   type CreateBoardMessageRequest,
-  boardMessageResponse,
+  boardMessageViewModel,
   createBoardMessageRequest,
 } from "@repo/schemas/api/board/board-message.ts";
 
@@ -16,12 +16,12 @@ export const postBoardReplyDefinition = {
     method: "POST",
     body: createBoardMessageRequest.parse(params),
   }),
-  transformResponse: (r) => boardMessageResponse.parse(r),
+  transformResponse: (r) => boardMessageViewModel.parse(r),
   invalidatesTags: (result) =>
     result?.parentMessageId !== undefined
       ? [boardThreadListTag, boardMessageTagFromId(result.parentMessageId)]
       : [boardThreadListTag],
 } satisfies JavaApiEndpointMutationDefinition<
   CreateBoardMessageRequest,
-  BoardMessageResponse
+  BoardMessageViewModel
 >;

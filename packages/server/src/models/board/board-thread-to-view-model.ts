@@ -1,11 +1,11 @@
-import type { BoardThreadResponse } from "@repo/schemas/api/board/board-thread.ts";
+import type { BoardThreadViewModel } from "@repo/schemas/api/board/board-thread.ts";
 import { boardMessageToViewModel } from "@repo/server/models/board/board-message-to-view-model.ts";
 import { userToViewModel } from "@repo/server/models/user/user-to-view-model.ts";
 import type { BoardThreadWithUserAndBoardMessages } from "@repo/server/repo/board/board-thread-repo.ts";
 
 export const boardThreadToViewModel = (
   bt: BoardThreadWithUserAndBoardMessages,
-): BoardThreadResponse => ({
+): BoardThreadViewModel => ({
   id: bt.id,
   createdAt: bt.createdAt.toISOString(),
   updatedAt: bt.updatedAt.toISOString(),

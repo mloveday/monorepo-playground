@@ -1,11 +1,11 @@
-import type { BoardMessageResponse } from "@repo/schemas/api/board/board-message.ts";
+import type { BoardMessageViewModel } from "@repo/schemas/api/board/board-message.ts";
 import { userToViewModel } from "@repo/server/models/user/user-to-view-model.ts";
 import type { BoardMessageWithUserAndChildren } from "@repo/server/repo/board/board-message-repo.ts";
 
 export const boardMessageToViewModel = (
   bm: BoardMessageWithUserAndChildren,
   allMessages?: BoardMessageWithUserAndChildren[],
-): BoardMessageResponse => ({
+): BoardMessageViewModel => ({
   id: bm.id,
   createdAt: bm.createdAt.toISOString(),
   updatedAt: bm.updatedAt.toISOString(),

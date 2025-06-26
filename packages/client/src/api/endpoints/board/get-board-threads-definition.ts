@@ -5,13 +5,13 @@ import {
   getThreadBoardMessageTags,
 } from "@repo/client/api/tags/board-tags.ts";
 import {
-  type BoardThreadResponse,
-  boardThreadResponse,
+  type BoardThreadViewModel,
+  boardThreadViewModel,
 } from "@repo/schemas/api/board/board-thread.ts";
 
 export const getBoardThreadsDefinition = {
   query: () => ({ url: "/board/threads" }),
-  transformResponse: (r) => boardThreadResponse.array().parse(r),
+  transformResponse: (r) => boardThreadViewModel.array().parse(r),
   providesTags: (result) =>
     result
       ? [
@@ -20,4 +20,4 @@ export const getBoardThreadsDefinition = {
           boardThreadListTag,
         ]
       : [boardThreadListTag],
-} satisfies JavaApiEndpointDefinition<object, BoardThreadResponse[]>;
+} satisfies JavaApiEndpointDefinition<object, BoardThreadViewModel[]>;

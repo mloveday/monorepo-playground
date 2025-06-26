@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker/locale/en";
 import {
-  boardThreadResponse,
+  boardThreadViewModel,
   createBoardThreadRequest,
 } from "@repo/schemas/api/board/board-thread.ts";
 import { describe, expect, it } from "vitest";
@@ -36,7 +36,7 @@ describe("board thread schemas", () => {
         },
       };
 
-      expect(boardThreadResponse.parse(data)).toEqual(data);
+      expect(boardThreadViewModel.parse(data)).toEqual(data);
     });
   });
 

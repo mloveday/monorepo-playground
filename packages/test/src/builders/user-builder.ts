@@ -3,7 +3,7 @@ import {
   generateBuilderFromSchema,
 } from "@repo/zod-builders";
 
-import { userSchema } from "@repo/schemas/api/user/user-schema.ts";
+import { userViewModel } from "@repo/schemas/api/user/user-view-model.ts";
 
-export const userBuilder: ObjectBuilder<typeof userSchema> =
-  generateBuilderFromSchema(userSchema);
+export const userBuilder: ObjectBuilder<typeof userViewModel> =
+  generateBuilderFromSchema(userViewModel);

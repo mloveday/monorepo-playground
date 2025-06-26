@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker/locale/en";
 import {} from "@repo/schemas/api/board/board-thread.ts";
-import { userSchema } from "@repo/schemas/api/user/user-schema.ts";
+import { userViewModel } from "@repo/schemas/api/user/user-view-model.ts";
 import { describe, expect, it } from "vitest";
 
 describe("user schema", () => {
@@ -11,6 +11,6 @@ describe("user schema", () => {
       provider: "keycloak",
     };
 
-    expect(userSchema.parse(data)).toEqual(data);
+    expect(userViewModel.parse(data)).toEqual(data);
   });
 });

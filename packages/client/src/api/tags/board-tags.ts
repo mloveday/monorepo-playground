@@ -1,13 +1,13 @@
 import type { TagDescription } from "@reduxjs/toolkit/query";
-import type { BoardMessageResponse } from "@repo/schemas/api/board/board-message.ts";
-import type { BoardThreadResponse } from "@repo/schemas/api/board/board-thread.ts";
+import type { BoardMessageViewModel } from "@repo/schemas/api/board/board-message.ts";
+import type { BoardThreadViewModel } from "@repo/schemas/api/board/board-thread.ts";
 
 export type BoardThreadTagType = "BoardThread";
 export const boardThreadTagType: BoardThreadTagType = "BoardThread";
 const listId = "LIST";
 
 export const boardThreadItemTag = (
-  boardThread: Pick<BoardThreadResponse, "id">,
+  boardThread: Pick<BoardThreadViewModel, "id">,
 ): TagDescription<BoardThreadTagType> => ({
   id: boardThread.id,
   type: boardThreadTagType,
@@ -29,7 +29,7 @@ export const boardMessageTagFromId = (
 });
 
 export const boardMessageItemTag = (
-  boardMessage: Pick<BoardMessageResponse, "id">,
+  boardMessage: Pick<BoardMessageViewModel, "id">,
 ): TagDescription<BoardMessageTagType> =>
   boardMessageTagFromId(boardMessage.id);
 
@@ -39,13 +39,13 @@ export const boardMessageListTag = {
 } satisfies TagDescription<BoardMessageTagType>;
 
 export const getBoardMessageChildTags = (
-  boardMessage: BoardMessageResponse,
+  boardMessage: BoardMessageViewModel,
 ): TagDescription<BoardMessageTagType>[] => [
   boardMessageItemTag(boardMessage),
   ...boardMessage.childMessages.flatMap(getBoardMessageChildTags),
 ];
 
 export const getThreadBoardMessageTags = (
-  boardThread: BoardThreadResponse,
+  boardThread: BoardThreadViewModel,
 ): TagDescription<BoardMessageTagType>[] =>
   boardThread.boardMessages.flatMap(getBoardMessageChildTags);

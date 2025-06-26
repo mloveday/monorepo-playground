@@ -1,9 +1,9 @@
 import type { JavaApiEndpointMutationDefinition } from "@repo/client/api/api-types.ts";
 import { boardThreadListTag } from "@repo/client/api/tags/board-tags.ts";
 import {
-  type BoardThreadResponse,
+  type BoardThreadViewModel,
   type CreateBoardThreadRequest,
-  boardThreadResponse,
+  boardThreadViewModel,
   createBoardThreadRequest,
 } from "@repo/schemas/api/board/board-thread.ts";
 
@@ -13,9 +13,9 @@ export const postBoardThreadDefinition = {
     method: "POST",
     body: createBoardThreadRequest.parse(params),
   }),
-  transformResponse: (r) => boardThreadResponse.parse(r),
+  transformResponse: (r) => boardThreadViewModel.parse(r),
   invalidatesTags: [boardThreadListTag],
 } satisfies JavaApiEndpointMutationDefinition<
   CreateBoardThreadRequest,
-  BoardThreadResponse
+  BoardThreadViewModel
 >;

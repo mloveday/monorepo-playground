@@ -1,9 +1,9 @@
 import { generateBuilderFromSchema } from "@repo/zod-builders";
 
-import { boardMessageResponse } from "@repo/schemas/api/board/board-message.ts";
+import { boardMessageViewModel } from "@repo/schemas/api/board/board-message.ts";
 
 export const boardMessageBuilder = generateBuilderFromSchema(
-  boardMessageResponse,
+  boardMessageViewModel,
   {
     // this is required to prevent a circular reference
     paths: [{ path: "$.childMessages", generate: () => [] }],

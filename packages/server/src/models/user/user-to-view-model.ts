@@ -1,6 +1,6 @@
 import type { User } from "@repo/db";
 
-import type { UserViewModel } from "@repo/schemas/api/user/user-schema.ts";
+import type { UserViewModel } from "@repo/schemas/api/user/user-view-model.ts";
 
 export const userToViewModel = (user: User): UserViewModel => ({
   provider: "keycloak",

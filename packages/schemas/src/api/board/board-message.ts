@@ -1,16 +1,16 @@
 import { apiEntityResponseBase } from "@repo/schemas/api/api-entity-response-base.ts";
 import { z } from "zod/v4";
 
-export const boardMessageResponse = apiEntityResponseBase.extend({
+export const boardMessageViewModel = apiEntityResponseBase.extend({
   message: z.string(),
   boardThreadId: z.number().int(),
   parentMessageId: z.number().int().optional(),
   get childMessages() {
-    return boardMessageResponse.array();
+    return boardMessageViewModel.array();
   },
 });
 
-export type BoardMessageResponse = z.infer<typeof boardMessageResponse>;
+export type BoardMessageViewModel = z.infer<typeof boardMessageViewModel>;
 
 export const createBoardMessageRequest = z.object({
   message: z.string(),
