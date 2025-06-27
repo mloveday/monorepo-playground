@@ -1,3 +1,4 @@
+import type { apiBaseQuery } from "@repo/client/api/api-base-query.ts";
 import { api } from "@repo/client/api/api.ts";
 import { BoardMessageReply } from "@repo/client/components/board/board-message-reply.tsx";
 import { BoardMessage } from "@repo/client/components/board/board-message.tsx";
@@ -8,9 +9,15 @@ import {
   withApiData,
 } from "@repo/client/components/common/api/with-api-data.tsx";
 import { TIMESTAMP_FORMAT } from "@repo/client/components/common/formatting/timestamp-format.ts";
+import type { BoardThreadViewModel } from "@repo/schemas/api/board/board-thread.ts";
 import { format } from "date-fns";
 
-export const Board = withApiData(
+export const Board = withApiData<
+  BoardThreadViewModel[],
+  object,
+  typeof apiBaseQuery,
+  object
+>(
   ({ apiResult }) => {
     return (
       <ul className="indented-list">

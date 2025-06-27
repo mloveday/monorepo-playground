@@ -1,11 +1,13 @@
 import type { z } from "zod/v4";
-import type { $ZodObject, $ZodType } from "zod/v4/core";
+import type { $ZodType } from "zod/v4/core";
 
-type WithProperty<Schema extends $ZodObject, Property> = (
+export type InputSchema = ReturnType<typeof z.object>;
+
+type WithProperty<Schema extends InputSchema, Property> = (
   val: Property,
 ) => ObjectBuilder<Schema>;
 
-type ObjectBuilderWithers<Schema extends $ZodObject> = {
+type ObjectBuilderWithers<Schema extends InputSchema> = {
   [Key in keyof z.infer<Schema> &
     string as `with${Capitalize<Key>}`]: WithProperty<
     Schema,
@@ -13,16 +15,12 @@ type ObjectBuilderWithers<Schema extends $ZodObject> = {
   >;
 };
 
-export type ObjectBuilderVals<Schema extends $ZodObject> = {
-  [Key in keyof z.infer<Schema>]: z.infer<Schema>[Key];
-};
-
-export type ObjectBuilderInternals<Schema extends $ZodObject> = {
-  vals: Partial<ObjectBuilderVals<Schema>>;
+export type ObjectBuilderInternals<Schema extends InputSchema> = {
+  vals: Partial<z.infer<Schema>>;
   build: () => z.infer<Schema>;
 };
 
-export type ObjectBuilder<Schema extends $ZodObject> =
+export type ObjectBuilder<Schema extends InputSchema> =
   ObjectBuilderWithers<Schema> & ObjectBuilderInternals<Schema>;
 
 type SchemaMatcher<T extends $ZodType> = (schema: $ZodType) => schema is T;

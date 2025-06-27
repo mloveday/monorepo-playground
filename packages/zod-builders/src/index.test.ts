@@ -1,4 +1,4 @@
-import { generateBuilderFromSchema } from "@repo/zod-builders/index.ts";
+import { generateBuilderFromSchema } from "@repo/zod-builders/generate-builder-from-schema.ts";
 import type { SchemaGenerator } from "@repo/zod-builders/types.ts";
 import { describe, expect, it } from "vitest";
 import { z } from "zod/v4";

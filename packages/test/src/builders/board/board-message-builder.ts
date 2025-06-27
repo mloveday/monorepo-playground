@@ -1,6 +1,5 @@
-import { generateBuilderFromSchema } from "@repo/zod-builders";
-
 import { boardMessageViewModel } from "@repo/schemas/api/board/board-message.ts";
+import { generateBuilderFromSchema } from "@repo/zod-builders/generate-builder-from-schema.ts";
 
 export const boardMessageBuilder = generateBuilderFromSchema(
   boardMessageViewModel,
