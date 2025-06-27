@@ -10,7 +10,9 @@ export const AuthWrapper = ({ children }: PropsWithChildren) => {
   const isAuthenticationStatusKnown = useIsAuthenticationStatusKnown();
   const isAuthenticationError = useIsAuthenticationError();
   const dispatch = useAppDispatch();
+  console.log("auth wrapper render");
   useEffect(() => {
+    console.log("auth wrapper init");
     dispatch(initAuth());
   }, [dispatch]);
 

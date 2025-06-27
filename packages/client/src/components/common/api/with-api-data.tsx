@@ -71,7 +71,7 @@ export const withApiData = <
           <ApiError />
         </Wrapper>
       );
-    if (apiResult.isLoading)
+    if (apiResult.isLoading || apiResult.isFetching)
       return (
         <Wrapper>
           <ApiLoading />
