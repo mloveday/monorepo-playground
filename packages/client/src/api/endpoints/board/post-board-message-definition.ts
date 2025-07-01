@@ -10,7 +10,7 @@ import {
   createBoardMessageRequest,
 } from "@repo/schemas/api/board/board-message.ts";
 
-export const postBoardReplyDefinition = {
+export const postBoardMessageDefinition = {
   query: (params) => ({
     url: "/board/messages",
     method: "POST",

@@ -14,7 +14,7 @@ import type {
   JavaApiReducerPath,
 } from "@repo/client/api/api-types.ts";
 import { getBoardThreadsDefinition } from "@repo/client/api/endpoints/board/get-board-threads-definition.ts";
-import { postBoardReplyDefinition } from "@repo/client/api/endpoints/board/post-board-reply-definition.ts";
+import { postBoardMessageDefinition } from "@repo/client/api/endpoints/board/post-board-message-definition.ts";
 import { postBoardThreadDefinition } from "@repo/client/api/endpoints/board/post-board-thread-definition.ts";
 import { healthcheckDefinition } from "@repo/client/api/endpoints/healthcheck/healthcheck-definition.ts";
 import {
@@ -36,7 +36,7 @@ export const api = createApi({
   ) => ({
     getHealthCheck: builder.query(healthcheckDefinition),
     getBoardThreads: builder.query(getBoardThreadsDefinition),
-    createBoardMessage: builder.mutation(postBoardReplyDefinition),
+    createBoardMessage: builder.mutation(postBoardMessageDefinition),
     createBoardThread: builder.mutation(postBoardThreadDefinition),
   }),
 });
@@ -49,7 +49,7 @@ export const javaApi = createApi({
     builder: EndpointBuilder<JavaApiBaseQuery, TagTypes, JavaApiReducerPath>,
   ) => ({
     getBoardThreads: builder.query(getBoardThreadsDefinition),
-    createBoardMessage: builder.mutation(postBoardReplyDefinition),
+    createBoardMessage: builder.mutation(postBoardMessageDefinition),
     createBoardThread: builder.mutation(postBoardThreadDefinition),
   }),
 });
