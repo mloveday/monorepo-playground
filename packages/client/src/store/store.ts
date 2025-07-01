@@ -1,17 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { api, javaApi } from "@repo/client/api/api.ts";
+import { expressApi, javaApi } from "@repo/client/api/api-definitions.ts";
+import { apiSlice } from "@repo/client/state/api-slice.ts";
 import { keycloakSlice } from "@repo/client/state/keycloak-auth.ts";
 import { useDispatch, useSelector } from "react-redux";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      [api.reducerPath]: api.reducer,
+      [expressApi.reducerPath]: expressApi.reducer,
       [javaApi.reducerPath]: javaApi.reducer,
       [keycloakSlice.reducerPath]: keycloakSlice.reducer,
+      [apiSlice.reducerPath]: apiSlice.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(api.middleware, javaApi.middleware),
+      getDefaultMiddleware().concat(expressApi.middleware, javaApi.middleware),
   });
 };
 

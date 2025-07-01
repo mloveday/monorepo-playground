@@ -1,5 +1,5 @@
-import type { apiBaseQuery } from "@repo/client/api/api-base-query.ts";
-import { api } from "@repo/client/api/api.ts";
+import { useGetBoardThreads } from "@repo/client/api/endpoints/board/use-get-board-threads.ts";
+import type { ApiBaseQuery } from "@repo/client/api/express-api-base-query.ts";
 import { BoardMessageReply } from "@repo/client/components/board/board-message-reply.tsx";
 import { BoardMessage } from "@repo/client/components/board/board-message.tsx";
 import { CreateBoardThread } from "@repo/client/components/board/create-board-thread.tsx";
@@ -15,7 +15,7 @@ import { format } from "date-fns";
 export const Board = withApiData<
   BoardThreadViewModel[],
   object,
-  typeof apiBaseQuery,
+  ApiBaseQuery,
   object
 >(
   ({ apiResult }) => {
@@ -59,6 +59,6 @@ export const Board = withApiData<
     );
   },
   NoWrapper,
-  api.endpoints.getBoardThreads.useQuery,
+  useGetBoardThreads,
   noQueryProps,
 );

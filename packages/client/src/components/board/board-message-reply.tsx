@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { api } from "@repo/client/api/api.ts";
+import { useCreateBoardMessage } from "@repo/client/api/endpoints/board/use-create-board-message.ts";
 import { withAuthenticatedOnly } from "@repo/client/components/auth/authenticated-only.tsx";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -25,8 +25,7 @@ export const BoardMessageReply = withAuthenticatedOnly(
       defaultValues,
       resolver,
     });
-    const [postBoardMessageReply] =
-      api.endpoints.createBoardMessage.useMutation();
+    const [postBoardMessageReply] = useCreateBoardMessage();
 
     const onSubmit: SubmitHandler<BoardMessageReplyForm> = (values) => {
       postBoardMessageReply({

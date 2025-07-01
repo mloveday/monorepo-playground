@@ -1,4 +1,3 @@
-import { api } from "@repo/client/api/api.ts";
+import { expressApi } from "@repo/client/api/api-definitions.ts";
 
-// allows for simpler mocking for unit (not integration) tests, and for cleaner components
-export const useHealthcheckQuery = api.endpoints.getHealthCheck.useQuery;
+export const useHealthcheckQuery = expressApi.endpoints.getHealthCheck.useQuery;

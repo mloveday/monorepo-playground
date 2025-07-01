@@ -1,4 +1,4 @@
-import type { JavaApiEndpointDefinition } from "@repo/client/api/api-types.ts";
+import type { ApiEndpointDefinition } from "@repo/client/api/endpoints/endpoint-definitions.ts";
 import {
   boardThreadItemTag,
   boardThreadListTag,
@@ -20,4 +20,4 @@ export const getBoardThreadsDefinition = {
           boardThreadListTag,
         ]
       : [boardThreadListTag],
-} satisfies JavaApiEndpointDefinition<object, BoardThreadViewModel[]>;
+} satisfies ApiEndpointDefinition<object, BoardThreadViewModel[]>;

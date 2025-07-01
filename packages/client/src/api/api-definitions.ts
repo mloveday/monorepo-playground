@@ -1,22 +1,19 @@
 import { type EndpointBuilder, createApi } from "@reduxjs/toolkit/query/react";
 import {
-  apiBaseQuery,
-  javaApiBaseQuery,
-} from "@repo/client/api/api-base-query.ts";
-import {
+  type ApiReducerPath,
+  type JavaApiReducerPath,
   apiReducerPath,
   javaApiReducerPath,
 } from "@repo/client/api/api-reducer-path.ts";
-import type {
-  ApiBaseQuery,
-  ApiReducerPath,
-  JavaApiBaseQuery,
-  JavaApiReducerPath,
-} from "@repo/client/api/api-types.ts";
 import { getBoardThreadsDefinition } from "@repo/client/api/endpoints/board/get-board-threads-definition.ts";
 import { postBoardMessageDefinition } from "@repo/client/api/endpoints/board/post-board-message-definition.ts";
 import { postBoardThreadDefinition } from "@repo/client/api/endpoints/board/post-board-thread-definition.ts";
 import { healthcheckDefinition } from "@repo/client/api/endpoints/healthcheck/healthcheck-definition.ts";
+import {
+  type ApiBaseQuery,
+  expressApiBaseQuery,
+  javaApiBaseQuery,
+} from "@repo/client/api/express-api-base-query.ts";
 import {
   type BoardMessageTagType,
   type BoardThreadTagType,
@@ -27,9 +24,9 @@ import {
 type TagTypes = BoardThreadTagType | BoardMessageTagType;
 const tagTypes = [boardThreadTagType, boardMessageTagType];
 
-export const api = createApi({
+export const expressApi = createApi({
   reducerPath: apiReducerPath,
-  baseQuery: apiBaseQuery,
+  baseQuery: expressApiBaseQuery,
   tagTypes,
   endpoints: (
     builder: EndpointBuilder<ApiBaseQuery, TagTypes, ApiReducerPath>,
@@ -46,7 +43,7 @@ export const javaApi = createApi({
   baseQuery: javaApiBaseQuery,
   tagTypes,
   endpoints: (
-    builder: EndpointBuilder<JavaApiBaseQuery, TagTypes, JavaApiReducerPath>,
+    builder: EndpointBuilder<ApiBaseQuery, TagTypes, JavaApiReducerPath>,
   ) => ({
     getBoardThreads: builder.query(getBoardThreadsDefinition),
     createBoardMessage: builder.mutation(postBoardMessageDefinition),

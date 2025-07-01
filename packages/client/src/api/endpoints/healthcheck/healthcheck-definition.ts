@@ -1,4 +1,4 @@
-import type { ApiEndpointDefinition } from "@repo/client/api/api-types.ts";
+import type { ApiEndpointDefinition } from "@repo/client/api/endpoints/endpoint-definitions.ts";
 import type { HealthCheckRequest } from "@repo/schemas/api/healthcheck/health-check-request.ts";
 import {
   type HealthCheckResponse,

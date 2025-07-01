@@ -1,5 +1,5 @@
-import type { ApiBaseQuery } from "@repo/client/api/api-types.ts";
 import { useHealthcheckQuery } from "@repo/client/api/endpoints/healthcheck/use-healthcheck-query.ts";
+import type { ApiBaseQuery } from "@repo/client/api/express-api-base-query.ts";
 import { withApiData } from "@repo/client/components/common/api/with-api-data.tsx";
 import { withStore } from "@repo/client/test/with-store.tsx";
 import type { HealthCheckRequest } from "@repo/schemas/api/healthcheck/health-check-request.ts";

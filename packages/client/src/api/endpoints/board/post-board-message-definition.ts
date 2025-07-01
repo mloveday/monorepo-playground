@@ -1,4 +1,4 @@
-import type { JavaApiEndpointMutationDefinition } from "@repo/client/api/api-types.ts";
+import type { ApiEndpointMutationDefinition } from "@repo/client/api/endpoints/endpoint-definitions.ts";
 import {
   boardMessageTagFromId,
   boardThreadListTag,
@@ -21,7 +21,7 @@ export const postBoardMessageDefinition = {
     result?.parentMessageId !== undefined
       ? [boardThreadListTag, boardMessageTagFromId(result.parentMessageId)]
       : [boardThreadListTag],
-} satisfies JavaApiEndpointMutationDefinition<
+} satisfies ApiEndpointMutationDefinition<
   CreateBoardMessageRequest,
   BoardMessageViewModel
 >;

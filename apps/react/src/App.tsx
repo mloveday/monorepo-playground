@@ -1,9 +1,10 @@
 import "./App.css";
+import { ApiSelector } from "@repo/client/components/api-selector.tsx";
 import { AuthButton } from "@repo/client/components/auth-button.tsx";
 import { Board } from "@repo/client/components/board/board.tsx";
 import { Todos } from "@repo/client/components/todo/todos.tsx";
-import { Blurb } from "./components/blurb.tsx";
 import { NavLink, Route, Routes } from "react-router";
+import { Blurb } from "./components/blurb.tsx";
 
 export const App = () => (
   <div className="grid grid-rows-[4rem_1fr_4rem] items-center justify-items-center min-h-screen w-screen font-[family-name:var(--font-geist-sans)]">
@@ -27,6 +28,9 @@ export const App = () => (
         </li>
         <li>
           <AuthButton />
+        </li>
+        <li>
+          <ApiSelector />
         </li>
       </ul>
     </header>
