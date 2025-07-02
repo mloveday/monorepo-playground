@@ -1,1 +1,1 @@
-export const ApiLoading = () => "loading";
+export const ApiLoading = () => <div className="loader" data-testid="loader" />;

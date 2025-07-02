@@ -20,4 +20,10 @@ export class PageFurniture {
     page.getByRole("radio", { name: "Express" });
   public static javaApiRadio: GetLocator = async (page) =>
     page.getByRole("radio", { name: "Java" });
+
+
+  public static getApiLoadingSpinner: GetLocator = async (page) =>
+    page.getByTestId("loader");
+  public static getApiErrorMessage: GetLocator = async (page) =>
+    page.getByText("There was an error loading this content.");
 }

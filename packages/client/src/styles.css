@@ -81,4 +81,27 @@
   .board-message-timestamp {
     @apply text-sm text-gray-400;
   }
+
+  .loader {
+    border: 1.5rem;
+    @apply w-12 h-12 border-solid border-t-blue-400 border-r-blue-400 border-b-blue-100 border-l-blue-100;
+    border-radius: 50%;
+    position: relative;
+    animation: rotate 1s linear infinite
+  }
+
+  .loader:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translate(-50% , -125%);
+    left: 50%;
+    @apply w-3 h-3 bg-yellow-200;
+    border-radius: 50%;
+  }
+
+  @keyframes rotate {
+    100%   { transform: rotate(360deg) }
+  }
+
 }

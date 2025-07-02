@@ -55,23 +55,48 @@ describe("withApiData", () => {
     const result = testRender(<TestComponent />);
 
     expect(result.getByText("wrapper")).not.toBeNull();
-    expect(result.getByText("loading")).not.toBeNull();
+    expect(result.getByTestId("loader")).not.toBeNull();
     await waitFor(() => expect(result.getByText("child")).not.toBeNull());
     expect(result.getByText("good healthcheck response")).not.toBeNull();
   });
 
   it("should render ApiError when error", async () => {
+    // given the API request attempt fails
     server.use(
       http.get("http://localhost:3001/healthcheck", HttpResponse.error),
     );
 
     const result = testRender(<TestComponent />);
 
+    // expect a loading spinner & no content
     expect(result.getByText("wrapper")).not.toBeNull();
-    expect(result.getByText("loading")).not.toBeNull();
+    expect(result.getByTestId("loader")).not.toBeNull();
 
-    await waitFor(() => expect(result.getByText("error")).not.toBeNull());
+    // expect an error message & no content
+    await waitFor(() => expect(result.getByText("There was an error loading this content.")).not.toBeNull());
     // we do not render the component if there is an error
     expect(result.getByText("wrapper")).not.toBeNull();
+
+    // given the next attempt succeeds
+    server.use(
+      http.get("http://localhost:3001/healthcheck",
+        withLatency(() =>
+          HttpResponse.json({
+            success: true,
+            message: "good healthcheck response",
+          }),
+        ),),
+    );
+
+    // click the retry button (from the ApiError component)
+    await result.user.click(result.getByRole("button", {name: "Retry"}));
+
+    // expect a loading spinner & no content
+    expect(result.getByText("wrapper")).not.toBeNull();
+    expect(result.getByTestId("loader")).not.toBeNull();
+
+    // expect content to be loaded successfully
+    await waitFor(() => expect(result.getByText("child")).not.toBeNull());
+    expect(result.getByText("good healthcheck response")).not.toBeNull();
   });
 });

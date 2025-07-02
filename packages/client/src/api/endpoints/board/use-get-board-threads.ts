@@ -8,5 +8,7 @@ export const useGetBoardThreads = () => {
   useEffect(() => {
     trigger({});
   }, [trigger]);
+  // @ts-ignore
+  result.refetch = trigger;
   return result;
 };

@@ -68,7 +68,7 @@ export const withApiData = <
     if (apiResult.isError)
       return (
         <Wrapper>
-          <ApiError />
+          <ApiError retry={() => apiResult.refetch()} />
         </Wrapper>
       );
     if (apiResult.isLoading || apiResult.isFetching)

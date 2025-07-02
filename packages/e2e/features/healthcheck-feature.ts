@@ -10,9 +10,6 @@ export class HealthcheckFeature {
   public static getCheckbox: GetLocator = async (page) =>
     page.getByRole("checkbox", { name: "Force API success" });
 
-  public static getLoading: GetLocator = async (page) =>
-    page.getByText("loading");
-
   public static getFetching: GetLocator = async (page) =>
     page.getByText("fetching");
 

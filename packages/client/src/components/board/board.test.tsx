@@ -21,7 +21,7 @@ describe("Board", () => {
     const result = testRender(<TestComponent />);
 
     // expect loading spinner before content is shown
-    expect(await result.findByText("loading")).not.toBeNull();
+    expect(await result.findByTestId("loader")).not.toBeNull();
 
     // should display the create thread form
     expect(await result.findByTestId("create-board-thread")).not.toBeNull();
@@ -76,7 +76,7 @@ describe("Board", () => {
     const result = testRender(<TestComponent />);
 
     // expect loading spinner before content is shown
-    expect(await result.findByText("loading")).not.toBeNull();
+    expect(await result.findByTestId("loader")).not.toBeNull();
 
     // should not display the create thread form
     expect(await result.queryByTestId("create-board-thread")).toBeNull();
@@ -90,7 +90,7 @@ describe("Board", () => {
     const result = testRender(<TestComponent />);
 
     // expect loading spinner before content is shown
-    expect(await result.findByText("loading")).not.toBeNull();
+    expect(await result.findByTestId("loader")).not.toBeNull();
 
     // expect thread to be rendered in the DOM
     expect(await result.findByTestId(`thread-${thread.id}`)).not.toBeNull();
@@ -204,7 +204,7 @@ describe("Board", () => {
     const result = testRender(<TestComponent />);
 
     // expect loading spinner before content is shown
-    expect(await result.findByText("loading")).not.toBeNull();
+    expect(await result.findByTestId("loader")).not.toBeNull();
 
     // expect thread to be rendered in the DOM
     expect(await result.findByTestId(`thread-${thread.id}`)).not.toBeNull();
@@ -251,6 +251,6 @@ describe("Board", () => {
 
     const result = testRender(<TestComponent />);
 
-    expect(await result.findByText("error")).not.toBeNull();
+    expect(await result.findByText("There was an error loading this content.")).not.toBeNull();
   });
 });
