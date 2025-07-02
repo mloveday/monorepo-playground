@@ -1,6 +1,5 @@
 export const Blurb = () => (
   <>
-    <h1>Monorepo playground</h1>
     <p>
       A space to try out a monorepo with a React frontend and express.js backend
     </p>

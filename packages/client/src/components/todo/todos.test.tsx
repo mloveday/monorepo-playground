@@ -70,7 +70,7 @@ describe("Todos", () => {
     expect(todoService.reset).toHaveBeenCalledOnce();
   });
 
-  const formId = "add-todo-react-hook-forms";
+  const formId = "add-todo-form";
 
   it("should trigger adding a todo without notes to the TodoService (%s)", async () => {
     const todoService = buildTodoService();

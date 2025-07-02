@@ -23,7 +23,7 @@ const defaultValues = {
   notes: "",
 } satisfies AddTodoForm;
 
-export const AddTodoReactHookForms = (props: AddTodoProps) => {
+export const AddTodo = (props: AddTodoProps) => {
   const form = useForm<AddTodoForm>({
     mode: "onBlur",
     defaultValues,
@@ -41,10 +41,10 @@ export const AddTodoReactHookForms = (props: AddTodoProps) => {
   return (
     <form
       onSubmit={form.handleSubmit(onSubmit)}
-      data-testid="add-todo-react-hook-forms"
+      data-testid="add-todo-form"
       className="box flex flex-col gap-4"
     >
-      <h2>Add todo (RHF)</h2>
+      <h2>Add todo</h2>
       <label className="grid grid-cols-[auto_1fr] gap-2">
         <span className="self-center">Title</span>
         <FormError error={form.formState.errors.title?.message} />

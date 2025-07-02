@@ -1,4 +1,4 @@
-import { AddTodoReactHookForms } from "@repo/client/components/todo/add-todo-react-hook-forms.tsx";
+import { AddTodo } from "@repo/client/components/todo/add-todo.tsx";
 import { useTodoService } from "@repo/client/state/use-todo-service.ts";
 
 // basic TODO app
@@ -26,7 +26,7 @@ export const Todos = () => {
         ))}
       </ul>
       <div className="auto-grid-lg w-full gap-2">
-        <AddTodoReactHookForms addTodo={todos.addTodo} />
+        <AddTodo addTodo={todos.addTodo} />
       </div>
       <button type="button" onClick={todos.reset}>
         Reset

@@ -26,8 +26,8 @@ export class TodoFeature {
   public static getTodoRemoveButton = (todo: Locator): Locator =>
     todo.getByRole("button", { name: "Remove" });
 
-  public static getReactHookFormsForm: GetLocator = async (page) =>
-    page.getByTestId("add-todo-react-hook-forms");
+  public static getAddTodoForm: GetLocator = async (page) =>
+    page.getByTestId("add-todo-form");
 
   public static getTitleInput = (form: Locator) =>
     form.getByRole("textbox", { name: "title" });
