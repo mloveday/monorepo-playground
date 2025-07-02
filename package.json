@@ -9,7 +9,7 @@
     "check-types": "turbo check-types",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "lint:fix": "npm run lint:fix -ws",
+    "lint:fix": "turbo lint:fix",
     "lint:dependencies": "syncpack lint",
     "test": "turbo test",
     "test:coverage": "turbo test:coverage",
