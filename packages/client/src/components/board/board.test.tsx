@@ -251,6 +251,8 @@ describe("Board", () => {
 
     const result = testRender(<TestComponent />);
 
-    expect(await result.findByText("There was an error loading this content.")).not.toBeNull();
+    expect(
+      await result.findByText("There was an error loading this content."),
+    ).not.toBeNull();
   });
 });

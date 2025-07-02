@@ -73,23 +73,29 @@ describe("withApiData", () => {
     expect(result.getByTestId("loader")).not.toBeNull();
 
     // expect an error message & no content
-    await waitFor(() => expect(result.getByText("There was an error loading this content.")).not.toBeNull());
+    await waitFor(() =>
+      expect(
+        result.getByText("There was an error loading this content."),
+      ).not.toBeNull(),
+    );
     // we do not render the component if there is an error
     expect(result.getByText("wrapper")).not.toBeNull();
 
     // given the next attempt succeeds
     server.use(
-      http.get("http://localhost:3001/healthcheck",
+      http.get(
+        "http://localhost:3001/healthcheck",
         withLatency(() =>
           HttpResponse.json({
             success: true,
             message: "good healthcheck response",
           }),
-        ),),
+        ),
+      ),
     );
 
     // click the retry button (from the ApiError component)
-    await result.user.click(result.getByRole("button", {name: "Retry"}));
+    await result.user.click(result.getByRole("button", { name: "Retry" }));
 
     // expect a loading spinner & no content
     expect(result.getByText("wrapper")).not.toBeNull();

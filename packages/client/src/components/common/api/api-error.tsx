@@ -1,4 +1,4 @@
-import {ApiLoading} from "@repo/client/components/common/api/api-loading.tsx";
+import { ApiLoading } from "@repo/client/components/common/api/api-loading.tsx";
 
 export const ApiError = ({ retry }: { retry: () => void }) => (
   <div className="flex flex-col gap-2">

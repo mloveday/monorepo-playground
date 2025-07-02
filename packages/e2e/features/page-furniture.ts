@@ -21,7 +21,6 @@ export class PageFurniture {
   public static javaApiRadio: GetLocator = async (page) =>
     page.getByRole("radio", { name: "Java" });
 
-
   public static getApiLoadingSpinner: GetLocator = async (page) =>
     page.getByTestId("loader");
   public static getApiErrorMessage: GetLocator = async (page) =>
